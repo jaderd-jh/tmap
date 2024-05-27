@@ -1,0 +1,50 @@
+{
+  "name": "@jhqn/react-tmap",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "天地图 react 组件",
+  "author": "jaderd-jh",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaderd-jh/tmap.git",
+    "directory": "packages/react"
+  },
+  "keywords": ["react", "tmap"],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup --watch",
+    "attw": "attw --pack .",
+    "check:type": "tsc"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2 || ^18.0.0",
+    "react-dom": "^17.0.2 || ^18.0.0"
+  },
+  "dependencies": {
+    "@jhqn/tmap-jsapi-types": "workspace:*",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "extends": ["../../tsconfig.json"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["@jhqn/tmap-jsapi-types"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}
