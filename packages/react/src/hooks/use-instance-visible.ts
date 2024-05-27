@@ -3,7 +3,6 @@ import type { UnDef } from '@/utils'
 
 /**
  * 显示/隐藏实例
- * @param map
  * @param instance 实例对象
  * @param visible 是否可见
  */

@@ -25,9 +25,11 @@ const Marker = forwardRef<UnDef<T.Marker>, MarkerProps>(
       return toLngLat(lngLat)
     }, [lngLat])
 
+    let init_dev = 0
+
     useEffect(() => {
-      if (!marker && useLngLat) {
-        console.log('marker')
+      if (init_dev === 0 && !marker && useLngLat) {
+        init_dev += 1
         const instance = new T.Marker(useLngLat, { ...props, icon: iconInstance })
         setMarker(instance)
       }
