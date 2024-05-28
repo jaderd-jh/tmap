@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.1",
   "private": true,
   "packageManager": "pnpm@9.1.2",
   "description": "天地图 jsapi 4.0 的 monorepo",
@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build": "pnpm -r build",
+    "release": "bumpp -r",
     "check:lint": "oxlint && eslint --cache .",
     "fix:lint": "oxlint --quiet --fix && eslint --cache --fix .",
     "check:fmt": "biome check .",
@@ -32,6 +33,7 @@
     "@biomejs/biome": "^1.7.3",
     "@jhqn/eslint-config": "^0.7.6",
     "@tsconfig/node20": "^20.1.4",
+    "bumpp": "^9.4.1",
     "eslint": "^9.2.0",
     "eslint-plugin-format": "^0.1.1",
     "eslint-plugin-oxlint": "^0.2.9",
