@@ -21,6 +21,7 @@
     "fix:lint": "oxlint --quiet --fix && eslint --cache --fix .",
     "check:fmt": "biome check .",
     "fix:fmt": "biome check --apply .",
+    "publint": "pnpm -r publint",
     "check:type": "pnpm -r check:type",
     "check:staged": "lint-staged",
     "pre-commit": "run-s check:type check:staged",
@@ -40,6 +41,7 @@
     "lint-staged": "^15.2.2",
     "npm-run-all2": "^6.1.2",
     "oxlint": "^0.3.5",
+    "publint": "^0.2.8",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
