@@ -2,7 +2,7 @@
   "name": "@jhqn/tmap-jsapi-types",
   "version": "0.0.1-beta.4",
   "description": "天地图 jsapi 4.0 的 typescript 类型定义",
-  "author": "jaderd-jh",
+  "author": "zwtkito",
   "license": "MIT",
   "repository": {
     "type": "git",

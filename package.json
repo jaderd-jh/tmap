@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.1.2",
   "description": "天地图 jsapi 4.0 的 monorepo",
-  "author": "jaderd-jh",
+  "author": "zwtkito",
   "license": "MIT",
   "homepage": "https://github.com/jaderd-jh/tmap",
   "repository": {
