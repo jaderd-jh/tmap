@@ -1,8 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import { forwardRef, useEffect } from 'react'
-import { useImperativeHandle } from 'react'
-import { useState } from 'react'
-import { useRef } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { MapContext } from './context'
 import type { MapProps } from './types'
 import { toLngLat } from '@/utils'
@@ -36,7 +33,7 @@ const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
         const tmap = new T.Map(container || containerRef.current!, { center: toLngLat(center), zoom, ...props })
         if (mapStyle) tmap.setStyle(mapStyle)
         setMap(tmap)
-        // @ts-ignore
+        // @ts-expect-error globalThis
         globalThis.map = tmap
       }
     }, [map])

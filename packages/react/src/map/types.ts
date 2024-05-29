@@ -1,5 +1,4 @@
-import type { UnDef } from '@/utils'
-import type { CommonProps } from '@/utils'
+import type { CommonProps, UnDef } from '@/utils'
 
 export interface MapContextProps {
   /**

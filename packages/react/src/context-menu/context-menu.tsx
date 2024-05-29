@@ -1,5 +1,4 @@
-import React from 'react'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import React, { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
 import MenuItem from './menu-item'
 import Separator from './separator'
 import type { ContextMenuProps } from './types'
@@ -31,7 +30,7 @@ const ContextMenuCompound = forwardRef<UnDef<T.ContextMenu>, ContextMenuProps>(
         if (map && contextMenu) {
           // 天地图 api 4.0 没有移除右键菜单的方法，手动移除好离谱
           const contextMenus = document.getElementsByClassName('tdt-contextmenu')
-          // @ts-expect-error
+          // @ts-expect-error contextMenus
           for (const menu of contextMenus) menu.remove()
         }
       }

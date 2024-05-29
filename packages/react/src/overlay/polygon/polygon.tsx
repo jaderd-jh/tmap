@@ -3,8 +3,7 @@ import type { PolygonProps } from './types'
 import { MapContext } from '@/map'
 import type { UnDef } from '@/utils'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
-import { isArray } from '@/utils'
-import { toNestedLngLats } from '@/utils'
+import { isArray, toNestedLngLats } from '@/utils'
 
 /**  覆盖物 - 多边形 */
 const Polygon = forwardRef<UnDef<T.Polygon>, PolygonProps>(({ visible, path, editable = false, ...props }, ref) => {

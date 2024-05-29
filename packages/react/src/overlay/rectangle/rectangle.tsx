@@ -1,5 +1,4 @@
-import { forwardRef } from 'react'
-import { useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 import type { RectangleProps } from './types'
 import { toBounds } from '@/utils'
 import { MapContext } from '@/map'

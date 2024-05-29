@@ -6,7 +6,6 @@ export const load = async (options: APILoaderConfig) => {
     unload = 'unload',
     loading = 'loading',
     loaded = 'loaded',
-    failed = 'failed',
   }
 
   let loadStatus: string = LoadStatus.unload
@@ -19,10 +18,7 @@ export const load = async (options: APILoaderConfig) => {
       script.src = url
       script.type = 'text/javascript'
       script.onload = () => resolve()
-      script.onerror = e => {
-        loadStatus = LoadStatus.failed
-        reject(e)
-      }
+      script.onerror = e => reject(e)
       document.body.appendChild(script)
     })
   }
@@ -51,15 +47,5 @@ export const load = async (options: APILoaderConfig) => {
         .map(url => loadScript(url))
     )
     loadStatus = LoadStatus.loaded
-  }
-  if (loadStatus === LoadStatus.loading) {
-    return new Promise((resolve, reject) => {
-      reject(new Error())
-    })
-  }
-  if (loadStatus === LoadStatus.failed) {
-    return new Promise((resolve, reject) => {
-      reject(new Error('天地图 JSAPI 加载失败'))
-    })
   }
 }
