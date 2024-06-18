@@ -12,10 +12,13 @@ export const load = async (options: APILoaderConfig) => {
 
   const config: APILoaderConfig = { tkey: '', version: '4.0', plugins: [] }
 
-  const loadScript = (url: string) => {
+  const loadScript = (id: string, url: string) => {
     return new Promise<void>((resolve, reject) => {
+      const existingScript = document.getElementById(id)
+      if (existingScript) existingScript.parentNode?.removeChild(existingScript)
       const script = document.createElement('script')
       script.src = url
+      script.id = id
       script.type = 'text/javascript'
       script.onload = () => resolve()
       script.onerror = e => reject(e)
@@ -39,12 +42,13 @@ export const load = async (options: APILoaderConfig) => {
         reject(new Error('缺少天地图密钥，申请地址：https://console.tianditu.gov.cn/api/key'))
       })
     }
-    await loadScript(`http://api.tianditu.gov.cn/api?v=${version}&tk=${tkey}`)
+    await loadScript('tk', `http://api.tianditu.gov.cn/api?v=${version}&tk=${tkey}`)
+
     await Promise.all(
       plugins
-        .map(name => pluginsUrl[name])
+        .map(name => pluginsUrl[name].map((url, index) => ({ id: `${name}_${index}`, url })))
         .flat()
-        .map(url => loadScript(url))
+        .map(item => loadScript(item.id, item.url))
     )
     loadStatus = LoadStatus.loaded
   }
