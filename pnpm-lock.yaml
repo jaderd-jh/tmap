@@ -30,8 +30,8 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1(eslint@9.3.0)
       eslint-plugin-oxlint:
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.5.0
+        version: 0.5.0
       lint-staged:
         specifier: ^15.2.2
         version: 15.2.5
@@ -1312,8 +1312,8 @@ packages:
     resolution: {integrity: sha512-Lf4YW/bL6Un1R6A76pRZyE1dl1vr31G/ev8UzIc/geCgFWyrKil8hVjYqWVKGB/UIGmb6Slzs9T0wNezdSVegw==}
     engines: {node: '>=5.0.0'}
 
-  eslint-plugin-oxlint@0.4.0:
-    resolution: {integrity: sha512-nSSfz/lbG0AAAX99lXmVAXnqAtCK4wrigVB+Etf32YETOKlfNgmtY/7EkP3OzIIf4VI2FSH+7W6+oBRqI2Bi4A==}
+  eslint-plugin-oxlint@0.5.0:
+    resolution: {integrity: sha512-DFPxJTUSe8XdvbOsvpAyzUVNmLHnqpNLQFAH2bJo+Mxkb59s50/EKn1nCukrzMAG34nq02Iu4D+0MuUr9oHWhw==}
 
   eslint-plugin-perfectionist@2.10.0:
     resolution: {integrity: sha512-P+tdrkHeMWBc55+DZsoDOAftV1WCsEoHaKm6JC7zajFus/syfT4vUPBFb3atGFSuyaVnGQGHlcKpP9X3Q0gH/w==}
@@ -4249,7 +4249,7 @@ snapshots:
 
   eslint-plugin-no-only-tests@3.1.0: {}
 
-  eslint-plugin-oxlint@0.4.0:
+  eslint-plugin-oxlint@0.5.0:
     dependencies:
       scule: 1.3.0
 
