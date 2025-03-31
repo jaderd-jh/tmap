@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
-import type { ControlZoomProps } from './types'
 import type { UnDef } from '@/utils'
+import type { ControlZoomProps } from './types'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toPoint } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 
 /** 地图缩放控件 */
 const ControlZoom = forwardRef<UnDef<T.ControlZoom>, ControlZoomProps>(

@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import type { UnDef } from '@/utils'
 import type { InfoWindowProps } from './types'
+import { useEventProperties, useInstanceAddRemove, usePortal, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toLngLat, toPoint } from '@/utils'
-import type { UnDef } from '@/utils'
-import { useEventProperties, useInstanceAddRemove, usePortal, useSetProperties } from '@/hooks'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 
 /** 覆盖物 - 信息窗（地图仅可同时展示一个信息窗体） */
 const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(

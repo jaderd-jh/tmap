@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
-import type { MarkToolProps } from './types'
-import { MapContext } from '@/map'
-import { useEventProperties, useSetProperties } from '@/hooks'
 import type { UnDef } from '@/utils'
+import type { MarkToolProps } from './types'
+import { useEventProperties, useSetProperties } from '@/hooks'
+import { MapContext } from '@/map'
 import { toIcon } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
 
 /** 地图工具 - 标注工具 */
 const MarkTool = forwardRef<UnDef<T.MarkTool>, MarkToolProps>(({ icon, ...props }, ref) => {

@@ -5,6 +5,7 @@ declare namespace T {
      * @param text 菜单项显示的文字
      * @param callback 点击菜单时的回调函数
      */
+    // eslint-disable-next-line ts/no-unsafe-function-type
     constructor(text: string, callback: Function)
 
     /** 设置菜单项显示的文本 */

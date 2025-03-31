@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
-import type { TransitRouteProps } from './types'
-import { MapContext } from '@/map'
 import type { UnDef } from '@/utils'
-import { toLngLat } from '@/utils'
+import type { TransitRouteProps } from './types'
 import { useSetProperties } from '@/hooks'
+import { MapContext } from '@/map'
+import { toLngLat } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
 
 /** 服务类 - 公交路线规划 */
 const TransitRoute = forwardRef<UnDef<T.TransitRoute>, TransitRouteProps>(({ start, end, ...props }, ref) => {

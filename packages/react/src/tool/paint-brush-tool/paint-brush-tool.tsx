@@ -1,7 +1,7 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import type { UnDef } from '@/utils'
 import type { PaintBrushToolProps } from './types'
 import { MapContext } from '@/map'
-import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
 
 /** 地图工具 - 画笔工具 */
 const PaintBrushTool = forwardRef<UnDef<T.PaintBrushTool>, PaintBrushToolProps>(({ ...props }, ref) => {

@@ -30,4 +30,5 @@ export const isArray = (val: any): val is Array<any> => getVariableType(val) ===
  * 是否是函数，但也有可能是Class
  * @param {any} val 检测的目标
  */
+// eslint-disable-next-line ts/no-unsafe-function-type
 export const isFunction = (val: any): val is Function => getVariableType(val) === 'function'

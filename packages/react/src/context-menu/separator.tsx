@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import type { SeparatorProps } from './types'
+import { useEffect } from 'react'
 
 // 右键菜单项分隔线
 const Separator = ({ index, contextMenu }: SeparatorProps) => {

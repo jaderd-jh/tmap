@@ -1,2 +1,2 @@
-export * from './image-overlay'
 export * from './heatmap-overlay'
+export * from './image-overlay'

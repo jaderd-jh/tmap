@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
-import type { PolylineProps } from './types'
-import { isArray, toLngLats } from '@/utils'
-import { MapContext } from '@/map'
 import type { UnDef } from '@/utils'
+import type { PolylineProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
+import { MapContext } from '@/map'
+import { isArray, toLngLats } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 
 /**  覆盖物 - 折线 */
 const Polyline = forwardRef<UnDef<T.Polyline>, PolylineProps>(({ visible, path, editable = false, ...props }, ref) => {

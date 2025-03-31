@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
 import type { UnDef } from '@/utils'
 import { isFunction } from '@/utils'
+import { useEffect } from 'react'
 
 /**
  * 绑定事件

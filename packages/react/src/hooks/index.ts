@@ -1,5 +1,5 @@
 export { default as useEventProperties } from './use-event-properties'
 export { default as useInstanceAddRemove } from './use-instance-add-remove'
-export { default as useSetProperties } from './use-set-properties'
-export { default as usePortal } from './use-portal'
 export { default as useInstanceVisible } from './use-instance-visible'
+export { default as usePortal } from './use-portal'
+export { default as useSetProperties } from './use-set-properties'

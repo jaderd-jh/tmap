@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
-import type { MilitarySymbolsProps } from './types'
 import type { UnDef } from '@/utils'
+import type { MilitarySymbolsProps } from './types'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toPoint } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 
 /** 符号标绘控件 */
 const MilitarySymbols = forwardRef<UnDef<T.MilitarySymbols>, MilitarySymbolsProps>(

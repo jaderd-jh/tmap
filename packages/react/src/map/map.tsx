@@ -1,10 +1,10 @@
+import type { UnDef, Undefinable } from '@/utils'
 import type { PropsWithChildren } from 'react'
+import type { MapProps } from './types'
+import { useEventProperties, useSetProperties } from '@/hooks'
+import { toLngLat } from '@/utils'
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { MapContext } from './context'
-import type { MapProps } from './types'
-import { toLngLat } from '@/utils'
-import type { UnDef, Undefinable } from '@/utils'
-import { useEventProperties, useSetProperties } from '@/hooks'
 
 const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
   (

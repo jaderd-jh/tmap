@@ -1,6 +1,6 @@
+import type { APILoaderConfig } from './types'
 import { useEffect, useState } from 'react'
 import { load } from './load-script'
-import type { APILoaderConfig } from './types'
 
 const useAPILoader = (config: APILoaderConfig) => {
   const [isLoading, setIsLoading] = useState(true)

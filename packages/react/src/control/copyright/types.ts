@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from 'react'
 import type { UnDef } from '@/utils'
+import type { PropsWithChildren } from 'react'
 
 export interface ControlCopyrightProps extends Omit<PropsWithChildren<T.ControlCopyrightOptions>, 'offset' | 'bounds'> {
   /** 是否可见 */

@@ -1,8 +1,8 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
-import type { RectangleToolProps } from './types'
-import { MapContext } from '@/map'
-import { useEventProperties } from '@/hooks'
 import type { UnDef } from '@/utils'
+import type { RectangleToolProps } from './types'
+import { useEventProperties } from '@/hooks'
+import { MapContext } from '@/map'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
 
 /** 地图工具 - 绘制矩形工具 */
 const RectangleTool = forwardRef<UnDef<T.RectangleTool>, RectangleToolProps>(({ ...props }, ref) => {

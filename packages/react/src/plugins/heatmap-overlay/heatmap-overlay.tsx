@@ -1,8 +1,8 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
-import type { HeatmapOverlayProps } from './types'
 import type { UnDef } from '@/utils'
+import type { HeatmapOverlayProps } from './types'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
 
 /**  开源插件 - 热力图 */
 const HeatmapOverlay = forwardRef<UnDef<T.HeatmapOverlay>, HeatmapOverlayProps>(

@@ -1,8 +1,8 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
-import type { MarkerClusterProps } from './types'
-import { MapContext } from '@/map'
-import { useEventProperties, useSetProperties } from '@/hooks'
 import type { UnDef } from '@/utils'
+import type { MarkerClusterProps } from './types'
+import { useEventProperties, useSetProperties } from '@/hooks'
+import { MapContext } from '@/map'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
 
 /** 覆盖物 - 聚合marker */
 const MarkerCluster = forwardRef<UnDef<T.MarkerClusterer>, MarkerClusterProps>(({ ...props }, ref) => {

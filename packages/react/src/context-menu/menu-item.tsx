@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
 import type { ContextMenuItem } from './types'
 import { useSetProperties } from '@/hooks'
+import { useEffect, useMemo, useState } from 'react'
 
 // 地图右键菜单项
 const MenuItem = ({ text, visible, contextMenu, index, children, onClick = function () {} }: ContextMenuItem) => {

@@ -1,6 +1,6 @@
-import { useCallback, useEffect } from 'react'
 import type { UnDef, VK } from '@/utils'
 import { isFunction } from '@/utils'
+import { useCallback, useEffect } from 'react'
 
 /**
  * 添加/移除实例

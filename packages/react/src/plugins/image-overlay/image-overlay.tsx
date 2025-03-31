@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
-import type { ImageOverlayProps } from './types'
 import type { UnDef } from '@/utils'
+import type { ImageOverlayProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toBounds } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 
 /**  开源插件 - 图片覆盖物 */
 const ImageOverlay = forwardRef<UnDef<T.ImageOverlay>, ImageOverlayProps>(

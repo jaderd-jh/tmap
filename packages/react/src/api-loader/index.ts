@@ -1,4 +1,4 @@
-export * from './types'
-export * from './load-script'
-export { default as useAPILoader } from './use-api-loader'
 export { APILoader } from './api-loader'
+export * from './load-script'
+export * from './types'
+export { default as useAPILoader } from './use-api-loader'

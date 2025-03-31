@@ -1,2 +1,2 @@
-export * from './plugins'
 export * from './load-script'
+export * from './plugins'

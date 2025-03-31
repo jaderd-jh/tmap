@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
-import type { ControlScaleProps } from './types'
 import type { UnDef } from '@/utils'
+import type { ControlScaleProps } from './types'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toPoint } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 
 /** 地图比例尺控件 */
 const ControlScale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(

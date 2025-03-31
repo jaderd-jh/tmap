@@ -1,10 +1,10 @@
+import type { UnDef } from '@/utils'
+import type { ContextMenuProps } from './types'
+import { useEventProperties } from '@/hooks'
+import { MapContext } from '@/map'
 import React, { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
 import MenuItem from './menu-item'
 import Separator from './separator'
-import type { ContextMenuProps } from './types'
-import { MapContext } from '@/map'
-import type { UnDef } from '@/utils'
-import { useEventProperties } from '@/hooks'
 
 /** 地图右键菜单 */
 const ContextMenuCompound = forwardRef<UnDef<T.ContextMenu>, ContextMenuProps>(

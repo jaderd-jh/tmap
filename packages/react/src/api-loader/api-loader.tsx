@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
-import useAPILoader from './use-api-loader'
 import type { APILoaderProps } from './types'
+import useAPILoader from './use-api-loader'
 
 export const APILoader = (props: PropsWithChildren<APILoaderProps>) => {
   const { className, style, children, ...config } = props

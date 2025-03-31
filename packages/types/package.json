@@ -13,6 +13,6 @@
   "types": "index.d.ts",
   "files": ["**/*.d.ts", "index.d.ts"],
   "devDependencies": {
-    "tsd": "^0.31.0"
+    "tsd": "^0.31.2"
   }
 }

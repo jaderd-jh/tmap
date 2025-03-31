@@ -9,8 +9,10 @@ declare namespace T {
     /** 检索公交路线 */
     getBusLine: (busListItem: BusListItem) => void
     /** 设置公交列表查询后的回调函数 */
+    // eslint-disable-next-line ts/no-unsafe-function-type
     setGetBusListCompleteCallback: (callback: Function) => void
     /** 设置公交线路查询后的回调函数 */
+    // eslint-disable-next-line ts/no-unsafe-function-type
     setGetBusLineCompleteCallback: (callback: Function) => void
   }
 

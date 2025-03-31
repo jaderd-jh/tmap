@@ -1,9 +1,9 @@
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
-import type { RectangleProps } from './types'
-import { toBounds } from '@/utils'
-import { MapContext } from '@/map'
 import type { UnDef } from '@/utils'
+import type { RectangleProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
+import { MapContext } from '@/map'
+import { toBounds } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 
 /**  覆盖物 - 矩形 */
 const Rectangle = forwardRef<UnDef<T.Rectangle>, RectangleProps>(

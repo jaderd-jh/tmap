@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from 'react'
 import type { UnDef } from '@/utils'
+import type { PropsWithChildren } from 'react'
 
 export interface InfoWindowProps
   extends T.InfoWindowEvents,
