@@ -3,32 +3,29 @@ import type { PolygonProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { isArray, toNestedLngLats } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 多边形 */
 const Polygon = forwardRef<UnDef<T.Polygon>, PolygonProps>(({ visible, path, editable = false, ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [polygon, setPolygon] = useState<T.Polygon>()
-
-  let init_dev = 0
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => polygon)
 
   useInstanceAddRemove(map, polygon, 'overLay')
   useInstanceVisible(polygon, visible)
 
-  const lngLats = useMemo(() => {
-    return toNestedLngLats(path) || []
-  }, [path])
+  const lngLats = useMemo(() => toNestedLngLats(path) || [], [path])
 
   useEffect(() => {
-    if (init_dev === 0 && !polygon && isArray(path) && path.length > 0) {
-      init_dev += 1
+    if (!readyRef.current && isArray(lngLats)) {
       const instance = new T.Polygon(lngLats, props)
+      readyRef.current = true
       setPolygon(instance)
     }
-  }, [path])
+  }, [])
 
   useEffect(() => {
     if (polygon) {
@@ -40,7 +37,7 @@ const Polygon = forwardRef<UnDef<T.Polygon>, PolygonProps>(({ visible, path, edi
   useEventProperties<T.Polygon, PolygonProps>(polygon, props)
 
   useEffect(() => {
-    if (polygon && isArray(lngLats) && lngLats.length > 0) {
+    if (polygon && isArray(lngLats)) {
       polygon.setLngLats(lngLats)
     }
   }, [lngLats])

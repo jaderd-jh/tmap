@@ -3,32 +3,26 @@ import type { InfoWindowProps } from './types'
 import { useEventProperties, useInstanceAddRemove, usePortal, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toLngLat, toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 覆盖物 - 信息窗（地图仅可同时展示一个信息窗体） */
 const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
   ({ open, lngLat, offset, isCustom, content, children, closeButton = true, ...props }, ref) => {
     const { map } = useContext(MapContext)
     const { container, Portal } = usePortal()
-    const [infoWindow, setInfoWindow] = useState<T.InfoWindow>()
 
-    let init_dev = 0
+    const [infoWindow, setInfoWindow] = useState<T.InfoWindow>()
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => infoWindow)
 
     useInstanceAddRemove(map, infoWindow, 'overLay')
 
-    const useContent = useMemo(() => {
-      return content || container
-    }, [content, children])
+    const useContent = useMemo(() => content || container, [content, children])
 
-    const useLngLat = useMemo(() => {
-      return toLngLat(lngLat) || map!.getCenter()
-    }, [lngLat])
+    const useLngLat = useMemo(() => toLngLat(lngLat) || map!.getCenter(), [lngLat])
 
-    const useOffset = useMemo(() => {
-      return toPoint(offset)
-    }, [offset])
+    const useOffset = useMemo(() => toPoint(offset), [offset])
 
     const removeContentClass = () => {
       ;[
@@ -44,24 +38,24 @@ const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
     }
 
     useEffect(() => {
-      if (init_dev === 0 && map && !infoWindow) {
-        init_dev += 1
+      if (map && !readyRef.current) {
         const instance = new T.InfoWindow('', {
           ...props,
           offset: useOffset,
           closeButton: isCustom ? false : closeButton,
         })
-        instance.setLngLat(map?.getCenter())
+        instance.setLngLat(map.getCenter())
+        readyRef.current = true
         setInfoWindow(instance)
       }
     }, [])
 
     useEffect(() => {
-      if (map && infoWindow) {
+      if (infoWindow) {
         if (isCustom) removeContentClass()
         if (open) {
           infoWindow.setContent(useContent)
-          map.openInfoWindow(infoWindow, useLngLat)
+          map?.openInfoWindow(infoWindow, useLngLat)
         } else {
           infoWindow.closeInfoWindow()
         }

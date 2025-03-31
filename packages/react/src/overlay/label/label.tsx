@@ -3,7 +3,7 @@ import type { LabelProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toLngLat, toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 文本标注 */
 const Label = forwardRef<UnDef<T.Label>, LabelProps>(
@@ -11,33 +11,26 @@ const Label = forwardRef<UnDef<T.Label>, LabelProps>(
     const { map } = useContext(MapContext)
 
     const [label, setLabel] = useState<T.Label>()
-
-    let init_dev = 0
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => label)
 
     useInstanceAddRemove(map, label, 'overLay')
     useInstanceVisible(label, visible)
 
-    const useContent = useMemo(() => {
-      return labelStr || children || ''
-    }, [labelStr, children])
+    const useContent = useMemo(() => labelStr || children || '', [labelStr, children])
 
-    const useLngLat = useMemo(() => {
-      return toLngLat(lngLat)
-    }, [lngLat])
+    const useLngLat = useMemo(() => toLngLat(lngLat), [lngLat])
 
-    const useOffset = useMemo(() => {
-      return toPoint(offset)
-    }, [offset])
+    const useOffset = useMemo(() => toPoint(offset), [offset])
 
     useEffect(() => {
-      if (init_dev === 0 && !label && lngLat) {
-        init_dev += 1
+      if (!readyRef.current && !!useLngLat) {
         const instance = new T.Label({ text: useContent, position: useLngLat })
+        readyRef.current = true
         setLabel(instance)
       }
-    }, [lngLat])
+    }, [])
 
     useSetProperties<T.Label, T.LabelOptions>(label, { label: useContent, lngLat: useLngLat })
 

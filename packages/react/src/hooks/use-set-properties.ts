@@ -2,6 +2,13 @@ import type { UnDef, VK } from '@/utils'
 import { isArray, isFunction } from '@/utils'
 import { useEffect, useRef } from 'react'
 
+const filterFun = (props: VK<any>) => {
+  const fns = Object.keys(props).filter(key => isFunction(props[key]))
+  const newProps = { ...props }
+  fns.forEach(fn => delete newProps[fn])
+  return newProps
+}
+
 /**
  * 受控属性
  * @param instance 实例对象
@@ -11,13 +18,13 @@ import { useEffect, useRef } from 'react'
  * @param noCamelCases 非驼峰格式的set[属性名]（例如 高德地图的zIndex(setzIndex) ）
  */
 const useSetProperties = <T extends VK<any>, F extends VK<any>>(
-  instance = {} as UnDef<T>,
+  instance = undefined as UnDef<T>,
   props = {} as F,
   init = false,
   paramNames: string[] = [],
   noCamelCases: string[] = []
 ) => {
-  const prePropsRef = useRef(props)
+  const prePropsRef = useRef(filterFun(props))
 
   const instanceSetProperties = (name: string, value: any) => {
     let setName = ''
@@ -43,17 +50,18 @@ const useSetProperties = <T extends VK<any>, F extends VK<any>>(
 
   useEffect(() => {
     if (instance) {
+      const curProps = filterFun(props)
       const preProps = prePropsRef.current
       let names: string[] = []
-      const propsKeys = Object.keys(props)
+      const propsKeys = Object.keys(curProps)
       if (isArray(paramNames) && paramNames.length > 0) names = propsKeys.filter(value => paramNames.includes(value))
       else names = propsKeys
       if (!init) {
-        if (JSON.stringify(props) !== JSON.stringify(preProps)) setPropertiesFn(names)
+        if (JSON.stringify(curProps) !== JSON.stringify(preProps)) setPropertiesFn(names)
       } else {
         setPropertiesFn(names)
       }
-      prePropsRef.current = props
+      prePropsRef.current = curProps
     }
   }, [instance, props])
 }

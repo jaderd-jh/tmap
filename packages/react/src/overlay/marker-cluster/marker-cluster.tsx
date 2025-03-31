@@ -2,30 +2,28 @@ import type { UnDef } from '@/utils'
 import type { MarkerClusterProps } from './types'
 import { useEventProperties, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 覆盖物 - 聚合marker */
 const MarkerCluster = forwardRef<UnDef<T.MarkerClusterer>, MarkerClusterProps>(({ ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [markerCluster, setMarkerCluster] = useState<T.MarkerClusterer>()
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => markerCluster)
 
-  let init_dev = 0
-
   useEffect(() => {
-    if (init_dev === 0 && map && !markerCluster) {
-      init_dev += 1
+    if (map && !readyRef.current) {
       const instance = new T.MarkerClusterer(map, { ...props })
+      readyRef.current = true
       setMarkerCluster(instance)
     }
+  }, [])
+
+  useEffect(() => {
     return () => {
-      try {
-        markerCluster?.clearMarkers()
-      } catch (err) {
-        window.console.error(err)
-      }
+      markerCluster?.clearMarkers()
     }
   }, [markerCluster])
 

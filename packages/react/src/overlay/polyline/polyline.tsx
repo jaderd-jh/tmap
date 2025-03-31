@@ -3,32 +3,29 @@ import type { PolylineProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { isArray, toLngLats } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 折线 */
 const Polyline = forwardRef<UnDef<T.Polyline>, PolylineProps>(({ visible, path, editable = false, ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [polyline, setPolyline] = useState<T.Polyline>()
-
-  let init_dev = 0
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => polyline)
 
   useInstanceAddRemove(map, polyline, 'overLay')
   useInstanceVisible(polyline, visible)
 
-  const lngLats = useMemo(() => {
-    return toLngLats(path) || []
-  }, [path])
+  const lngLats = useMemo(() => toLngLats(path) || [], [path])
 
   useEffect(() => {
-    if (init_dev === 0 && !polyline && isArray(path) && path.length > 0) {
-      init_dev += 1
+    if (!readyRef.current && isArray(lngLats)) {
       const instance = new T.Polyline(lngLats, props)
+      readyRef.current = true
       setPolyline(instance)
     }
-  }, [path])
+  }, [])
 
   useEffect(() => {
     if (polyline) {

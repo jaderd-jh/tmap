@@ -28,13 +28,16 @@ const useInstanceAddRemove = (
   )
 
   useEffect(() => {
-    if (map && instance) {
+    if (instance) {
       if (remove === true) fnCallback('remove')
       else fnCallback('add')
     }
+  }, [instance, remove])
+
+  useEffect(() => {
     return () => {
       if (instance) fnCallback('remove')
     }
-  }, [instance, type, remove])
+  }, [instance])
 }
 export default useInstanceAddRemove

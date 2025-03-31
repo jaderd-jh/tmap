@@ -1,5 +1,5 @@
 import type { ReactPortal } from 'react'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { createRoot } from 'react-dom/client'
 
@@ -9,7 +9,7 @@ interface IPortal {
 }
 
 const usePortal = () => {
-  const [container] = React.useState<HTMLDivElement>(() => document.createElement('div'))
+  const [container] = useState<HTMLDivElement>(() => document.createElement('div'))
 
   const [portal, setPortal] = useState<IPortal>({ render: () => null, remove: () => null })
 

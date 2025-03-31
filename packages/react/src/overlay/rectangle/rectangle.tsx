@@ -3,7 +3,7 @@ import type { RectangleProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toBounds } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 矩形 */
 const Rectangle = forwardRef<UnDef<T.Rectangle>, RectangleProps>(
@@ -11,25 +11,22 @@ const Rectangle = forwardRef<UnDef<T.Rectangle>, RectangleProps>(
     const { map } = useContext(MapContext)
 
     const [rectangle, setRectangle] = useState<T.Rectangle>()
-
-    let init_dev = 0
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => rectangle)
 
     useInstanceAddRemove(map, rectangle, 'overLay')
     useInstanceVisible(rectangle, visible)
 
-    const lngLatBounds = useMemo(() => {
-      return toBounds(bounds)
-    }, [bounds])
+    const lngLatBounds = useMemo(() => toBounds(bounds), [bounds])
 
     useEffect(() => {
-      if (init_dev === 0 && !rectangle && lngLatBounds) {
-        init_dev += 1
+      if (!readyRef.current && lngLatBounds) {
         const instance = new T.Rectangle(lngLatBounds, props)
+        readyRef.current = true
         setRectangle(instance)
       }
-    }, [lngLatBounds])
+    }, [])
 
     useEffect(() => {
       if (rectangle) {

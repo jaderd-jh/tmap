@@ -3,7 +3,7 @@ import type { MarkerProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toIcon, toLngLat } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 图标标注 */
 const Marker = forwardRef<UnDef<T.Marker>, MarkerProps>(
@@ -11,29 +11,24 @@ const Marker = forwardRef<UnDef<T.Marker>, MarkerProps>(
     const { map } = useContext(MapContext)
 
     const [marker, setMarker] = useState<T.Marker>()
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => marker)
 
     useInstanceAddRemove(map, marker, 'overLay')
     useInstanceVisible(marker, visible)
 
-    const iconInstance = useMemo(() => {
-      return toIcon(icon)
-    }, [icon])
+    const iconInstance = useMemo(() => toIcon(icon), [icon])
 
-    const useLngLat = useMemo(() => {
-      return toLngLat(lngLat)
-    }, [lngLat])
-
-    let init_dev = 0
+    const useLngLat = useMemo(() => toLngLat(lngLat), [lngLat])
 
     useEffect(() => {
-      if (init_dev === 0 && !marker && useLngLat) {
-        init_dev += 1
+      if (!readyRef.current && useLngLat) {
         const instance = new T.Marker(useLngLat, { ...props, icon: iconInstance })
+        readyRef.current = true
         setMarker(instance)
       }
-    }, [useLngLat])
+    }, [])
 
     useEffect(() => {
       // 将draggable设置为可控属性

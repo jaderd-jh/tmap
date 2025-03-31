@@ -23,15 +23,15 @@ const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
     const [map, setMap] = useState<Undefinable<T.Map>>(undefined)
 
     const containerRef = useRef<HTMLDivElement>(null)
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => map)
 
-    let init_dev = 0
     useEffect(() => {
-      if (init_dev === 0 && !map) {
-        init_dev += 1
+      if (!readyRef.current) {
         const tmap = new T.Map(container || containerRef.current!, { center: toLngLat(center), zoom, ...props })
         if (mapStyle) tmap.setStyle(mapStyle)
+        readyRef.current = true
         setMap(tmap)
         // @ts-expect-error globalThis
         globalThis.map = tmap
