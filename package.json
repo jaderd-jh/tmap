@@ -2,7 +2,7 @@
   "type": "module",
   "version": "0.0.1-beta.6",
   "private": true,
-  "packageManager": "pnpm@9.10.0",
+  "packageManager": "pnpm@9.15.9",
   "description": "天地图 jsapi 4.0 的 monorepo",
   "author": "zwtkito",
   "license": "MIT",
