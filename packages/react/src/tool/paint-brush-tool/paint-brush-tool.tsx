@@ -1,26 +1,29 @@
 import type { UnDef } from '@/utils'
 import type { PaintBrushToolProps } from './types'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 地图工具 - 画笔工具 */
 const PaintBrushTool = forwardRef<UnDef<T.PaintBrushTool>, PaintBrushToolProps>(({ ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [paintBrushTool, setPaintBrushTool] = useState<T.PaintBrushTool>()
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => paintBrushTool)
 
-  let init_dev = 0
-
   useEffect(() => {
-    if (init_dev === 0 && map && !paintBrushTool) {
-      init_dev += 1
+    if (map && !readyRef.current) {
       const instance = new T.PaintBrushTool(map, { ...props })
+      readyRef.current = true
       setPaintBrushTool(instance)
     }
+  }, [])
+
+  useEffect(() => {
     return () => {
       try {
+        paintBrushTool?.close()
         paintBrushTool?.clear()
       } catch (err) {
         window.console.error(err)

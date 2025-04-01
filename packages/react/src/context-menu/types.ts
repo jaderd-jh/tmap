@@ -7,8 +7,6 @@ export interface ContextMenuProps extends T.ContextMenuEvents, T.ContextMenuOpti
 export interface ContextMenuItem {
   /** 菜单项显示的文本 */
   text?: string
-  /** 菜单项是否可见  */
-  visible?: boolean
   /** 右键菜单实例 */
   contextMenu?: T.ContextMenu
   /** 菜单项内容 */

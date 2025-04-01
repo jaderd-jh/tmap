@@ -32,3 +32,21 @@ export const isArray = (val: any): val is Array<any> => getVariableType(val) ===
  */
 // eslint-disable-next-line ts/no-unsafe-function-type
 export const isFunction = (val: any): val is Function => getVariableType(val) === 'function'
+
+/**
+ * 是否是null
+ * @param {any} val 检测的目标
+ */
+export const isNull = (val: any): val is null => getVariableType(val) === 'null'
+
+/**
+ * 是否是undefined
+ * @param {any} val 检测的目标
+ */
+export const isUndefined = (val: any): val is undefined => getVariableType(val) === 'undefined'
+
+/**
+ * 是否既不是 null 也不是 undefined
+ * @param {any} val 检测的目标
+ */
+export const isDef = <T>(val: T): val is NonNullable<T> => !isNull(val) && !isUndefined(val)

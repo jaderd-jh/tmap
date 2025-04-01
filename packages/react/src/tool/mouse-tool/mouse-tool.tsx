@@ -40,66 +40,64 @@ const MouseTool = forwardRef<Undefinable<MouseToolRef>, MouseToolProps>(({ open,
       return
     }
     if (typeRef.current !== type && mouseTool) mouseTool.close()
-    if (open && type !== null && type !== undefined) {
-      if (map) {
-        switch (type) {
-          case 'marker':
-            if (!markerToolRef.current) {
-              markerToolRef.current = new T.MarkTool(map, { ...toolProps, icon: toIcon(toolProps.icon) })
-              markerToolRef.current?.open()
-            } else {
-              markerToolRef.current?.open()
-            }
-            setMouseTool(markerToolRef.current)
-            break
-          case 'polygon':
-            if (!polygonToolRef.current) {
-              polygonToolRef.current = new T.PolygonTool(map, toolProps)
-              polygonToolRef.current?.open()
-            } else {
-              polygonToolRef.current?.open()
-            }
-            setMouseTool(polygonToolRef.current)
-            break
-          case 'polyline':
-            if (!polylineToolRef.current) {
-              polylineToolRef.current = new T.PolylineTool(map, toolProps)
-              polylineToolRef.current?.open()
-            } else {
-              polylineToolRef.current?.open()
-            }
-            setMouseTool(polylineToolRef.current)
-            break
-          case 'rectangle':
-            if (!rectangleToolRef.current) {
-              rectangleToolRef.current = new T.RectangleTool(map, toolProps)
-              rectangleToolRef.current?.open()
-            } else {
-              rectangleToolRef.current?.open()
-            }
-            setMouseTool(rectangleToolRef.current)
-            break
-          case 'circle':
-            if (!circleToolRef.current) {
-              circleToolRef.current = new T.CircleTool(map, toolProps)
-              circleToolRef.current?.open()
-            } else {
-              circleToolRef.current?.open()
-            }
-            setMouseTool(circleToolRef.current)
-            break
-          case 'paint':
-            if (!paintBrushToolRef.current) {
-              paintBrushToolRef.current = new T.PaintBrushTool(map, toolProps)
-              paintBrushToolRef.current?.open()
-            } else {
-              paintBrushToolRef.current?.open()
-            }
-            setMouseTool(paintBrushToolRef.current)
-            break
-          default:
-            break
-        }
+    if (map && open && !!type) {
+      switch (type) {
+        case 'marker':
+          if (!markerToolRef.current) {
+            markerToolRef.current = new T.MarkTool(map, { ...toolProps, icon: toIcon(toolProps.icon) })
+            markerToolRef.current?.open()
+          } else {
+            markerToolRef.current?.open()
+          }
+          setMouseTool(markerToolRef.current)
+          break
+        case 'polygon':
+          if (!polygonToolRef.current) {
+            polygonToolRef.current = new T.PolygonTool(map, toolProps)
+            polygonToolRef.current?.open()
+          } else {
+            polygonToolRef.current?.open()
+          }
+          setMouseTool(polygonToolRef.current)
+          break
+        case 'polyline':
+          if (!polylineToolRef.current) {
+            polylineToolRef.current = new T.PolylineTool(map, toolProps)
+            polylineToolRef.current?.open()
+          } else {
+            polylineToolRef.current?.open()
+          }
+          setMouseTool(polylineToolRef.current)
+          break
+        case 'rectangle':
+          if (!rectangleToolRef.current) {
+            rectangleToolRef.current = new T.RectangleTool(map, toolProps)
+            rectangleToolRef.current?.open()
+          } else {
+            rectangleToolRef.current?.open()
+          }
+          setMouseTool(rectangleToolRef.current)
+          break
+        case 'circle':
+          if (!circleToolRef.current) {
+            circleToolRef.current = new T.CircleTool(map, toolProps)
+            circleToolRef.current?.open()
+          } else {
+            circleToolRef.current?.open()
+          }
+          setMouseTool(circleToolRef.current)
+          break
+        case 'paint':
+          if (!paintBrushToolRef.current) {
+            paintBrushToolRef.current = new T.PaintBrushTool(map, toolProps)
+            paintBrushToolRef.current?.open()
+          } else {
+            paintBrushToolRef.current?.open()
+          }
+          setMouseTool(paintBrushToolRef.current)
+          break
+        default:
+          break
       }
     }
     typeRef.current = type
@@ -109,6 +107,15 @@ const MouseTool = forwardRef<Undefinable<MouseToolRef>, MouseToolProps>(({ open,
     return () => {
       try {
         mouseTool?.close()
+      } catch (err) {
+        window.console.error(err)
+      }
+    }
+  }, [mouseTool])
+
+  useEffect(() => {
+    return () => {
+      try {
         map?.clearOverLays()
       } catch (err) {
         window.console.error(err)

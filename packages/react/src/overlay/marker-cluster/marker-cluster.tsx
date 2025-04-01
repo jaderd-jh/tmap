@@ -23,7 +23,11 @@ const MarkerCluster = forwardRef<UnDef<T.MarkerClusterer>, MarkerClusterProps>((
 
   useEffect(() => {
     return () => {
-      markerCluster?.clearMarkers()
+      try {
+        markerCluster?.clearMarkers()
+      } catch (err) {
+        window.console.error(err)
+      }
     }
   }, [markerCluster])
 

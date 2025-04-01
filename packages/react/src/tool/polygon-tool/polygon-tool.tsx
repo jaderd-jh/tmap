@@ -2,7 +2,7 @@ import type { UnDef } from '@/utils'
 import type { PolygonToolProps } from './types'
 import { useEventProperties, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import './index.css'
 
 /** 地图工具 - 绘面工具 */
@@ -10,23 +10,23 @@ const PolygonTool = forwardRef<UnDef<T.PolygonTool>, PolygonToolProps>(({ ...pro
   const { map } = useContext(MapContext)
 
   const [polygonTool, setPolygonTool] = useState<T.PolygonTool>()
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => polygonTool)
 
-  let init_dev = 0
-
   useEffect(() => {
-    if (init_dev === 0 && map && !polygonTool) {
-      init_dev += 1
+    if (map && !readyRef.current) {
       const instance = new T.PolygonTool(map, { ...props })
+      readyRef.current = true
       setPolygonTool(instance)
     }
+  }, [])
+
+  useEffect(() => {
     return () => {
       try {
         polygonTool?.close()
-        // map?.clearOverLays()
-        const polygons = polygonTool?.getPolygons()
-        polygons?.forEach(polygon => map?.removeOverLay(polygon))
+        polygonTool?.clear() // 未开启绘制就清除会有错抛出
       } catch (err) {
         window.console.error(err)
       }

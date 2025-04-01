@@ -1,19 +1,14 @@
 import type { SeparatorProps } from './types'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
-// 右键菜单项分隔线
-const Separator = ({ index, contextMenu }: SeparatorProps) => {
-  let init_dev = 0
+/** 右键菜单 - 分割线 */
+const Separator = ({ contextMenu }: SeparatorProps) => {
+  const readyRef = useRef<boolean>(false)
 
   useEffect(() => {
-    if (init_dev === 0 && contextMenu) {
-      init_dev += 1
+    if (!readyRef.current && contextMenu) {
+      readyRef.current = true
       contextMenu.addSeparator()
-    }
-    return () => {
-      if (contextMenu && index !== undefined && index !== null) {
-        contextMenu.removeSeparator(index)
-      }
     }
   }, [])
 

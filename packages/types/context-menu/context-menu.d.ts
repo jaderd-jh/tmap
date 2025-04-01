@@ -11,7 +11,7 @@ declare namespace T {
     /** 返回指定索引位置的菜单项，第一个菜单项的索引为0 */
     getItem: (index: number) => MenuItem
     /** 移除菜单项 */
-    removeItem: (item?: MenuItem) => void
+    removeItem: (item?: MenuItem | number) => void
     /** 添加分隔符 */
     addSeparator: () => void
     /** 移除指定索引位置的分隔符，第一个分隔符的索引为0 */
@@ -19,7 +19,7 @@ declare namespace T {
     /** 返回所有的TMenuItem，是一个数组 */
     getItems: () => MenuItem[]
     /** 返回所有分割线，是一个数组 */
-    getAllSeparato: () => any[]
+    getAllSeparator: () => any[]
     /** 添加事件监听函数 */
     addEventListener: <U extends keyof ContextMenuProtoEvents>(event: U, handler: E[U]) => void
     /** 移除事件监听函数 */

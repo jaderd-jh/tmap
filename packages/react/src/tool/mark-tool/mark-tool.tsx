@@ -3,30 +3,30 @@ import type { MarkToolProps } from './types'
 import { useEventProperties, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toIcon } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 地图工具 - 标注工具 */
 const MarkTool = forwardRef<UnDef<T.MarkTool>, MarkToolProps>(({ icon, ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [markTool, setMarkTool] = useState<T.MarkTool>()
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => markTool)
 
-  let init_dev = 0
-
   useEffect(() => {
-    if (init_dev === 0 && map && !markTool) {
-      init_dev += 1
+    if (map && !readyRef.current) {
       const instance = new T.MarkTool(map, { ...props, icon: toIcon(icon) })
+      readyRef.current = true
       setMarkTool(instance)
     }
+  }, [])
+
+  useEffect(() => {
     return () => {
       try {
         markTool?.close()
-        // map?.clearOverLays()
-        const markers = markTool?.getMarkers()
-        markers?.forEach(marker => map?.removeOverLay(marker))
+        markTool?.clear()
       } catch (err) {
         window.console.error(err)
       }

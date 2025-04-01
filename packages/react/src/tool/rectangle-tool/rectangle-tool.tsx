@@ -2,30 +2,30 @@ import type { UnDef } from '@/utils'
 import type { RectangleToolProps } from './types'
 import { useEventProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 地图工具 - 绘制矩形工具 */
 const RectangleTool = forwardRef<UnDef<T.RectangleTool>, RectangleToolProps>(({ ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [rectangleTool, setRectangleTool] = useState<T.RectangleTool>()
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => rectangleTool)
 
-  let init_dev = 0
-
   useEffect(() => {
-    if (init_dev === 0 && map && !rectangleTool) {
-      init_dev += 1
+    if (map && !readyRef.current) {
       const instance = new T.RectangleTool(map, { ...props })
+      readyRef.current = true
       setRectangleTool(instance)
     }
+  }, [])
+
+  useEffect(() => {
     return () => {
       try {
         rectangleTool?.close()
-        // map?.clearOverLays()
-        const rectangles = rectangleTool?.getRectangles()
-        rectangles?.forEach(rectangle => map?.removeOverLay(rectangle))
+        rectangleTool?.clear()
       } catch (err) {
         window.console.error(err)
       }

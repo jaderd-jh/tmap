@@ -2,7 +2,7 @@ import type { UnDef } from '@/utils'
 import type { PolylineToolProps } from './types'
 import { useEventProperties, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import './index.css'
 
 /** 地图工具 - 绘线工具 */
@@ -10,23 +10,23 @@ const PolylineTool = forwardRef<UnDef<T.PolylineTool>, PolylineToolProps>(({ ...
   const { map } = useContext(MapContext)
 
   const [polylineTool, setPolylineTool] = useState<T.PolylineTool>()
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => polylineTool)
 
-  let init_dev = 0
-
   useEffect(() => {
-    if (init_dev === 0 && map && !polylineTool) {
-      init_dev += 1
+    if (map && !readyRef.current) {
       const instance = new T.PolylineTool(map, { ...props })
+      readyRef.current = true
       setPolylineTool(instance)
     }
+  }, [])
+
+  useEffect(() => {
     return () => {
       try {
         polylineTool?.close()
-        // map?.clearOverLays()
-        const polylineArr = polylineTool?.getPolylines()
-        polylineArr?.forEach(polyline => map?.removeOverLay(polyline))
+        polylineTool?.clear() // 未开启绘制就清除会有错抛出
       } catch (err) {
         window.console.error(err)
       }
