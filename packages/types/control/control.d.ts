@@ -42,19 +42,17 @@ declare namespace T {
     setOptions: (opt: ControlOptions) => ControlOptions
   }
 
-  type ControlPosition = 'topleft' | 'topright' | 'bottomleft' | 'bottomright'
-
   interface ControlOptions {
     /**
      * 控件的位置
-     * - topleft: 左上角
-     * - topright: 右上角
-     * - bottomleft: 左下角
-     * - bottomright: 右下角
+     * - T_ANCHOR_TOP_LEFT: 左上角
+     * - T_ANCHOR_TOP_RIGHT: 右上角
+     * - T_ANCHOR_BOTTOM_LEFT: 左下角
+     * - T_ANCHOR_BOTTOM_RIGHT: 右下角
      * @description 可控
-     * @default topright
+     * @example window.T_ANCHOR_TOP_RIGHT
      */
-    position?: ControlPosition
+    position?: string
 
     /** ------------------ ⬇ 补充类型 ------------------ */
     /**

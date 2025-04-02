@@ -26,10 +26,10 @@ const ControlCopyright = forwardRef<UnDef<T.ControlCopyright>, ControlCopyrightP
 
     useEffect(() => {
       if (!readyRef.current) {
-        const instance = new T.Control.Copyright({ ...props, position })
+        const instance = new T.Control.Copyright()
         map?.addControl(instance)
         readyRef.current = true
-        instance.addCopyright({ id: props.id || 'jade_tmap', content: useContent, bounds: useBounds })
+        instance.addCopyright({ id: props.id || 'jade_tmap', content: useContent, bounds: useBounds, position })
         if (useOffset) instance.setOffset(useOffset)
         setControlCopyright(instance)
       }

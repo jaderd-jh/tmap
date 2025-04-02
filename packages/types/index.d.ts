@@ -8,3 +8,4 @@
 /// <reference path="./service/index.d.ts" />
 /// <reference path="./tool/index.d.ts" />
 /// <reference path="./extend.d.ts" />
+/// <reference path="./window-shims.d.ts" />

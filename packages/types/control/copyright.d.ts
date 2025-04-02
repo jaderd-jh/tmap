@@ -2,7 +2,7 @@ declare namespace T {
   /** 此类表示版权控件，您可以在地图上添加自己的版权信息。每一个版权信息需要包含如下内容：版权的唯一标识、版权内容和其适用的区域范围 */
   declare class ControlCopyright extends T.Control {
     /** 创建一个版权控件 */
-    constructor(opts?: ControlCopyrightOptions)
+    constructor()
 
     /** 添加一个版权信息 */
     addCopyright: (copyright: ControlCopyrightOptions) => void
