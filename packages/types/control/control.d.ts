@@ -46,13 +46,21 @@ declare namespace T {
 
   interface ControlOptions {
     /**
-     * 控件的位置（可控）
+     * 控件的位置
+     * - topleft: 左上角
+     * - topright: 右上角
+     * - bottomleft: 左下角
+     * - bottomright: 右下角
+     * @description 可控
      * @default topright
      */
     position?: ControlPosition
 
     /** ------------------ ⬇ 补充类型 ------------------ */
-    /** 控件停靠的偏移量（可控） */
+    /**
+     * 控件停靠的偏移量
+     * @description 可控
+     */
     offset?: Point
     /** ------------------ ⬆ 补充类型 ------------------ */
   }

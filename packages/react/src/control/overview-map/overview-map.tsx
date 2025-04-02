@@ -3,7 +3,7 @@ import type { ControlOverviewMapProps } from './types'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { isArray, toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 缩略地图控件 */
 const ControlOverviewMap = forwardRef<UnDef<T.ControlOverviewMap>, ControlOverviewMapProps>(
@@ -11,31 +11,26 @@ const ControlOverviewMap = forwardRef<UnDef<T.ControlOverviewMap>, ControlOvervi
     const { map } = useContext(MapContext)
 
     const [controlOverviewMap, setControlOverviewMap] = useState<T.ControlOverviewMap>()
-
-    let init_dev = 0
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => controlOverviewMap)
 
     useInstanceVisible(controlOverviewMap, visible)
     useInstanceAddRemove(map, controlOverviewMap, 'control')
 
-    const useOffset = useMemo(() => {
-      return toPoint(offset)
-    }, [offset])
+    const useOffset = useMemo(() => toPoint(offset), [offset])
 
-    const useSize = useMemo(() => {
-      return toPoint(size)
-    }, [size])
+    const useSize = useMemo(() => toPoint(size), [size])
 
     useEffect(() => {
-      if (init_dev === 0 && !controlOverviewMap) {
-        init_dev += 1
+      if (!readyRef.current) {
         const instance = new T.Control.OverviewMap({
           isOpen: true,
           size: useSize,
           position,
           ...props,
         })
+        readyRef.current = true
         setControlOverviewMap(instance)
       }
     }, [])

@@ -18,11 +18,20 @@ declare namespace T {
   }
 
   interface ControlCopyrightOptions extends T.ControlOptions {
-    /** 该版权信息的唯一标识符（不可控） */
+    /**
+     * 该版权信息的唯一标识符
+     * @description 不可控
+     */
     id?: string
-    /** 该版权的文本信息，用于显示在地图上，支持HTML内容（不可控） */
-    content?: tring | HTMLDivElement
-    /** 该版权信息所适用的地理区域（不可控） */
+    /**
+     * 该版权的文本信息，用于显示在地图上，支持HTML内容
+     * @description 不可控
+     */
+    content?: string | HTMLDivElement
+    /**
+     * 该版权信息所适用的地理区域
+     * @description 不可控
+     */
     bounds?: LngLatBounds
   }
 }

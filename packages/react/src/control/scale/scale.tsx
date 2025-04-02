@@ -3,7 +3,7 @@ import type { ControlScaleProps } from './types'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 地图比例尺控件 */
 const ControlScale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
@@ -11,8 +11,7 @@ const ControlScale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
     const { map } = useContext(MapContext)
 
     const [controlScale, setControlScale] = useState<T.ControlScale>()
-
-    let init_dev = 0
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => controlScale)
 
@@ -20,16 +19,14 @@ const ControlScale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
     useInstanceAddRemove(map, controlScale, 'control')
 
     useEffect(() => {
-      if (init_dev === 0 && !controlScale) {
-        init_dev += 1
+      if (readyRef.current) {
         const instance = new T.Control.Scale(props)
+        readyRef.current = true
         setControlScale(instance)
       }
     }, [])
 
-    const useOffset = useMemo(() => {
-      return toPoint(offset)
-    }, [offset])
+    const useOffset = useMemo(() => toPoint(offset), [offset])
 
     useSetProperties<T.ControlScale, T.ControlScaleOptions>(controlScale, { position, color, offset: useOffset }, true)
 

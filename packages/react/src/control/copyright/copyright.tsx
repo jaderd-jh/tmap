@@ -3,7 +3,7 @@ import type { ControlCopyrightProps } from './types'
 import { useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toBounds, toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { renderToString } from 'react-dom/server'
 
 /** 版权控件 */
@@ -12,34 +12,30 @@ const ControlCopyright = forwardRef<UnDef<T.ControlCopyright>, ControlCopyrightP
     const { map } = useContext(MapContext)
 
     const [controlCopyright, setControlCopyright] = useState<T.ControlCopyright>()
-
-    let init_dev = 0
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => controlCopyright)
 
     useInstanceVisible(controlCopyright, visible)
 
-    const useContent = useMemo(() => {
-      return content || renderToString(children || <div />)
-    }, [content, children])
+    const useContent = useMemo(() => content || renderToString(children || <div />), [content, children])
 
-    const useOffset = useMemo(() => {
-      return toPoint(offset)
-    }, [offset])
+    const useOffset = useMemo(() => toPoint(offset), [offset])
 
-    const useBounds = useMemo(() => {
-      return toBounds(bounds) || map?.getBounds()
-    }, [bounds])
+    const useBounds = useMemo(() => toBounds(bounds) || map?.getBounds(), [bounds])
 
     useEffect(() => {
-      if (init_dev === 0 && map && !controlCopyright) {
-        init_dev += 1
+      if (!readyRef.current) {
         const instance = new T.Control.Copyright({ ...props, position })
-        map.addControl(instance)
+        map?.addControl(instance)
+        readyRef.current = true
         instance.addCopyright({ id: props.id || 'jade_tmap', content: useContent, bounds: useBounds })
         if (useOffset) instance.setOffset(useOffset)
         setControlCopyright(instance)
       }
+    }, [])
+
+    useEffect(() => {
       return () => {
         if (controlCopyright) map?.removeControl(controlCopyright)
       }

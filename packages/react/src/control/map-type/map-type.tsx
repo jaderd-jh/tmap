@@ -3,7 +3,7 @@ import type { ControlMapTypeProps } from './types'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 切换地图类型控件 */
 const ControlMapType = forwardRef<UnDef<T.ControlMapType>, ControlMapTypeProps>(
@@ -11,22 +11,19 @@ const ControlMapType = forwardRef<UnDef<T.ControlMapType>, ControlMapTypeProps>(
     const { map } = useContext(MapContext)
 
     const [controlMapType, setControlMapType] = useState<T.ControlMapType>()
-
-    let init_dev = 0
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => controlMapType)
 
     useInstanceVisible(controlMapType, visible)
     useInstanceAddRemove(map, controlMapType, 'control')
 
-    const useOffset = useMemo(() => {
-      return toPoint(offset)
-    }, [offset])
+    const useOffset = useMemo(() => toPoint(offset), [offset])
 
     useEffect(() => {
-      if (init_dev === 0 && !controlMapType) {
-        init_dev += 1
+      if (!readyRef.current) {
         const instance = new T.Control.MapType(mapTypes)
+        readyRef.current = true
         setControlMapType(instance)
       }
     }, [])

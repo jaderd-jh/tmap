@@ -11,7 +11,10 @@ declare namespace T {
   interface ControlScaleOptions extends T.ControlOptions {
     /** ------------------ ⬇ 补充类型 ------------------ */
 
-    /** 设置设置比例尺控件的颜色（可控） */
+    /**
+     * 设置设置比例尺控件的颜色
+     * @description 可控
+     */
     color?: string
 
     /** ------------------ ⬆ 补充类型 ------------------ */

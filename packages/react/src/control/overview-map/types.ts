@@ -5,7 +5,10 @@ export interface ControlOverviewMapProps extends Omit<T.ControlOverviewMapOption
   visible?: boolean
   /** 缩略地图控件的大小 */
   size?: UnDef<T.PointLike>
-  /** 控件停靠的偏移量 */
+  /**
+   * 控件停靠的偏移量
+   * @description 可控
+   */
   offset?: UnDef<T.PointLike>
   /** 是否移除 */
   // remove?: boolean

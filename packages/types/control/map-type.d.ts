@@ -6,7 +6,10 @@ declare namespace T {
   }
 
   interface ControlMapTypeOptions extends T.ControlOptions {
-    /** 地图图层类型（不可控） */
+    /**
+     * 地图图层类型
+     * @description 不可控
+     */
     mapTypes?: ControlMapTypeInfo[]
   }
 

@@ -12,7 +12,15 @@ export type MouseToolType = 'marker' | 'polygon' | 'polyline' | 'rectangle' | 'c
 export interface MouseToolProps {
   /** 是否开启绘画 */
   open?: boolean
-  /** 工具类型 */
+  /**
+   * 工具类型
+   * - marker: 标注工具
+   * - polygon: 多边形工具
+   * - polyline: 折线工具
+   * - rectangle: 矩形工具
+   * - circle: 圆形工具
+   * - paint: 画笔工具
+   */
   type?: MouseToolType
   /** 各工具类型传参选项 */
   toolOptions?: {

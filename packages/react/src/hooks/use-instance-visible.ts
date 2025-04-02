@@ -11,10 +11,13 @@ const useInstanceVisible = <T extends { show: () => void; hide: () => void }>(
   visible?: UnDef<boolean>
 ) => {
   useEffect(() => {
-    if (instance) {
-      if (visible === false) instance.hide?.()
-      else instance.show?.()
-    }
+    const timer = setTimeout(() => {
+      if (instance) {
+        if (visible === false) instance.hide?.()
+        else instance.show?.()
+      }
+    })
+    return () => clearTimeout(timer)
   }, [instance, visible])
 }
 export default useInstanceVisible
