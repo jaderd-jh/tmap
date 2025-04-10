@@ -28,6 +28,13 @@ declare namespace T {
     }) => void
   }
 
+  interface DataSetData {
+    lat: number
+    lng: number
+    count: number
+    [key: string]: string | number
+  }
+
   interface HeatmapOverlayOptions {
     /**
      * 纬度字段名称（不可控）
@@ -61,9 +68,17 @@ declare namespace T {
 
     /** ------------------ ⬇ 补充类型 ------------------ */
 
-    /** 热力图渲染的数据（可控） */
-    dataSet?: { max: number; data: Record<string, string | number>[] }
-    /** 热力图配置项（可控） */
+    /**
+     * 热力图渲染的数据
+     * @description 可控
+     * @param max 最大值的渲染颜色
+     * @param data 渲染数据 {lat: number; lng: number; count: number;}
+     */
+    dataSet?: { max: number; data: DataSetData[] }
+    /**
+     * 热力图配置项
+     * @description 可控
+     */
     options?: HeatmapOverlayOptions
 
     /** ------------------ ⬆ 补充类型 ------------------ */

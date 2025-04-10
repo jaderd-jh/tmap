@@ -38,30 +38,45 @@ declare namespace T {
 
   interface TileLayerOptions {
     /**
-     * 此图层的最低缩放级别（不可控）
+     * 此图层的最低缩放级别
+     * @description 不可控
      * @default 0
      */
     minZoom?: number
     /**
-     * 此图层的最高缩放级别（不可控）
+     * 此图层的最高缩放级别
+     * @description 不可控
      * @default 18
      */
     maxZoom?: number
-    /** 当没有瓦片时所显示的错误图片地址（不可控） */
+    /**
+     * 当没有瓦片时所显示的错误图片地址
+     * @description 不可控
+     */
     errorTileUrl?: string
     /**
-     * 设置图层的透明度（0.0-1.0）（可控）
+     * 设置图层的透明度（0.0-1.0）
+     * @description 可控
      * @default 1.0
      */
     opacity?: number
-    /** 图层的显示顺序（可控） */
+    /**
+     * 图层的显示顺序
+     * @description 可控
+     */
     zIndex?: number
-    /** 设置指定范围内显示瓦片（不可控） */
+    /**
+     * 设置指定范围内显示瓦片
+     * @description 不可控
+     */
     bounds?: LngLatBounds
 
     /** ------------------ ⬇ 补充类型 ------------------ */
 
-    /** 图层服务地址（可控） */
+    /**
+     * 图层服务地址
+     * @description 可控
+     */
     url?: string
 
     /** ------------------ ⬆ 补充类型 ------------------ */
@@ -75,11 +90,11 @@ declare namespace T {
     load?: (e: MapEventBase) => void
     /** 瓦片请求和开始加载时触发 */
     tileloadstart?: (e: TileLayerEvent) => void
-    /** 在加载瓦片时触发 */
+    /** 在加载瓦片（单个瓦片）时触发 */
     tileload?: (e: TileLayerEvent) => void
-    /** 在瓦片被移除时触发（比如打开了unloadInvisibleTiles） */
+    /** 在瓦片（单个瓦片）被移除时触发（比如打开了unloadInvisibleTiles） */
     tileunload?: (e: TileLayerEvent) => void
-    /** 瓦片错误时触发 */
+    /** 瓦片（单个瓦片）错误时触发 */
     tileerror?: (e: TileLayerEvent) => void
   }
 
@@ -90,11 +105,11 @@ declare namespace T {
     onLoad?: (e: MapEventBase) => void
     /** 瓦片请求和开始加载时触发 */
     onTileLoadStart?: (e: TileLayerEvent) => void
-    /** 在加载瓦片时触发 */
+    /** 在加载瓦片（单个瓦片）时触发 */
     onTileLoad?: (e: TileLayerEvent) => void
-    /** 在瓦片被移除时触发（比如打开了unloadInvisibleTiles） */
+    /** 在瓦片（单个瓦片）被移除时触发（比如打开了unloadInvisibleTiles） */
     onTileUnload?: (e: TileLayerEvent) => void
-    /** 瓦片错误时触发 */
+    /** 瓦片（单个瓦片）错误时触发 */
     onTileError?: (e: TileLayerEvent) => void
   }
 

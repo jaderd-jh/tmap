@@ -14,7 +14,13 @@ declare namespace T {
     getResults: () => TransitRouteResult
     /** 清除最近一次检索的结果 */
     clearResults: () => void
-    /** 设置路线规划策略，1：最少时间；2：最少换乘； 4：最少步行；8：不乘地铁 */
+    /**
+     * 设置路线规划策略
+     *  - 1：最少时间
+     *  - 2：最少换乘
+     *  - 4：最少步行
+     *  - 8：不乘地铁
+     */
     setPolicy: (policy: TransitRouteOptions['policy']) => void
     /** 设置检索结束后的回调函数 */
     setSearchCompleteCallback: (fun: TransitRouteOptions['onSearchComplete']) => void
@@ -31,7 +37,13 @@ declare namespace T {
     getStatus: () => number
   }
   interface TransitRouteOptions {
-    /** 设置路线规划策略，1：最少时间；2：最少换乘； 4：最少步行；8：不乘地铁 */
+    /**
+     * 设置路线规划策略
+     *  - 1：最少时间
+     *  - 2：最少换乘
+     *  - 4：最少步行
+     *  - 8：不乘地铁
+     */
     policy?: 1 | 2 | 4 | 8
     /** 设置检索结束后的回调函数 */
     onSearchComplete?: (e: TransitRouteResult) => void

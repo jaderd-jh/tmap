@@ -2,7 +2,7 @@ import type { UnDef } from '@/utils'
 import type { LocalSearchProps } from './types'
 import { useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 服务类 - 搜索 */
 const LocalSearch = forwardRef<UnDef<T.LocalSearch>, LocalSearchProps>(
@@ -10,15 +10,14 @@ const LocalSearch = forwardRef<UnDef<T.LocalSearch>, LocalSearchProps>(
     const { map } = useContext(MapContext)
 
     const [localSearch, setLocalSearch] = useState<T.LocalSearch>()
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => localSearch)
 
-    let init_dev = 0
-
     useEffect(() => {
-      if (init_dev === 0 && map && !localSearch) {
-        init_dev += 1
+      if (map && !readyRef.current) {
         const instance = new T.LocalSearch(map, { ...props })
+        readyRef.current = true
         setLocalSearch(instance)
       }
     }, [])

@@ -29,7 +29,8 @@ const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
 
     useEffect(() => {
       if (!readyRef.current) {
-        const tmap = new T.Map(container || containerRef.current!, { center: toLngLat(center), zoom, ...props })
+        const tmap = new T.Map(container || containerRef.current!, { ...props })
+        tmap.centerAndZoom(toLngLat(center)!, zoom)
         if (mapStyle) tmap.setStyle(mapStyle)
         readyRef.current = true
         setMap(tmap)
@@ -38,9 +39,13 @@ const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
       }
     }, [map])
 
+    useEffect(() => {
+      if (readyRef.current && center) map?.panTo(toLngLat(center)!)
+    }, [center])
+
     useEventProperties<T.Map, MapProps>(map, props)
 
-    useSetProperties<T.Map, T.MapOptions>(map, { center: toLngLat(center), zoom, ...props, style: mapStyle })
+    useSetProperties<T.Map, T.MapOptions>(map, { zoom, ...props, style: mapStyle })
 
     return (
       <div ref={containerRef} className={className} id="container" style={{ width: '100%', height: '100%', ...style }}>

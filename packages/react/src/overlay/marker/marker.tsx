@@ -20,10 +20,10 @@ const Marker = forwardRef<UnDef<T.Marker>, MarkerProps>(
 
     const iconInstance = useMemo(() => toIcon(icon), [icon])
 
-    const useLngLat = useMemo(() => toLngLat(lngLat), [lngLat])
+    const useLngLat = useMemo(() => toLngLat(lngLat, [0, 0])!, [lngLat])
 
     useEffect(() => {
-      if (!readyRef.current && useLngLat) {
+      if (!readyRef.current) {
         const instance = new T.Marker(useLngLat, { ...props, icon: iconInstance })
         readyRef.current = true
         setMarker(instance)

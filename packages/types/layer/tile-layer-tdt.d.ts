@@ -10,7 +10,10 @@ declare namespace T {
   }
 
   interface TileLayerTDTOptions extends TileLayerOptions {
-    /** 用来描述图层信息（不可控） */
+    /**
+     * 用来描述图层信息
+     * @description 不可控
+     */
     attribution?: string
   }
 }

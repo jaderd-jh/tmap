@@ -15,10 +15,7 @@ declare namespace T {
     static militarySymbols: typeof MilitarySymbols
 
     constructor(opts?: ControlOptions)
-    /**
-     * 设置控件的位置
-     * @description Control.Copyright 版权控件 setPosition 设置控件位置无效
-     */
+    /** 设置控件的位置 */
     setPosition: (position?: ControlPosition) => void
     /** 返回控件的位置 */
     getPosition: () => ControlPosition

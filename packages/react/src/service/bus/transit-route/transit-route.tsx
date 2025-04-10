@@ -3,22 +3,21 @@ import type { TransitRouteProps } from './types'
 import { useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toLngLat } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 服务类 - 公交路线规划 */
 const TransitRoute = forwardRef<UnDef<T.TransitRoute>, TransitRouteProps>(({ start, end, ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [transitRoute, setTransitRoute] = useState<T.TransitRoute>()
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => transitRoute)
 
-  let init_dev = 0
-
   useEffect(() => {
-    if (init_dev === 0 && map && !transitRoute) {
-      init_dev += 1
+    if (map && !readyRef.current) {
       const instance = new T.TransitRoute(map, props)
+      readyRef.current = true
       setTransitRoute(instance)
     }
   }, [])

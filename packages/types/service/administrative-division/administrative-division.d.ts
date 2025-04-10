@@ -11,15 +11,32 @@ declare namespace T {
   interface AdministrativeDivisionOptions {
     /** 查询行政区划的code/名称（可控） */
     searchWord: string
-    /** 查询类型（可控） 0：根据code查询，1：根据名称查询 */
+    /**
+     * 查询类型
+     *  - 0 根据code查询
+     *  - 1 根据名称查询
+     * @description 可控
+     */
     searchType: 0 | 1
-    /** 是否需要下一级信息（不可控） */
+    /**
+     * 是否需要下一级信息
+     * @description 不可控
+     */
     needSubInfo?: boolean
-    /** 是否需要所有子节点（不可控） */
+    /**
+     * 是否需要所有子节点
+     * @description 不可控
+     */
     needAll?: boolean
-    /** 是否需要行政区划范围（不可控） */
+    /**
+     * 是否需要行政区划范围
+     * @description 不可控
+     */
     needPolygon?: boolean
-    /** 是否需要上一级所有信息（不可控） */
+    /**
+     * 是否需要上一级所有信息
+     * @description 不可控
+     */
     needPre?: boolean
   }
 }

@@ -5,12 +5,13 @@ import { isArray, isObject, isString } from '@/utils'
  * 转换为经纬度对象
  * @param lnglat 经纬度
  */
-export const toLngLat = (lnglat: UnDef<T.LngLatLike>) => {
-  if (isArray(lnglat)) {
-    const [lng, lat] = lnglat
+export const toLngLat = (lnglat: UnDef<T.LngLatLike>, defaultValue?: T.LngLatLike) => {
+  const useLngLat = lnglat || defaultValue
+  if (isArray(useLngLat)) {
+    const [lng, lat] = useLngLat
     return new T.LngLat(lng, lat)
   }
-  if (lnglat) return lnglat
+  if (lnglat) return lnglat as T.LngLat
 }
 
 /**

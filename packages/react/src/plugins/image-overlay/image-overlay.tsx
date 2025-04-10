@@ -3,7 +3,7 @@ import type { ImageOverlayProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toBounds } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  开源插件 - 图片覆盖物 */
 const ImageOverlay = forwardRef<UnDef<T.ImageOverlay>, ImageOverlayProps>(
@@ -11,25 +11,22 @@ const ImageOverlay = forwardRef<UnDef<T.ImageOverlay>, ImageOverlayProps>(
     const { map } = useContext(MapContext)
 
     const [imageOverlay, setImageOverlay] = useState<T.ImageOverlay>()
-
-    let init_dev = 0
+    const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => imageOverlay)
 
     useInstanceAddRemove(map, imageOverlay, 'overLay')
     useInstanceVisible(imageOverlay, visible)
 
-    const lngLatBounds = useMemo(() => {
-      return toBounds(bounds)
-    }, [bounds])
+    const lngLatBounds = useMemo(() => toBounds(bounds), [bounds])
 
     useEffect(() => {
-      if (init_dev === 0 && !imageOverlay && lngLatBounds && imageUrl) {
-        init_dev += 1
+      if (!readyRef.current && lngLatBounds && imageUrl) {
         const instance = new T.ImageOverlay(imageUrl, lngLatBounds, props)
+        readyRef.current = true
         setImageOverlay(instance)
       }
-    }, [lngLatBounds, imageUrl])
+    }, [])
 
     useEventProperties<T.ImageOverlay, ImageOverlayProps>(imageOverlay, props)
 

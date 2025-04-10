@@ -2,27 +2,26 @@ import type { UnDef } from '@/utils'
 import type { TileLayerProps } from './types'
 import { useEventProperties, useInstanceAddRemove, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 图层 - 自定义图层 */
 const TileLayer = forwardRef<UnDef<T.TileLayer>, TileLayerProps>(({ url, ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [tileLayer, setTileLayer] = useState<T.TileLayer>()
+  const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => tileLayer)
 
   useInstanceAddRemove(map, tileLayer, 'layer')
 
-  let init_dev = 0
-
   useEffect(() => {
-    if (init_dev === 0 && !tileLayer && url) {
-      init_dev += 1
+    if (!readyRef.current && url) {
       const instance = new T.TileLayer(url, props)
+      readyRef.current = true
       setTileLayer(instance)
     }
-  }, [url])
+  }, [])
 
   useEventProperties<T.TileLayer, TileLayerProps>(tileLayer, props)
 

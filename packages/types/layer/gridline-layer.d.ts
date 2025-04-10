@@ -3,7 +3,7 @@ declare namespace T {
   class GridlineLayer {
     /**
      * 叠加指定样式的格网图层，户可以自定义格网的像素大小、变现颜色、边线宽度透明度等一系列参数
-     * @param opts 详见MarkerClusterOptions类
+     * @param opts 详见GridlineLayerOptions类
      */
     constructor(opts: GridlineLayerOptions)
 
@@ -29,38 +29,47 @@ declare namespace T {
   }
   interface GridlineLayerOptions {
     /**
-     * 设置格网图层的网格大小，单位是像素（不可控）
+     * 设置格网图层的网格大小，单位是像素
+     * @description 不可控
      * @default 256
      */
     tileSize?: number
     /**
-     * 显示格网图层的最小层级（不可控）
+     * 显示格网图层的最小层级
+     * @description 不可控
      * @default 0
      */
     minZoom?: number
     /**
-     * 显示格网图层的最大层级（不可控）
+     * 显示格网图层的最大层级
+     * @description 不可控
      * @default 18
      */
     maxZoom?: number
     /**
-     * 设置格网图层的透明度（可控）
+     * 设置格网图层的透明度
+     * @description 可控
      * @default 1
      */
     opacity?: number
     /**
-     * 设置格网图层边线的颜色、宽度、线样式（不可控），default：{width:1, style:'solid', color:'#999'}
+     * 设置格网图层边线的颜色、宽度、线样式
+     * @description 不可控
+     * @default width:1, style:'solid', color:'#999'
      */
     outlineSize?: { width: number; style: LineStyle; color: string }
     /**
-     * 设置格网图层文字的样式，图层文字表现网格的行号、列号、层级（不可控）， default：{display:false, fontSize:'14', fontWeight:true,color:"black"}
+     * 设置格网图层文字的样式，图层文字表现网格的行号、列号、层级
+     * @description 不可控
+     * @default display:false, fontSize:'14', fontWeight:true,color:"black"
      */
     textSize?: { display: boolean; fontSize: string; fontWeight: boolean; color: string }
 
     /** ------------------ ⬇ 补充类型 ------------------ */
 
     /**
-     * 设置图层的叠放顺序（可控）
+     * 设置图层的叠放顺序
+     * @description 可控
      * @description 大于1的整数
      */
     zIndex?: number
