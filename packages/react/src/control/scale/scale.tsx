@@ -19,7 +19,7 @@ const ControlScale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
     useInstanceAddRemove(map, controlScale, 'control')
 
     useEffect(() => {
-      if (readyRef.current) {
+      if (!readyRef.current) {
         const instance = new T.Control.Scale(props)
         readyRef.current = true
         setControlScale(instance)

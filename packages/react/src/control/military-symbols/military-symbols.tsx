@@ -19,7 +19,7 @@ const MilitarySymbols = forwardRef<UnDef<T.MilitarySymbols>, MilitarySymbolsProp
     useInstanceAddRemove(map, militarySymbols, 'control')
 
     useEffect(() => {
-      if (readyRef.current) {
+      if (!readyRef.current) {
         // eslint-disable-next-line new-cap
         const instance = new T.Control.militarySymbols(props)
         readyRef.current = true
