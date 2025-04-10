@@ -1,5 +1,3 @@
-import type { UnDef } from '@/utils'
-
 export interface MilitarySymbolsProps extends Omit<T.MilitarySymbolsOptions, 'offset'> {
   /** 是否可见 */
   visible?: boolean
@@ -7,7 +5,7 @@ export interface MilitarySymbolsProps extends Omit<T.MilitarySymbolsOptions, 'of
    * 控件停靠的偏移量
    * @description 可控
    */
-  offset?: UnDef<T.PointLike>
+  offset?: T.PointLike
   /** 是否移除 */
   // remove?: boolean
 }

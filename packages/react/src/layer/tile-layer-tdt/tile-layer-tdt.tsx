@@ -5,7 +5,7 @@ import { MapContext } from '@/map'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 图层 - 矢量图层 */
-const TileLayerTDT = forwardRef<UnDef<T.TileLayerTDT>, TileLayerTDTProps>(({ url, ...props }, ref) => {
+const TileLayerTDT = forwardRef<UnDef<T.TileLayerTDT>, TileLayerTDTProps>(({ url = '', ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [tileLayerTDT, setTileLayerTDT] = useState<T.TileLayerTDT>()
@@ -16,7 +16,7 @@ const TileLayerTDT = forwardRef<UnDef<T.TileLayerTDT>, TileLayerTDTProps>(({ url
   useInstanceAddRemove(map, tileLayerTDT, 'layer')
 
   useEffect(() => {
-    if (!readyRef.current && url) {
+    if (!readyRef.current) {
       const instance = new T.TileLayer.TDT(url, props)
       readyRef.current = true
       setTileLayerTDT(instance)

@@ -23,7 +23,7 @@ const HeatmapOverlay = forwardRef<UnDef<T.HeatmapOverlay>, HeatmapOverlayProps>(
     }
 
     useEffect(() => {
-      if (!readyRef.current && !!dataSet) {
+      if (!readyRef.current) {
         const isCanvas = isSupportCanvas()
         if (isCanvas) {
           const instance = new T.HeatmapOverlay(props)

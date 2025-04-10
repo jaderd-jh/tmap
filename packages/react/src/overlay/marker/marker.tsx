@@ -20,7 +20,7 @@ const Marker = forwardRef<UnDef<T.Marker>, MarkerProps>(
 
     const iconInstance = useMemo(() => toIcon(icon), [icon])
 
-    const useLngLat = useMemo(() => toLngLat(lngLat, [0, 0])!, [lngLat])
+    const useLngLat = useMemo(() => toLngLat(lngLat || [0, 0])!, [lngLat])
 
     useEffect(() => {
       if (!readyRef.current) {

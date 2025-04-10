@@ -18,11 +18,11 @@ const Rectangle = forwardRef<UnDef<T.Rectangle>, RectangleProps>(
     useInstanceAddRemove(map, rectangle, 'overLay')
     useInstanceVisible(rectangle, visible)
 
-    const lngLatBounds = useMemo(() => toBounds(bounds), [bounds])
+    const lngLatBounds = useMemo(() => toBounds(bounds || [0, 0, 0, 0]), [bounds])
 
     useEffect(() => {
-      if (!readyRef.current && lngLatBounds) {
-        const instance = new T.Rectangle(lngLatBounds, props)
+      if (!readyRef.current) {
+        const instance = new T.Rectangle(lngLatBounds!, props)
         readyRef.current = true
         setRectangle(instance)
       }

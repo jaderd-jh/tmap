@@ -1,5 +1,3 @@
-import type { UnDef } from '@/utils'
-
 export interface PolylineProps extends T.PolylineEvents, Omit<T.PolylineOptions, 'lngLats'> {
   /**
    * 是否可见
@@ -7,7 +5,7 @@ export interface PolylineProps extends T.PolylineEvents, Omit<T.PolylineOptions,
    */
   visible?: boolean
   /** 边界数据 */
-  path?: UnDef<T.LngLatLike[]>
+  path?: T.LngLatLike[]
   /**
    * 是否启用编辑功能
    * @default false

@@ -1,5 +1,3 @@
-import type { UnDef } from '@/utils'
-
 export interface CircleProps extends T.CircleEvents, Omit<T.CircleOptions, 'center'> {
   /**
    * 是否可见
@@ -7,7 +5,7 @@ export interface CircleProps extends T.CircleEvents, Omit<T.CircleOptions, 'cent
    */
   visible?: boolean
   /** 圆心经纬度坐标 */
-  center?: UnDef<T.LngLatLike>
+  center?: T.LngLatLike
   /**
    * 是否启用编辑功能
    * @default false

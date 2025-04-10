@@ -14,7 +14,7 @@ const MenuItem = forwardRef<UnDef<T.MenuItem>, ContextMenuItem>(
     const useText = useMemo(() => text || children || '', [text, children])
 
     useEffect(() => {
-      if (!readyRef.current && contextMenu && useText) {
+      if (!readyRef.current && contextMenu) {
         const instance = new T.MenuItem(useText, onClick)
         readyRef.current = true
         contextMenu.addItem(instance)

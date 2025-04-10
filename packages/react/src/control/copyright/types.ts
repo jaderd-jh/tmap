@@ -1,4 +1,3 @@
-import type { UnDef } from '@/utils'
 import type { PropsWithChildren } from 'react'
 
 export interface ControlCopyrightProps extends Omit<PropsWithChildren<T.ControlCopyrightOptions>, 'offset' | 'bounds'> {
@@ -8,7 +7,7 @@ export interface ControlCopyrightProps extends Omit<PropsWithChildren<T.ControlC
    * 控件停靠的偏移量
    * @description 可控
    */
-  offset?: UnDef<T.PointLike>
+  offset?: T.PointLike
   /** 版权信息所适用的地理区域 */
-  bounds?: UnDef<T.BoundsLike>
+  bounds?: T.BoundsLike
 }

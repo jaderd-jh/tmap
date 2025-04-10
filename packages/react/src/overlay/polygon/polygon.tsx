@@ -17,11 +17,11 @@ const Polygon = forwardRef<UnDef<T.Polygon>, PolygonProps>(({ visible, path, edi
   useInstanceAddRemove(map, polygon, 'overLay')
   useInstanceVisible(polygon, visible)
 
-  const lngLats = useMemo(() => toNestedLngLats(path) || [], [path])
+  const lngLats = useMemo(() => toNestedLngLats(path || [[0, 0]]), [path])
 
   useEffect(() => {
-    if (!readyRef.current && isArray(lngLats)) {
-      const instance = new T.Polygon(lngLats, props)
+    if (!readyRef.current) {
+      const instance = new T.Polygon(lngLats!, props)
       readyRef.current = true
       setPolygon(instance)
     }

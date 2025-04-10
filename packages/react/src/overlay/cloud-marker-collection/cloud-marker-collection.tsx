@@ -17,16 +17,12 @@ const CloudMarkerCollection = forwardRef<UnDef<T.CloudMarkerCollection>, CloudMa
 
     useInstanceAddRemove(map, cloudMarkerCollection, 'overLay')
 
-    const uselnglats = useMemo(() => {
-      const arr = toLngLats(lnglats) || []
-      if (!arr.length) return [new T.LngLat(0, 0)]
-      else return arr
-    }, [lnglats])
+    const uselnglats = useMemo(() => toLngLats(lnglats || [[0, 0]]), [lnglats])
 
     useEffect(() => {
-      if (!readyRef.current && !!uselnglats.length) {
+      if (!readyRef.current) {
         if (document.createElement('canvas').getContext('2d')) {
-          const instance = new T.CloudMarkerCollection(uselnglats, { ...props, ...styles })
+          const instance = new T.CloudMarkerCollection(uselnglats!, { ...props, ...styles })
           readyRef.current = true
           setCloudMarkerCollection(instance)
         } else {

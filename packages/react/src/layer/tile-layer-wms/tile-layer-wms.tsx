@@ -5,7 +5,7 @@ import { MapContext } from '@/map'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 图层 - 叠加WMS地图图块层 */
-const TileLayerWMS = forwardRef<UnDef<T.TileLayerWMS>, TileLayerWMSProps>(({ url, ...props }, ref) => {
+const TileLayerWMS = forwardRef<UnDef<T.TileLayerWMS>, TileLayerWMSProps>(({ url = '', ...props }, ref) => {
   const { map } = useContext(MapContext)
 
   const [tileLayerWMS, setTileLayerWMS] = useState<T.TileLayerWMS>()
@@ -16,7 +16,7 @@ const TileLayerWMS = forwardRef<UnDef<T.TileLayerWMS>, TileLayerWMSProps>(({ url
   useInstanceAddRemove(map, tileLayerWMS, 'layer')
 
   useEffect(() => {
-    if (!readyRef.current && url) {
+    if (!readyRef.current) {
       const instance = new T.TileLayer.WMS(url, props)
       readyRef.current = true
       setTileLayerWMS(instance)

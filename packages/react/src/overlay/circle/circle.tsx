@@ -18,11 +18,11 @@ const Circle = forwardRef<UnDef<T.Circle>, CircleProps>(
     useInstanceAddRemove(map, circle, 'overLay')
     useInstanceVisible(circle, visible)
 
-    const lngLatCenter = useMemo(() => toLngLat(center), [center])
+    const lngLatCenter = useMemo(() => toLngLat(center || [0, 0])!, [center])
 
     useEffect(() => {
-      if (!readyRef.current && !!radius && !!lngLatCenter) {
-        const instance = new T.Circle(lngLatCenter!, radius, props)
+      if (!readyRef.current) {
+        const instance = new T.Circle(lngLatCenter, radius || 0, props)
         readyRef.current = true
         setCircle(instance)
       }

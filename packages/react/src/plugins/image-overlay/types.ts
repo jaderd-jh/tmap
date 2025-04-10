@@ -1,5 +1,3 @@
-import type { UnDef } from '@/utils'
-
 export interface ImageOverlayProps extends Omit<T.ImageOverlayOptions, 'bounds'> {
   /**
    * 是否可见
@@ -7,7 +5,7 @@ export interface ImageOverlayProps extends Omit<T.ImageOverlayOptions, 'bounds'>
    */
   visible?: boolean
   /** 图片覆盖地理范围（可控） */
-  bounds?: UnDef<T.BoundsLike>
+  bounds?: T.BoundsLike
   /** 是否移除 */
   // remove?: boolean
 }

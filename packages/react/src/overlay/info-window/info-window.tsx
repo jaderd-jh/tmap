@@ -20,7 +20,7 @@ const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
 
     const useContent = useMemo(() => content || container, [content, children])
 
-    const useLngLat = useMemo(() => toLngLat(lngLat) || map!.getCenter(), [lngLat])
+    const useLngLat = useMemo(() => toLngLat(lngLat) || map?.getCenter() || toLngLat([0, 0]), [lngLat])
 
     const useOffset = useMemo(() => toPoint(offset), [offset])
 
@@ -55,7 +55,7 @@ const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
         if (isCustom) removeContentClass()
         if (open) {
           infoWindow.setContent(useContent)
-          map?.openInfoWindow(infoWindow, useLngLat)
+          map?.openInfoWindow(infoWindow, useLngLat!)
         } else {
           infoWindow.closeInfoWindow()
         }

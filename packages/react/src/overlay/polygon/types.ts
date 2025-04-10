@@ -1,5 +1,3 @@
-import type { UnDef } from '@/utils'
-
 export interface PolygonProps extends T.PolygonEvents, Omit<T.PolygonOptions, 'lngLats'> {
   /**
    * 是否可见
@@ -7,7 +5,7 @@ export interface PolygonProps extends T.PolygonEvents, Omit<T.PolygonOptions, 'l
    */
   visible?: boolean
   /** 边界数据 */
-  path?: UnDef<T.LngLatLike[] | T.LngLatLike[][]>
+  path?: T.LngLatLike[] | T.LngLatLike[][]
   /**
    * 是否启用编辑功能
    * @default false

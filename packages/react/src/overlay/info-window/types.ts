@@ -1,4 +1,3 @@
-import type { UnDef } from '@/utils'
 import type { PropsWithChildren } from 'react'
 
 export interface InfoWindowProps
@@ -10,9 +9,9 @@ export interface InfoWindowProps
    */
   open?: boolean
   /** 信息浮窗位置坐标 */
-  lngLat?: UnDef<T.LngLatLike>
+  lngLat?: T.LngLatLike
   /** 弹出窗口位置偏移量 */
-  offset?: UnDef<T.PointLike>
+  offset?: T.PointLike
   /** 是否开启自定义浮窗样式（开启后信息窗关闭按钮需要自行实现） */
   isCustom?: boolean
   /** 是否移除 */
