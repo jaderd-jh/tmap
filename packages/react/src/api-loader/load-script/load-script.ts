@@ -42,12 +42,11 @@ export const load = async (options: APILoaderConfig) => {
         reject(new Error('缺少天地图密钥，申请地址：https://console.tianditu.gov.cn/api/key'))
       })
     }
-    await loadScript('tk', `http://api.tianditu.gov.cn/api?v=${version}&tk=${tkey}`)
+    await loadScript('tianditu-tk', `http://api.tianditu.gov.cn/api?v=${version}&tk=${tkey}`)
 
     await Promise.all(
       plugins
-        .map(name => pluginsUrl[name].map((url, index) => ({ id: `${name}_${index}`, url })))
-        .flat()
+        .flatMap(name => pluginsUrl[name].map((url, index) => ({ id: `${name}_${index}`, url })))
         .map(item => loadScript(item.id, item.url))
     )
     loadStatus = LoadStatus.loaded

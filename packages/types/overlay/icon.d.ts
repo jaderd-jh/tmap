@@ -25,19 +25,19 @@ declare namespace T {
      * 图标可视区域的大小
      * @default Point(25, 41)
      */
-    iconSize?: PointLike
+    iconSize?: Point
     /**
      * 图标的定位锚点。此点用来决定图标与地理位置的关系，是相对于图标左上角的偏移值，默认等于图标宽度和高度的中间值
      * @default Point(12, 41)
      */
-    iconAnchor?: PointLike
+    iconAnchor?: Point
   }
   interface IconExtendOptions {
     /** 请求图标图片的URL（脚本中的绝对或相对路径） */
     iconUrl: string
     /** 图标可视区域的大小 */
-    iconSize: T.NPoint
+    iconSize: PointLike
     /** 图标的定位锚点。此点用来决定图标与地理位置的关系，是相对于图标左上角的偏移值，默认等于图标宽度和高度的中间值   */
-    iconAnchor: T.NPoint
+    iconAnchor: PointLike
   }
 }

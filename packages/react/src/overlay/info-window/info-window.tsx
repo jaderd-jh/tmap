@@ -7,7 +7,7 @@ import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef
 
 /** 覆盖物 - 信息窗（地图仅可同时展示一个信息窗体） */
 const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
-  ({ open, lngLat, offset, isCustom, content, children, closeButton = true, ...props }, ref) => {
+  ({ open, lngLat, offset, isCustom = false, content, children, closeButton = true, ...props }, ref) => {
     const { map } = useContext(MapContext)
     const { container, Portal } = usePortal()
 
@@ -65,7 +65,7 @@ const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
     // useEffect(() => {
     //   setTimeout(() => {
     //     const element = document.getElementsByClassName('tdt-infowindow-content')
-    //     if (isCustom) {
+    //     if (custom) {
     //       if (element.length > 0) element[0].id = 'tmap-custom-info-window'
     //       const dom = document.getElementById('tmap-custom-info-window')
     //       if (dom) {

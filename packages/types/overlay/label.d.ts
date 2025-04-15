@@ -20,8 +20,8 @@ declare namespace T {
     /** 返回文本的提示内容 */
     getTitle: () => string
     /** 设置z-index */
-    setZindex: () => void
-    /** 设置文本的文本内容字体大小 */
+    setZindex: (zIndex: number) => void
+    /** 设置文本内容字体大小 */
     setFontSize: (size: number) => void
     /** 返回文本内容字体大小 */
     getFontSize: () => number
@@ -49,42 +49,73 @@ declare namespace T {
 
   interface LabelOptions extends OverlayOptions {
     /**
-     * 文本标注的内容，同label
-     * @description 使用label代替
+     * 文本标注的内容
+     * @deprecated 使用label代替
      */
     text?: string
     /**
-     * 文本标注的位置偏移值（可控）
+     * 文本标注的位置偏移值
+     * @description 可控
       @default Point(0,0)
      */
     offset?: Point
     /**
-     * 文本标注的地理位置坐标，同lngLat
-     * @description 使用lngLat代替
+     * 文本标注的地理位置坐标
+     * @deprecated 使用lngLat代替
      * @default LngLat(0,0)
      */
     position?: LngLat
 
     /** ------------------ ⬇ 补充类型 ------------------ */
-    /** 文本标注的地理位置坐标，同position（可控） */
+    /**
+     * 文本标注的地理位置坐标
+     * @description 可控
+     */
     lngLat?: LngLat
-    /** 文本标注的内容（可控） */
+    /**
+     * 文本标注的内容，优先级高于children
+     * @description 可控
+     */
     label?: string
-    /** 文本的提示内容（可控） */
+    /**
+     * 文本的提示内容
+     * @description 可控
+     */
     title?: string
-    /** z-index（可控） */
+    /**
+     * z-index
+     * @description 可控
+     */
     zindex?: number
-    /** 文本内容字体大小（可控） */
+    /**
+     * 文本内容字体大小
+     * @description 可控
+     */
     fontSize?: number
-    /** 文本的字体颜色（可控） */
+    /**
+     * 文本的字体颜色
+     * @description 可控
+     */
     fontColor?: string
-    /** 文本的背景色（可控） */
+    /**
+     * 文本的背景色
+     * @description 可控
+     */
     backgroundColor?: string
-    /** 文本的边框线宽（可控） */
+    /**
+     * 文本的边框线宽
+     * @description 可控
+     */
     borderLine?: number
-    /** 文本的边框颜色（可控） */
+    /**
+     * 文本的边框颜色
+     * @description 可控
+     */
     borderColor?: string
-    /** 透明度（可控） */
+    /**
+     * 透明度
+     * @description 可控
+     */
     opacity?: number
 
     /** ------------------ ⬆ 补充类型 ------------------ */

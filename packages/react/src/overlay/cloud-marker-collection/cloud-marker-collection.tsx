@@ -20,6 +20,10 @@ const CloudMarkerCollection = forwardRef<UnDef<T.CloudMarkerCollection>, CloudMa
     const uselnglats = useMemo(() => toLngLats(lnglats || [[0, 0]]), [lnglats])
 
     useEffect(() => {
+      window.console.log('uselnglats', uselnglats)
+    }, [uselnglats])
+
+    useEffect(() => {
       if (!readyRef.current) {
         if (document.createElement('canvas').getContext('2d')) {
           const instance = new T.CloudMarkerCollection(uselnglats!, { ...props, ...styles })

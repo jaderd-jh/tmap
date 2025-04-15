@@ -1,12 +1,16 @@
 declare namespace T {
-  class InfoWindow extends Overlay<InfoWindowProtoEvents> {
+  class InfoWindow extends OverlayCommon<InfoWindowProtoEvents> {
     /**
      * 创建一个信息窗实例
      * @param content 信息窗口的内容
      * @param opts 信息窗口的属性对象
      */
     constructor(content: string | HTMLElement, opts?: InfoWindowOptions)
-
+    /**
+     * 获取叠加层类型
+     * @var 3
+     */
+    getType: () => number
     /** 设置或改变信息浮窗所指向的地理位置坐标 */
     setLngLat: (lnglat: LngLat) => void
     /** 返回信息浮窗所指向的地理位置坐标 */
@@ -28,48 +32,64 @@ declare namespace T {
   }
   interface InfoWindowOptions extends OverlayOptions {
     /**
-     * 弹出框的最小宽度（不可控）
+     * 弹出框的最小宽度
+     * @description 不可控
      * @default 50
      */
     minWidth?: number
     /**
-     * 弹出框的最大宽度（不可控）
+     * 弹出框的最大宽度
+     * @description 不可控
      * @default 300
      */
     maxWidth?: number
-    /** 设置后，如果内容超过弹出窗口的给定高度则产生一个可以滚动的容器（不可控） */
+    /**
+     * 设置后，如果内容超过弹出窗口的给定高度则产生一个可以滚动的容器
+     * @description 不可控
+     */
     maxHeight?: number
     /**
-     * 是否开启信息窗口打开时地图自动移动（不可控）
+     * 是否开启信息窗口打开时地图自动移动
+     * @description 不可控
      * @default false
      */
     autoPan?: boolean
     /**
-     * 控制弹出窗口中出现的关闭按钮（不可控）
+     * 控制弹出窗口中出现的关闭按钮
+     * @description 不可控
      * @default true
      */
     closeButton?: boolean
     /**
-     * 弹出窗口位置的补偿值。在同一图层中打开弹出窗口时对于控制锚点比较有用（可控）
+     * 弹出窗口位置的补偿值。在同一图层中打开弹出窗口时对于控制锚点比较有用
+     * @description 可控
      * @default Point(0,7)
      */
     offset?: Point
     /**
-     * 在地图视图自动平移产生后弹出窗口和地图视图之间的边缘（不可控）
+     * 在地图视图自动平移产生后弹出窗口和地图视图之间的边缘
+     * @description 不可控
      * @default Point(5,5)
      */
     autoPanPadding?: Point
     /**
-     * 是否开启点击地图关闭信息窗口（不可控）
+     * 是否开启点击地图关闭信息窗口
+     * @description 不可控
      * @default false
      */
     closeOnClick?: boolean
 
     /** ------------------ ⬇ 补充类型 ------------------ */
 
-    /** 信息浮窗所指向的地理位置坐标（可控） */
+    /**
+     * 信息浮窗所指向的地理位置坐标
+     * @description 可控
+     */
     lngLat?: LngLat
-    /** 信息浮窗显示内容（可控） */
+    /**
+     * 信息浮窗显示内容，优先级高于children
+     * @description 可控
+     */
     content?: string | HTMLElement
 
     /** ------------------ ⬆ 补充类型 ------------------ */

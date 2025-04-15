@@ -6,7 +6,7 @@ import { useEffect } from 'react'
  * @param instance 实例对象
  * @param visible 是否可见
  */
-const useInstanceVisible = <T extends { show: () => void; hide: () => void }>(
+const useInstanceVisible = <T extends { show?: () => void; hide?: () => void }>(
   instance: UnDef<T>,
   visible?: UnDef<boolean>
 ) => {

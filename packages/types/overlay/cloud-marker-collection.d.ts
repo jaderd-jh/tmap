@@ -1,6 +1,6 @@
 declare namespace T {
   /** 可以实现同时在地图上展示万级、密集的点数据。兼容chrome、safari、IE9及以上浏览器 */
-  class CloudMarkerCollection extends Overlay<CloudMarkerCollectionEvents> {
+  class CloudMarkerCollection extends OverlayCommon<CloudMarkerCollectionProtoEvents> {
     /**
      * 创建海量点类
      * @param lnglats 点的坐标集合
@@ -21,17 +21,18 @@ declare namespace T {
   }
   interface CloudMarkerCollectionOptions {
     /**
-     * 海量点的预设形状（不可控）
+     * 海量点的预设形状
      *  - TDT_POINT_SHAPE_CIRCLE 圆形
      *  - TDT_POINT_SHAPE_STAR 星形
      *  - TDT_POINT_SHAPE_SQUARE 方形
      *  - TDT_POINT_SHAPE_RHOMBUS 菱形
      *  - TDT_POINT_SHAPE_WATERDROP 滴状
+     * @description 不可控
      * @default window.TDT_POINT_SHAPE_CIRCLE
      */
     ShapeType?: string
     /**
-     * 海量点的颜色（不可控）：
+     * 海量点的颜色
      *  - 颜色字符串，如'red'；
      *  - 哈希字符串'#000000'；
      *  - rgb字符串，如'rgb(0,0,0)’；
@@ -39,10 +40,11 @@ declare namespace T {
      *  - hsl字符串，如'hsl(0,100%,50%)'；
      *  - hsla字符串，如'hsla(0,100%,50%,0.4)'
      * @default #fa937e
+     * @description 不可控
      */
     color?: string
     /**
-     * 海量点的预设尺寸（不可控）：
+     * 海量点的预设尺寸
      *  - TDT_POINT_SIZE_TINY 超小，宽高为2px*2px
      *  - TDT_POINT_SIZE_SMALLER 很小，宽高为4px*4px
      *  - TDT_POINT_SIZE_SMALL 小，宽高为8px*8px
@@ -51,13 +53,20 @@ declare namespace T {
      *  - TDT_POINT_SIZE_BIGGER 很大，宽高为20px*20px
      *  - TDT_POINT_SIZE_HUGE 超大，宽高为30px*30px
      * @default window.TDT_POINT_SIZE_NORMAL
+     * @description 不可控
      */
     SizeType?: string
 
     /** ------------------ ⬇ 补充类型 ------------------ */
-    /** 点坐标集合（可控） */
+    /**
+     * 点坐标集合
+     * @description 可控
+     */
     lnglats?: LngLat[]
-    /** 点的样式（不可控） */
+    /**
+     * 点的样式
+     * @description 不可控
+     */
     styles?: CloudMarkerCollectionOptions
     /** ------------------ ⬆ 补充类型 ------------------ */
   }

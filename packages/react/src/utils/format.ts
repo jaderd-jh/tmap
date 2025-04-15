@@ -7,7 +7,7 @@ import { isArray, isObject, isString } from '@/utils'
  */
 export const toLngLat = (lnglat: UnDef<T.LngLatLike>) => {
   if (isArray(lnglat)) {
-    const [lng, lat] = lnglat
+    const [lng = 0, lat = 0] = lnglat
     return new T.LngLat(lng, lat)
   }
   if (lnglat) return lnglat as T.LngLat
@@ -18,14 +18,17 @@ export const toLngLat = (lnglat: UnDef<T.LngLatLike>) => {
  * @param lnglats 经纬度数组
  */
 export const toLngLats = (lnglats: UnDef<T.LngLatLike[]>) => {
-  if (isArray(lnglats)) {
-    return lnglats.map(lnglat => {
-      if (isArray(lnglat)) {
-        const [lng, lat] = lnglat
-        return new T.LngLat(lng, lat)
-      }
-      return lnglat
-    })
+  if (isArray(lnglats) && !!lnglats.length) {
+    return lnglats
+      .map(lnglat => {
+        if (isArray(lnglat)) {
+          const [lng = 0, lat = 0] = lnglat
+          return new T.LngLat(lng, lat)
+        }
+        if (lnglat) return lnglat
+        return null
+      })
+      .filter(Boolean) as T.LngLat[]
   }
 }
 
@@ -34,18 +37,21 @@ export const toLngLats = (lnglats: UnDef<T.LngLatLike[]>) => {
  * @param lnglats 经纬度数组
  */
 export const toNestedLngLats = (lnglats: UnDef<T.LngLatLike[] | T.LngLatLike[][]>) => {
-  if (isArray(lnglats)) {
+  if (isArray(lnglats) && !!lnglats.length) {
     return lnglats.map(lnglat => {
       if (isArray(lnglat)) {
-        const [lng, lat] = lnglat
+        const [lng = 0, lat = 0] = lnglat
         if (typeof lng === 'number' && typeof lat === 'number') return new T.LngLat(lng, lat)
-        return lnglat.map(ll => {
-          if (isArray(ll)) {
-            const [ln, la] = ll
-            return new T.LngLat(ln, la)
-          }
-          return ll as T.LngLat
-        })
+        return lnglat
+          .map(ll => {
+            if (isArray(ll)) {
+              const [ln, la] = ll
+              return new T.LngLat(ln, la)
+            }
+            if (ll) return ll
+            return null
+          })
+          .filter(Boolean) as T.LngLat[]
       }
       return lnglat
     })

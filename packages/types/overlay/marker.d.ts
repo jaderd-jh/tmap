@@ -31,34 +31,36 @@ declare namespace T {
   }
   interface MarkerOptions extends OverlayOptions {
     /**
-     * 图标类用来表达注记（可控）
+     * 图标类用来表达注记
+     * @description 可控
      * @default T.Icon.Default()
      */
     icon?: Icon
     /**
-     * 决定注记是否可被鼠标或触摸拖动（可控）
+     * 决定注记是否可被鼠标或触摸拖动
+     * @description 可控
      * @default false
      */
     draggable?: boolean
     /**
-     * 默认情况下，注记图片的叠置顺序由纬度自动设置（不可控）
-     * @description 如果你想将某一注记放置于其他之上可用这个选项，设置一个较大的值即可，比如1000（或是相反地设置一个较大的负值）
-     */
-    title?: string
-    /**
-     * 设置z-index（可控）
+     * 设置z-index
+     * @description 可控
      * @default 0
      */
     zIndexOffset?: number
     /**
-     * 设置透明度（可控）
+     * 设置透明度
+     * @description 可控
      * @default 1.0
      */
     opacity?: number
 
     /** ------------------ ⬇ 补充类型 ------------------ */
 
-    /** 标注所在的地理位置坐标（可控） */
+    /**
+     * 标注所在的地理位置坐标
+     * @description 可控
+     */
     lngLat?: LngLat
 
     /** ------------------ ⬆ 补充类型 ------------------ */

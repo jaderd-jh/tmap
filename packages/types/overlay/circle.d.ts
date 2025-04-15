@@ -51,43 +51,58 @@ declare namespace T {
     enableEdit: () => void
     /** 禁用圆编辑功能 */
     disableEdit: () => void
-    /** 是否启用圆编辑功能，true表示启用，false表示禁止 */
+    /** 判断是否启用圆编辑功能，true表示启用，false表示禁止 */
     isEditable: () => boolean
   }
   interface CircleOptions extends OverlayOptions {
     /**
-     * 圆边线颜色（可控）
+     * 圆边线颜色
      * @default #0000FF
+     * @description 可控
      */
     color?: string
     /**
-     * 圆边线的宽度，以像素为单位（可控）
-      @default:3 */
+     * 圆边线的宽度，以像素为单位
+     * @default 3
+     * @description 可控
+     */
     weight?: number
     /**
-     * 圆边线的透明度（范围0-1 之间）（可控）
-      @default:0.5 */
+     * 圆边线的透明度（范围0-1 之间）
+     * @default 0.5
+     * @description 可控
+     */
     opacity?: number
     /**
-     * 圆填充颜色。当参数为空时，圆覆盖物将没有填充效果（可控）
+     * 圆填充颜色。当参数为空时，圆覆盖物将没有填充效果
      * @default #0000FF
+     * @description 可控
      */
     fillColor?: string
     /**
-     * 圆填充的透明度（范围0-1 之间）（可控）
-      @default:0.2 */
+     * 圆填充的透明度（范围0-1 之间）
+     * @default 0.2
+     * @description 可控
+     */
     fillOpacity?: number
     /**
-     * 圆边线的样式（solid或dashed）（可控）
+     * 圆边线的样式（solid或dashed）
      * @default solid
+     * @description 可控
      */
     lineStyle?: LineStyle
 
     /** ------------------ ⬇ 补充类型 ------------------ */
 
-    /** 圆心经纬度坐标（可控） */
+    /**
+     * 圆心经纬度坐标
+     * @description 可控
+     */
     center?: LngLat
-    /** 圆半径（以米点单位）（可控） */
+    /**
+     * 圆半径（以米点单位）
+     * @description 可控
+     */
     radius?: number
 
     /** ------------------ ⬆ 补充类型 ------------------ */
