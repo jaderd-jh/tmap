@@ -15,7 +15,7 @@ const filterFun = (props: VK<any>) => {
  * @param props 属性值
  * @param init 是否参与初始化 默认false
  * @param paramNames 指定set[属性名]
- * @param noCamelCases 非驼峰格式的set[属性名]（例如 高德地图的zIndex(setzIndex) ）
+ * @param noCamelCases 非驼峰格式的set[属性名]
  */
 const useSetProperties = <T extends VK<any>, F extends VK<any>>(
   instance = undefined as UnDef<T>,

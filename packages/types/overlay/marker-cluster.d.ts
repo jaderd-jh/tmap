@@ -1,6 +1,6 @@
 declare namespace T {
   /** 用来解决加载大量标注点到地图上产生覆盖现象的问题，并提高性能 */
-  class MarkerClusterer extends Overlay<MarkerClusterProtoEvents> {
+  class MarkerClusterer extends OverlayCommon<MarkerClusterProtoEvents> {
     /**
      * 创建一个MarkerCluster组件
      * @param map 地图对象
@@ -48,58 +48,90 @@ declare namespace T {
     ) => void
   }
   interface MarkerClusterOptions {
-    /** 要聚合的标注点数组（不可控） */
+    /**
+     * 要聚合的标注点数组
+     * @description 不可控
+     */
     markers?: Marker[]
-    /** 自定义聚合后的图标风格（可控） */
+    /**
+     * 自定义聚合后的图标风格
+     * @description 可控
+     */
     styles?: MarkerClusterStyle[]
     /**
-     * 聚合计算时网格的像素大小（可控）
+     * 聚合计算时网格的像素大小
+     * @description 可控
      * @default 60
      */
     gridSize?: number //  ??? 官网api书写错误：girdSize
     /**
-     * 最大的聚合级别，大于该级别就不进行聚合（可控）
+     * 最大的聚合级别，大于该级别就不进行聚合
+     * @description 可控
      * @default 无穷大
      */
     maxZoom?: number
   }
   interface MarkerClusterStyle {
+    /**
+     * 图片地址
+     * @description 不可控
+     */
     url?: string
-    /** 图片大小 */
+    /**
+     * 图片大小
+     * @description 不可控
+     */
     size?: [number, number]
-    /** 显示图片的偏移量 */
+    /**
+     * 显示图片的偏移量
+     * @description 不可控
+     */
     offset?: Point
-    /** 显示数字的颜色 */
+    /**
+     * 显示数字的颜色
+     * @description 不可控
+     */
     textColor?: string
-    /**  显示文字的大小 */
+    /**
+     * 显示文字的大小
+     * @description 不可控
+     */
     textSize?: number
-    /** marker数量区间 */
+    /**
+     * marker数量区间
+     * @description 不可控
+     */
     range?: [number, number]
   }
 
-  interface MarkerClusterProtoEvents extends Partial<OverlayProtoEventsCommonProps<MarkerClusterer, Marker>> {
-    /** 聚合点左键单击事件 */
-    clusterclick?: (e: OverlayEvent<MarkerClusterer, Marker>) => void
-    /** 聚合点鼠标按下 */
-    clustermousedown?: (event: OverlayEvent<T, L>) => void
-    /** 聚合点鼠标抬起 */
-    clustermouseup?: (event: OverlayEvent<T, L>) => void
-    /** 聚合点鼠标移出 */
-    clustermouseout?: (event: OverlayEvent<T, L>) => void
-    /** 聚合点鼠标经过 */
-    clustermouseover?: (event: OverlayEvent<T, L>) => void
+  interface MarkerClusterEvent<T, L = any> extends MapEvent<T> {
+    /** 聚合标注对象 */
+    layer?: L
   }
 
-  interface MarkerClusterEvents extends Partial<OverlayEventsCommonProps<MarkerClusterer, Marker>> {
+  interface MarkerClusterProtoEvents extends Partial<OverlayProtoEventsCommonProps<Marker>> {
     /** 聚合点左键单击事件 */
-    onClusterClick?: (e: OverlayEvent<MarkerClusterer, Marker>) => void
+    clusterclick?: (event: MarkerClusterEvent<T, Marker>) => void
     /** 聚合点鼠标按下 */
-    onClusterMouseDown?: (event: OverlayEvent<T, L>) => void
+    clustermousedown?: (event: MarkerClusterEvent<T, Marker>) => void
     /** 聚合点鼠标抬起 */
-    onClusterMouseUp?: (event: OverlayEvent<T, L>) => void
+    clustermouseup?: (event: MarkerClusterEvent<T, Marker>) => void
     /** 聚合点鼠标移出 */
-    onClusterMouseOut?: (event: OverlayEvent<T, L>) => void
+    clustermouseout?: (event: MarkerClusterEvent<T, Marker>) => void
     /** 聚合点鼠标经过 */
-    onClusterMouseOver?: (event: OverlayEvent<T, L>) => void
+    clustermouseover?: (event: MarkerClusterEvent<T, Marker>) => void
+  }
+
+  interface MarkerClusterEvents extends Partial<OverlayEventsCommonProps<Marker>> {
+    /** 聚合点左键单击事件 */
+    onClusterClick?: (event: MarkerClusterEvent<T, Marker>) => void
+    /** 聚合点鼠标按下 */
+    onClusterMouseDown?: (event: MarkerClusterEvent<T, Marker>) => void
+    /** 聚合点鼠标抬起 */
+    onClusterMouseUp?: (event: MarkerClusterEvent<T, Marker>) => void
+    /** 聚合点鼠标移出 */
+    onClusterMouseOut?: (event: MarkerClusterEvent<T, Marker>) => void
+    /** 聚合点鼠标经过 */
+    onClusterMouseOver?: (event: MarkerClusterEvent<T, Marker>) => void
   }
 }

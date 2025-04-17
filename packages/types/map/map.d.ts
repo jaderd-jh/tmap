@@ -146,13 +146,13 @@ declare namespace T {
      * 将覆盖物添加到地图中，一个覆盖物实例只能向地图中添加一次
      * @param overlay  覆盖物对象
      */
-    addOverLay: (overlay: Overlay) => void
+    addOverLay: (overlay: Partial<Overlay>) => void
     /** 从地图中移除覆盖物。如果覆盖物从未被添加到地图中，则该移除不起任何作用 */
-    removeOverLay: (overlay: Overlay) => void
+    removeOverLay: (overlay: Partial<Overlay>) => void
     /** 清除地图上所有覆盖物 */
     clearOverLays: () => void
     /** 返回地图上的所有覆盖物 */
-    getOverlays: () => Overlay[]
+    getOverlays: () => Partial<Overlay>[]
     /** 返回地图覆盖物容器列表 */
     getPanes: () => Record<string, HTMLElement>
     /**
@@ -271,9 +271,9 @@ declare namespace T {
     /** 地图更改缩放级别结束时触发触发此事件 */
     zoomend: (e: MapEventBase) => void
     /** 当使用Map.addOverLay()方法向地图中添加单个覆盖物时会触发此事件 */
-    addoverlay: (e: MapEventBase & { addoverlay: Overlay }) => void
+    addoverlay: (e: MapEventBase & { addoverlay: Partial<Overlay> }) => void
     /** 当使用Map.removeOverLay()方法移除单个覆盖物时会触发此事件 */
-    removeoverlay: (e: MapEventBase & { removeoverlay: Overlay }) => void
+    removeoverlay: (e: MapEventBase & { removeoverlay: Partial<Overlay> }) => void
     /** 当使用Map.addControl()方法向地图中添加单个控件时会触发此事件 */
     addcontrol: (e: MapEventBase & { addcontrol: Control }) => void
     /** 当使用Map.removeControl()方法移除单个控件时会触发此事件 */
@@ -330,9 +330,9 @@ declare namespace T {
     /** 地图更改缩放级别结束时触发触发此事件 */
     onZoomEnd: (e: MapEventBase) => void
     /** 当使用Map.addOverLay()方法向地图中添加单个覆盖物时会触发此事件 */
-    onAddOverlay: (e: MapEventBase & { addoverlay: Overlay }) => void
+    onAddOverlay: (e: MapEventBase & { addoverlay: Partial<Overlay> }) => void
     /** 当使用Map.removeOverLay()方法移除单个覆盖物时会触发此事件 */
-    onRemoveOverlay: (e: MapEventBase & { removeoverlay: Overlay }) => void
+    onRemoveOverlay: (e: MapEventBase & { removeoverlay: Partial<Overlay> }) => void
     /** 当使用Map.addControl()方法向地图中添加单个控件时会触发此事件 */
     onAddControl: (e: MapEventBase & { addcontrol: Control }) => void
     /** 当使用Map.removeControl()方法移除单个控件时会触发此事件 */

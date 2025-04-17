@@ -1,5 +1,5 @@
 declare namespace T {
-  class InfoWindow extends OverlayCommon<InfoWindowProtoEvents> {
+  class InfoWindow extends OverlayEventListener<InfoWindowProtoEvents> {
     /**
      * 创建一个信息窗实例
      * @param content 信息窗口的内容
@@ -10,7 +10,7 @@ declare namespace T {
      * 获取叠加层类型
      * @var 3
      */
-    getType: () => number
+    getType: () => OverlayType
     /** 设置或改变信息浮窗所指向的地理位置坐标 */
     setLngLat: (lnglat: LngLat) => void
     /** 返回信息浮窗所指向的地理位置坐标 */
@@ -102,6 +102,8 @@ declare namespace T {
     open?: (event: MapEvent<InfoWindow>) => void
     /** 点击信息窗口的关闭按钮时触发此事件 */
     clickclose?: (event: MapEventBase<InfoWindow>) => void
+    /** 移除信息窗口时触发（调用map.removeOverLay(infoWindow)时触发） */
+    remove?: (event: MapEventBase<InfoWindow>) => void
   }
   interface InfoWindowEvents {
     /** 信息窗口被关闭时触发此事件 */
@@ -110,5 +112,7 @@ declare namespace T {
     onOpen?: (event: MapEvent<InfoWindow>) => void
     /** 点击信息窗口的关闭按钮时触发此事件 */
     onClickClose?: (event: MapEventBase<InfoWindow>) => void
+    /** 移除信息窗口时触发（调用map.removeOverLay(infoWindow)时触发） */
+    onRemove?: (event: MapEventBase<InfoWindow>) => void
   }
 }

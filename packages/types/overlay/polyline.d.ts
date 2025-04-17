@@ -49,42 +49,49 @@ declare namespace T {
   }
   interface PolylineOptions extends OverlayOptions {
     /**
-     * 折线颜色（可控）
+     * 折线颜色
+     * @description 可控
      * @default #0000FF
      */
     color?: string
     /**
-     * 折线的宽度，以像素为单位（可控）
+     * 折线的宽度，以像素为单位
+     * @description 可控
      * @default 3
      */
     weight?: number
     /**
-     * 折线的透明度（范围0-1 之间）（可控）
+     * 折线的透明度（范围0-1 之间）
+     * @description 可控
      * @default 0.5
      */
     opacity?: number
     /**
-     * 拆线的样式（solid或dashed）（可控）
+     * 拆线的样式（solid或dashed）
+     * @description 可控
      * @default solid
      */
     lineStyle?: LineStyle
 
     /** ------------------ ⬇ 补充类型 ------------------ */
 
-    /** 折线的点数组（可控） */
+    /**
+     *  折线的点数组
+     * @description 可控
+     */
     lngLats?: LngLat[]
 
     /** ------------------ ⬆ 补充类型 ------------------ */
   }
   /** 事件 */
   interface PolylineProtoEvents extends Partial<OverlayProtoEventsCommonProps<Polyline>> {
-    /** 移除折线时触发 */
+    /** 移除折线时触发（调用map.removeOverLay(polyline)时触发） */
     remove?: (event: MapEventBase<Polyline>) => void
     /** 发生编辑后触发 */
     edit?: (event: MapEventBase<Polyline>) => void
   }
   interface PolylineEvents extends Partial<OverlayEventsCommonProps<Polyline>> {
-    /** 移除折线时触发 */
+    /** 移除折线时触发（调用map.removeOverLay(polyline)时触发） */
     onRemove?: (event: MapEventBase<Polyline>) => void
     /** 发生编辑后触发 */
     onEdit?: (event: MapEventBase<Polyline>) => void

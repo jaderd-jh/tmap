@@ -18,7 +18,16 @@ const Rectangle = forwardRef<UnDef<T.Rectangle>, RectangleProps>(
     useInstanceAddRemove(map, rectangle, 'overLay')
     useInstanceVisible(rectangle, visible)
 
-    const lngLatBounds = useMemo(() => toBounds(bounds || [0, 0, 0, 0]), [bounds])
+    const lngLatBounds = useMemo(
+      () =>
+        toBounds(
+          bounds || [
+            [0, 0],
+            [0, 0],
+          ]
+        ),
+      [bounds]
+    )
 
     useEffect(() => {
       if (!readyRef.current) {

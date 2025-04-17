@@ -6,17 +6,15 @@ import { APILoader, Map, Marker } from '@jhqn/react-tmap'
 import { useState } from 'react'
 
 const Example = () => {
-  const [visible, setVisible] = useState(true)
   const [draggable, setDraggable] = useState(false)
 
   return (
     <>
-      <button onClick={() => setVisible(!visible)}>
-        {visible ? '隐藏' : '显示'}
-      </button>
-      <button onClick={() => setDraggable(!draggable)}>
-        {draggable ? '关闭拖拽' : '启用拖拽'}
-      </button>
+      <div style={{ background: 'white', padding: 10, position: 'absolute', color: 'black', fontSize: 16, zIndex: 999 }}>
+        <div onClick={() => setDraggable(!draggable)}>
+          {draggable ? '关闭拖拽' : '启用拖拽'}
+        </div>
+      </div>
       <Marker
         draggable={draggable}
         icon={{
@@ -25,7 +23,7 @@ const Example = () => {
           iconAnchor: [10, 25],
         }}
         lngLat={[120.26195, 29.27817]}
-        visible={visible}
+        visible={true}
         onClick={e => window.console.log('onClick', e)}
         onDragEnd={e => window.console.log('onDragEnd', e)}
       />
@@ -70,36 +68,36 @@ export default Demo
 
 ### 事件
 
-| 事件        | 说明                                 | 类型                                          |
-| ----------- | ------------------------------------ | --------------------------------------------- |
-| onClick     | 点击标注图标后会触发此事件           | ({type,target,lnglat,containerPoint}) => void |
-| onDblClick  | 双击标注图标后会触发此事件           | ({type,target,lnglat,containerPoint}) => void |
-| onMouseDown | 鼠标在标注图标上按下触发此事件       | ({type,target,lnglat,containerPoint}) => void |
-| onMouseUp   | 鼠标在标注图标释放触发此事件         | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOut  | 鼠标离开标注图标时触发此事件         | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOver | 当鼠标进入标注图标区域时会触发此事件 | ({type,target,lnglat,containerPoint}) => void |
-| onDragStart | 当用户拖动标注图标时触发             | ({type,target }) => void                      |
-| onDrag      | 当用户拖动标注图标时不断触发         | ({type,target,lnglat }) => void               |
-| onDragEnd   | 当用户停止拖动标注图标时触发         | ({type,target,lnglat }) => void               |
-| onRemove    | 移除标注图标时触发                   | ({type,target }) => void                      |
+| 事件        | 说明                                              | 类型                                          |
+| ----------- | ------------------------------------------------- | --------------------------------------------- |
+| onClick     | 鼠标左键单击触发                                  | ({type,target,lnglat,containerPoint}) => void |
+| onDblClick  | 鼠标左键双击触发                                  | ({type,target,lnglat,containerPoint}) => void |
+| onMouseDown | 鼠标按下触发                                      | ({type,target,lnglat,containerPoint}) => void |
+| onMouseUp   | 鼠标抬起触发                                      | ({type,target,lnglat,containerPoint}) => void |
+| onMouseOut  | 鼠标移出触发                                      | ({type,target,lnglat,containerPoint}) => void |
+| onMouseOver | 鼠标经过触发                                      | ({type,target,lnglat,containerPoint}) => void |
+| onDragStart | 拖动时触发                                        | ({type,target }) => void                      |
+| onDrag      | 拖动过程不断触发                                  | ({type,target,lnglat }) => void               |
+| onDragEnd   | 停止拖动时触发                                    | ({type,target,lnglat }) => void               |
+| onRemove    | 移除时触发（调用map.removeOverLay(marker)时触发） | ({type,target }) => void                      |
 
 ### 实例方法
 
 继承实例方法：[通用实例方法](/packages/react/src/overlay/index.zh-CN.md#实例方法)
 
-| 方法                | 说明                           | 类型                                     | 值  |
-| ------------------- | ------------------------------ | ---------------------------------------- | --- |
-| getType             | 叠加层类型                     | () => number                             | 2   |
-| getMap              | 返回标注所在的map对象          | () => Map                                |     |
-| setIcon             | 设置标注所用的图标对象         | (icon: Icon) => void                     |     |
-| getIcon             | 返回标记显示时所使用的图标对象 | () => Icon                               |     |
-| setLngLat           | 设置标注所在的地理位置坐标     | (lnglat: LngLat) => void                 |     |
-| getLngLat           | 返回标注所在的地理位置坐标     | () => LngLat                             |     |
-| setZIndexOffset     | 设置z-index                    | (num: number) => void                    |     |
-| enableDragging      | 开启标注拖拽功能               | () => void                               |     |
-| disableDragging     | 关闭标注拖拽功能               | () => void                               |     |
-| setOpacity          | 设置标注透明度                 | (opacity: number) => void                |     |
-| openInfoWindow      | 打开信息窗                     | (infoWindow: InfoWindow) => void         |     |
-| closeInfoWindow     | 关闭信息窗                     | () => void                               |     |
-| addEventListener    | 添加事件监听函数               | (event:String, handler:Function) => void |     |
-| removeEventListener | 移除事件监听函数               | (event:String, handler:Function) => void |     |
+| 方法                | 说明                           | 类型                                                                        | 值  |
+| ------------------- | ------------------------------ | --------------------------------------------------------------------------- | --- |
+| getType             | 叠加层类型                     | () => [OverlayType](/packages/react/src/overlay/index.zh-CN.md#overlaytype) | 2   |
+| getMap              | 返回标注所在的map对象          | () => Map                                                                   |     |
+| setIcon             | 设置标注所用的图标对象         | (icon: Icon) => void                                                        |     |
+| getIcon             | 返回标记显示时所使用的图标对象 | () => Icon                                                                  |     |
+| setLngLat           | 设置标注所在的地理位置坐标     | (lnglat: LngLat) => void                                                    |     |
+| getLngLat           | 返回标注所在的地理位置坐标     | () => LngLat                                                                |     |
+| setZIndexOffset     | 设置z-index                    | (num: number) => void                                                       |     |
+| enableDragging      | 开启标注拖拽功能               | () => void                                                                  |     |
+| disableDragging     | 关闭标注拖拽功能               | () => void                                                                  |     |
+| setOpacity          | 设置标注透明度                 | (opacity: number) => void                                                   |     |
+| openInfoWindow      | 打开信息窗                     | (infoWindow: InfoWindow) => void                                            |     |
+| closeInfoWindow     | 关闭信息窗                     | () => void                                                                  |     |
+| addEventListener    | 添加事件监听函数               | (event:String, handler:Function) => void                                    |     |
+| removeEventListener | 移除事件监听函数               | (event:String, handler:Function) => void                                    |     |

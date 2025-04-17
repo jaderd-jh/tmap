@@ -122,6 +122,12 @@ declare namespace T {
   }
 
   /** 事件 */
-  interface LabelProtoEvents extends Omit<Partial<OverlayProtoEventsCommonProps<Label>>, 'mouseover'> {}
-  interface LabelEvents extends Omit<Partial<OverlayEventsCommonProps<Label>>, 'onMouseOver'> {}
+  interface LabelProtoEvents extends Omit<Partial<OverlayProtoEventsCommonProps<Label>>, 'mouseover'> {
+    /** 移除文本标注时触发（调用map.removeOverLay(label)时触发） */
+    remove?: (event: MapEventBase<Label>) => void
+  }
+  interface LabelEvents extends Omit<Partial<OverlayEventsCommonProps<Label>>, 'onMouseOver'> {
+    /** 移除文本标注时触发（调用map.removeOverLay(label)时触发） */
+    onRemove?: (event: MapEventBase<Label>) => void
+  }
 }

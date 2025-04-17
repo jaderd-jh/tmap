@@ -73,7 +73,7 @@ declare namespace T {
     drag?: (event: MapEvent<Marker>) => void
     /** 当用户停止拖动标注图标时触发 */
     dragend?: (event: MapEvent<Marker>) => void
-    /** 移除标注图标时触发 */
+    /** 移除标注图标时触发（调用map.removeOverLay(marker)时触发） */
     remove?: (event: MapEventBase<Marker>) => void
   }
   interface MarkerEvents extends Partial<OverlayEventsCommonProps<Marker>> {
@@ -83,7 +83,7 @@ declare namespace T {
     onDrag?: (event: MapEvent<Marker>) => void
     /** 当用户停止拖动标注图标时触发 */
     onDragEnd?: (event: MapEvent<Marker>) => void
-    /** 移除标注图标时触发 */
+    /** 移除标注图标时触发（调用map.removeOverLay(marker)时触发） */
     onRemove?: (event: MapEventBase<Marker>) => void
   }
 }

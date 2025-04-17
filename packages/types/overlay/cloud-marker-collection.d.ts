@@ -1,6 +1,6 @@
 declare namespace T {
   /** 可以实现同时在地图上展示万级、密集的点数据。兼容chrome、safari、IE9及以上浏览器 */
-  class CloudMarkerCollection extends OverlayCommon<CloudMarkerCollectionProtoEvents> {
+  class CloudMarkerCollection extends OverlayEventListener<CloudMarkerCollectionProtoEvents> {
     /**
      * 创建海量点类
      * @param lnglats 点的坐标集合

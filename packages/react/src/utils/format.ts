@@ -64,7 +64,9 @@ export const toNestedLngLats = (lnglats: UnDef<T.LngLatLike[] | T.LngLatLike[][]
  */
 export const toBounds = (bounds: UnDef<T.BoundsLike>) => {
   if (isArray(bounds)) {
-    const [vector1, vector2, vector3, vector4] = bounds
+    const [southWest, northEast] = bounds
+    const [vector1, vector2] = southWest
+    const [vector3, vector4] = northEast
     return new T.LngLatBounds(new T.LngLat(vector1, vector2), new T.LngLat(vector3, vector4))
   }
   if (bounds) return bounds

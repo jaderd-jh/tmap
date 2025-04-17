@@ -18,7 +18,16 @@ const ImageOverlay = forwardRef<UnDef<T.ImageOverlay>, ImageOverlayProps>(
     useInstanceAddRemove(map, imageOverlay, 'overLay')
     useInstanceVisible(imageOverlay, visible)
 
-    const lngLatBounds = useMemo(() => toBounds(bounds || [0, 0, 0, 0]), [bounds])
+    const lngLatBounds = useMemo(
+      () =>
+        toBounds(
+          bounds || [
+            [0, 0],
+            [0, 0],
+          ]
+        ),
+      [bounds]
+    )
 
     useEffect(() => {
       if (!readyRef.current) {

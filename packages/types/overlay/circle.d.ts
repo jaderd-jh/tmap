@@ -109,13 +109,13 @@ declare namespace T {
   }
   /** 事件 */
   interface CircleProtoEvents extends Partial<OverlayProtoEventsCommonProps<Circle>> {
-    /** 移除圆时触发 */
+    /** 移除圆时触发（调用map.removeOverLay(circle)时触发） */
     remove?: (event: MapEventBase<Circle>) => void
     /** 发生编辑后触发 */
     edit?: (event: MapEventBase<Circle>) => void
   }
   interface CircleEvents extends Partial<OverlayEventsCommonProps<Circle>> {
-    /** 移除圆时触发 */
+    /** 移除圆时触发（调用map.removeOverLay(circle)时触发） */
     onRemove?: (event: MapEventBase<Circle>) => void
     /** 发生编辑后触发 */
     onEdit?: (event: MapEventBase<Circle>) => void

@@ -72,9 +72,9 @@ export default Demo
 
 | 事件        | 说明             | 类型                                          |
 | ----------- | ---------------- | --------------------------------------------- |
-| onClick     | 海量点的点击事件 | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOver | 海量点的移入事件 | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOut  | 海量点的移出事件 | ({type,target,lnglat,containerPoint}) => void |
+| onClick     | 鼠标左键单击触发 | ({type,target,lnglat,containerPoint}) => void |
+| onMouseOver | 鼠标移入触发     | ({type,target,lnglat,containerPoint}) => void |
+| onMouseOut  | 鼠标移出触发     | ({type,target,lnglat,containerPoint}) => void |
 
 ### 实例方法
 

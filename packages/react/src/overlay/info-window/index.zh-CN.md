@@ -11,9 +11,11 @@ const Example = () => {
   const [open, setOpen] = useState(true)
   return (
     <>
-      <button onClick={() => setOpen(!open)}>
-        {open ? '隐藏' : '显示'}
-      </button>
+      <div style={{ background: 'white', padding: 10, position: 'absolute', color: 'black', fontSize: 16, zIndex: 999 }}>
+        <div onClick={() => setOpen(!open)}>
+          {open ? '隐藏' : '显示'}
+        </div>
+      </div>
       <InfoWindow
         content="<p>标题</p><p>内容内容</p>"
         lngLat={[120.260173, 29.28412]}
@@ -105,25 +107,26 @@ export default Demo
 | offset         | 弹出窗口位置的补偿值                                   | 是       | Point \| Vector2       | Point(0,7) |
 
 ### 事件
-| 事件         | 说明                                                       | 类型                             |
-| ------------ | ---------------------------------------------------------- | -------------------------------- |
-| onClickClose | 点击信息窗口的关闭按钮时触发此事件                         | ({type, target}) => void         |
-| onClose      | 信息窗口被关闭时触发此事件（若开启自定义浮窗，此事件无效） | ({type, target, lnglat}) => void |
-| onOpen       | 信息窗口被打开时触发此事件                                 | ({type, target, lnglat}) => void |
+| 事件         | 说明                                                        | 类型                             |
+| ------------ | ----------------------------------------------------------- | -------------------------------- |
+| onClickClose | 点击信息窗的关闭按钮时触发                                  | ({type, target}) => void         |
+| onClose      | 信息窗被关闭时触发（若开启自定义浮窗，此事件无效）          | ({type, target, lnglat}) => void |
+| onOpen       | 信息窗被打开时触发                                          | ({type, target, lnglat}) => void |
+| onRemove     | 移除信息窗时触发（调用map.removeOverLay(infoWindow)时触发） | ({type,target}) => void          |
 
 ### 实例方法
 
-| 方法                | 说明                                           | 类型                                     | 值  |
-| ------------------- | ---------------------------------------------- | ---------------------------------------- | --- |
-| getType             | 叠加层类型                                     | () => number                             | 3   |
-| setLngLat           | 设置或改变信息浮窗所指向的地理位置坐标         | (lnglat: LngLat) => void                 |     |
-| getLngLat           | 返回信息浮窗所指向的地理位置坐标               | () => LngLat                             |     |
-| setOffset           | 设置信息浮窗显示时向右下角偏移量（像素）       | (point: Point) => void                   |     |
-| getOffset           | 返回信息浮窗显示时向右下角偏移量               | () => Point                              |     |
-| isOpen              | 返回信息窗口的打开状态                         | () => boolean                            |     |
-| setContent          | 设置信息浮窗的显示HTML内容                     | (content: string \| HTMLElement) => void |     |
-| getContent          | 返回信息浮窗的显示HTML内容                     | () => string \| HTMLElement              |     |
-| update              | 重绘信息窗口，当信息窗口内容发生变化时进行调用 | () => void                               |     |
-| closeInfoWindow     | 关闭信息浮窗                                   | () => void                               |     |
-| addEventListener    | 添加事件监听函数                               | (event:String, handler:Function) => void |     |
-| removeEventListener | 移除事件监听函数                               | (event:String, handler:Function) => void |     |
+| 方法                | 说明                                           | 类型                                                                        | 值  |
+| ------------------- | ---------------------------------------------- | --------------------------------------------------------------------------- | --- |
+| getType             | 叠加层类型                                     | () => [OverlayType](/packages/react/src/overlay/index.zh-CN.md#overlaytype) | 3   |
+| setLngLat           | 设置或改变信息浮窗所指向的地理位置坐标         | (lnglat: LngLat) => void                                                    |     |
+| getLngLat           | 返回信息浮窗所指向的地理位置坐标               | () => LngLat                                                                |     |
+| setOffset           | 设置信息浮窗显示时向右下角偏移量（像素）       | (point: Point) => void                                                      |     |
+| getOffset           | 返回信息浮窗显示时向右下角偏移量               | () => Point                                                                 |     |
+| isOpen              | 返回信息窗口的打开状态                         | () => boolean                                                               |     |
+| setContent          | 设置信息浮窗的显示HTML内容                     | (content: string \| HTMLElement) => void                                    |     |
+| getContent          | 返回信息浮窗的显示HTML内容                     | () => string \| HTMLElement                                                 |     |
+| update              | 重绘信息窗口，当信息窗口内容发生变化时进行调用 | () => void                                                                  |     |
+| closeInfoWindow     | 关闭信息浮窗                                   | () => void                                                                  |     |
+| addEventListener    | 添加事件监听函数                               | (event:String, handler:Function) => void                                    |     |
+| removeEventListener | 移除事件监听函数                               | (event:String, handler:Function) => void                                    |     |

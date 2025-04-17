@@ -1,13 +1,18 @@
 export interface PolygonProps extends T.PolygonEvents, Omit<T.PolygonOptions, 'lngLats'> {
   /**
    * 是否可见
+   * @description 可控
    * @default true
    */
   visible?: boolean
-  /** 边界数据 */
-  path?: T.LngLatLike[] | T.LngLatLike[][]
+  /**
+   * 边界数据
+   * @description 可控
+   */
+  lngLats?: T.LngLatLike[] | T.LngLatLike[][]
   /**
    * 是否启用编辑功能
+   * @description 可控
    * @default false
    */
   editable?: boolean
