@@ -1,29 +1,44 @@
 ## 覆盖物 - 文本标注
 
 ### 🔨 示例
-```jsx
-import { APILoader, Label, Map } from '@jhqn/react-tmap'
+```tsx
+import { APILoader, Label, Map, MapContext, toPoint } from '@jhqn/react-tmap'
+import { useContext, useRef } from 'react'
 
 const Example = () => {
+  const { map } = useContext(MapContext)
+
+  const labelRef = useRef<T.Label>()
+
   return (
-    <Label
-      backgroundColor="#ffffff20"
-      borderColor="#ffffff90"
-      borderLine={1}
-      fontColor="#fff"
-      label="文本标注"
-      lngLat={[120.26195, 29.27817]}
-      offset={[-10, 0]}
-      visible={true}
-    />
+    <>
+      <div style={{ background: 'white', padding: 10, position: 'absolute', color: 'black', fontSize: 16, zIndex: 999 }}>
+        <div onClick={() => labelRef.current?.setBorderLine(0)}>无边框</div>
+        <div onClick={() => {
+          // labelRef.current?.setOffset(new T.Point(10, 10))
+          labelRef.current?.setOffset(toPoint([10, 10]))
+        }}
+        >
+          设置偏移量
+        </div>
+      </div>
+      <Label
+        ref={labelRef}
+        backgroundColor="#ffffff20"
+        borderColor="#ffffff90"
+        borderLine={1}
+        fontColor="#fff"
+        label="文本标注"
+        lngLat={[120.26195, 29.27817]}
+        offset={[-10, 0]}
+        visible={true}
+      />
+    </>
   )
 }
 
 const Demo = () => (
-  <APILoader
-    style={{ width: '100%', height: '100%' }}
-    tkey="a7a90e05a37d3f6bf76d4a9032fc9129"
-  >
+  <APILoader style={{ width: '100%', height: '100%' }} tkey="a7a90e05a37d3f6bf76d4a9032fc9129">
     <Map center={[120.255393, 29.274522]} mapStyle="black" zoom={14}>
       <Example />
     </Map>
@@ -55,14 +70,14 @@ export default Demo
 
 ### 事件
 
-| 事件        | 说明                                               | 类型                                          |
-| ----------- | -------------------------------------------------- | --------------------------------------------- |
-| onClick     | 鼠标左键单击触发                                   | ({type,target,lnglat,containerPoint}) => void |
-| onDblClick  | 鼠标左键双击触发                                   | ({type,target,lnglat,containerPoint}) => void |
-| onMouseDown | 鼠标按下触发                                       | ({type,target,lnglat,containerPoint}) => void |
-| onMouseUp   | 鼠标抬起触发                                       | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOut  | 鼠标移出触发                                       | ({type,target,lnglat,containerPoint}) => void |
-| onRemove    | 移除圆时触发（调用map.removeOverLay(label)时触发） | ({type,target}) => void                       |
+| 事件        | 说明                                               | 类型                                             |
+| ----------- | -------------------------------------------------- | ------------------------------------------------ |
+| onClick     | 鼠标左键单击触发                                   | ({type, target, lnglat, containerPoint}) => void |
+| onDblClick  | 鼠标左键双击触发                                   | ({type, target, lnglat, containerPoint}) => void |
+| onMouseDown | 鼠标按下触发                                       | ({type, target, lnglat, containerPoint}) => void |
+| onMouseUp   | 鼠标抬起触发                                       | ({type, target, lnglat, containerPoint}) => void |
+| onMouseOut  | 鼠标移出触发                                       | ({type, target, lnglat, containerPoint}) => void |
+| onRemove    | 移除圆时触发（调用map.removeOverLay(label)时触发） | ({type, target}) => void                         |
 
 ### 实例方法
 
@@ -92,5 +107,5 @@ export default Demo
 | getBorderColor      | 返回文本的边框颜色         | () => string                                                                |     |
 | setOpacity          | 设置文本的显示不透明度     | (opacity: number) => void                                                   |     |
 | getOpacity          | 返回文本的显示透明度       | () => number                                                                |     |
-| addEventListener    | 添加事件监听函数           | (event:String, handler:Function) => void                                    |     |
-| removeEventListener | 移除事件监听函数           | (event:String, handler:Function) => void                                    |     |
+| addEventListener    | 添加事件监听函数           | (event: string, handler: function) => void                                  |     |
+| removeEventListener | 移除事件监听函数           | (event: string, handler: function) => void                                  |     |

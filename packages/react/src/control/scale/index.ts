@@ -1,2 +1,2 @@
-export { default as ControlScale } from './scale'
+export { default as Scale } from './scale'
 export * from './types'

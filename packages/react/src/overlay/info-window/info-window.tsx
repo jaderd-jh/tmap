@@ -39,7 +39,7 @@ const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
 
     useEffect(() => {
       if (map && !readyRef.current) {
-        const instance = new T.InfoWindow('', {
+        const instance = new T.InfoWindow(useContent, {
           ...props,
           offset: useOffset,
           closeButton: isCustom ? false : closeButton,
@@ -54,7 +54,6 @@ const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
       if (infoWindow) {
         if (isCustom) removeContentClass()
         if (open) {
-          infoWindow.setContent(useContent)
           map?.openInfoWindow(infoWindow, useLngLat!)
         } else {
           infoWindow.closeInfoWindow()

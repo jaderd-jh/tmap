@@ -1,2 +1,2 @@
 export * from './types'
-export { default as ControlZoom } from './zoom'
+export { default as Zoom } from './zoom'

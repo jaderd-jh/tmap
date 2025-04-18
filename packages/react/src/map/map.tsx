@@ -2,17 +2,19 @@ import type { UnDef, Undefinable } from '@/utils'
 import type { PropsWithChildren } from 'react'
 import type { MapProps } from './types'
 import { useEventProperties, useSetProperties } from '@/hooks'
-import { toLngLat } from '@/utils'
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { toBounds, toLngLat, toLngLats } from '@/utils'
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { MapContext } from './context'
 
 const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
   (
     {
-      zoom = 10,
-      center = [116.39128, 39.90714],
-      mapStyle,
+      center = [116.40769, 39.89945],
       container,
+      mapStyle,
+      maxBounds,
+      viewport,
+      zoom = 10,
       children,
       className,
       style,
@@ -27,10 +29,14 @@ const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
 
     useImperativeHandle(ref, () => map)
 
+    const useMaxBounds = useMemo(() => toBounds(maxBounds), [maxBounds])
+    const useCenter = useMemo(() => toLngLat(center), [center])
+    const useViewport = useMemo(() => toLngLats(viewport), [viewport])
+
     useEffect(() => {
       if (!readyRef.current) {
-        const tmap = new T.Map(container || containerRef.current!, { ...props })
-        tmap.centerAndZoom(toLngLat(center)!, zoom)
+        const tmap = new T.Map(container || containerRef.current!, props)
+        tmap.centerAndZoom(useCenter!, zoom)
         if (mapStyle) tmap.setStyle(mapStyle)
         readyRef.current = true
         setMap(tmap)
@@ -40,12 +46,18 @@ const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
     }, [map])
 
     useEffect(() => {
-      if (readyRef.current && center) map?.panTo(toLngLat(center)!)
-    }, [center])
+      if (readyRef.current && useCenter) map?.panTo(useCenter)
+    }, [useCenter])
 
     useEventProperties<T.Map, MapProps>(map, props)
 
-    useSetProperties<T.Map, T.MapOptions>(map, { zoom, ...props, style: mapStyle })
+    useSetProperties<T.Map, T.MapOptions>(map, {
+      ...props,
+      zoom,
+      style: mapStyle,
+      maxBounds: useMaxBounds,
+      viewport: useViewport,
+    })
 
     return (
       <div ref={containerRef} className={className} id="container" style={{ width: '100%', height: '100%', ...style }}>

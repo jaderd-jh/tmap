@@ -8,7 +8,7 @@ declare namespace T {
     /** 移除事件监听函数 */
     removeEventListener: <U extends keyof E>(event: U, handler: E[U]) => void
   }
-  class OverlayCommon<E = OverlayProtoEventsCommonProps> extends OverlayEventListener {
+  class OverlayCommon<E = OverlayProtoEventsCommonProps> extends OverlayEventListener<E> {
     /** 当地图状态发生变化时，由系统调用对覆盖物进行绘制。自定义覆盖物需要实现此方法 */
     update: () => void
     /** 在地图上显示叠加层 */
@@ -33,7 +33,7 @@ declare namespace T {
      */
     getType: () => OverlayType
   }
-  class Overlay<E = OverlayProtoEventsCommonProps> extends OverlayCommon {
+  class Overlay<E = OverlayProtoEventsCommonProps> extends OverlayCommon<E> {
     /** 构造函数时传递参数，对OverlayOptions属性值进行赋值 */
     // initialize: (...arg: any) => void
     /** 向地图上添加叠加物。当调用map.addOverLay时，API将调用此方法。自定义叠加物时需要实现此方法。自定义叠加物时需要将覆盖物对应的HTML元素返回 */

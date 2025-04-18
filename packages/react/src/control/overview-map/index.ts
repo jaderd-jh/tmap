@@ -1,2 +1,2 @@
-export { default as ControlOverviewMap } from './overview-map'
+export { default as OverviewMap } from './overview-map'
 export * from './types'

@@ -1,2 +1,2 @@
-export { default as ControlMapType } from './map-type'
+export { default as MapType } from './map-type'
 export * from './types'

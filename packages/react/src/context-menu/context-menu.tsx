@@ -74,7 +74,7 @@ export type CompoundedComponent = typeof ContextMenuCompound & {
   Divider: typeof Separator
 }
 
-export const ContextMenu: CompoundedComponent = ContextMenuCompound as CompoundedComponent
+export const ContextMenu = ContextMenuCompound as CompoundedComponent
 
 /** 菜单项 */
 ContextMenu.Item = MenuItem

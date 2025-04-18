@@ -1,12 +1,16 @@
 ## 覆盖物 - 折线
 
 ### 🔨 示例
-```jsx
-import { APILoader, Map, Polyline } from '@jhqn/react-tmap'
-import { useState } from 'react'
+```tsx
+import { APILoader, Map, MapContext, Polyline } from '@jhqn/react-tmap'
+import { useContext, useRef, useState } from 'react'
 
 const Example = () => {
+  const { map } = useContext(MapContext)
+
   const [editable, setEditable] = useState(false)
+
+  const polylineRef = useRef<T.Polyline>()
 
   return (
     <>
@@ -14,8 +18,19 @@ const Example = () => {
         <div onClick={() => setEditable(!editable)}>
           {editable ? '关闭编辑' : '启用编辑'}
         </div>
+        <div
+          onClick={() => {
+            const b = polylineRef.current?.getBounds()
+            const ne = b?.getNorthEast()
+            const sw = b?.getSouthWest()
+            window.console.log('地理范围', `[[${ne?.getLng()},${ne?.getLat()}],[${sw?.getLng()},${sw?.getLat()}]]`)
+          }}
+        >
+          获取折现地理范围
+        </div>
       </div>
       <Polyline
+        ref={polylineRef}
         color="#f9ff0b"
         editable={editable}
         lngLats={[
@@ -38,10 +53,7 @@ const Example = () => {
 }
 
 const Demo = () => (
-  <APILoader
-    style={{ width: '100%', height: '100%' }}
-    tkey="a7a90e05a37d3f6bf76d4a9032fc9129"
-  >
+  <APILoader style={{ width: '100%', height: '100%' }} tkey="a7a90e05a37d3f6bf76d4a9032fc9129">
     <Map center={[120.255393, 29.274522]} mapStyle="black" zoom={14}>
       <Example />
     </Map>
@@ -67,16 +79,16 @@ export default Demo
 
 ### 事件
 
-| 事件        | 说明                                                    | 类型                                          |
-| ----------- | ------------------------------------------------------- | --------------------------------------------- |
-| onClick     | 鼠标左键单击触发                                        | ({type,target,lnglat,containerPoint}) => void |
-| onDblClick  | 鼠标左键双击触发                                        | ({type,target,lnglat,containerPoint}) => void |
-| onMouseDown | 鼠标按下触发                                            | ({type,target,lnglat,containerPoint}) => void |
-| onMouseUp   | 鼠标抬起触发                                            | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOut  | 鼠标移出触发                                            | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOver | 鼠标经过触发                                            | ({type,target,lnglat,containerPoint}) => void |
-| onRemove    | 移除折线时触发（调用map.removeOverLay(polyline)时触发） | ({type,target}) => void                       |
-| onEdit      | 发生编辑后触发                                          | ({type,target}) => void                       |
+| 事件        | 说明                                                    | 类型                                             |
+| ----------- | ------------------------------------------------------- | ------------------------------------------------ |
+| onClick     | 鼠标左键单击触发                                        | ({type, target, lnglat, containerPoint}) => void |
+| onDblClick  | 鼠标左键双击触发                                        | ({type, target, lnglat, containerPoint}) => void |
+| onMouseDown | 鼠标按下触发                                            | ({type, target, lnglat, containerPoint}) => void |
+| onMouseUp   | 鼠标抬起触发                                            | ({type, target, lnglat, containerPoint}) => void |
+| onMouseOut  | 鼠标移出触发                                            | ({type, target, lnglat, containerPoint}) => void |
+| onMouseOver | 鼠标经过触发                                            | ({type, target, lnglat, containerPoint}) => void |
+| onRemove    | 移除折线时触发（调用map.removeOverLay(polyline)时触发） | ({type, target}) => void                         |
+| onEdit      | 发生编辑后触发                                          | ({type, target}) => void                         |
 
 ### 实例方法
 
@@ -100,5 +112,5 @@ export default Demo
 | enableEdit          | 启用折线编辑功能          | () => void                                                                  |     |
 | disableEdit         | 禁用折线编辑功能          | () => void                                                                  |     |
 | isEditable          | 是否启用折线编辑功能      | () => boolean                                                               |     |
-| addEventListener    | 添加事件监听函数          | (event:String, handler:Function) => void                                    |     |
-| removeEventListener | 移除事件监听函数          | (event:String, handler:Function) => void                                    |     |
+| addEventListener    | 添加事件监听函数          | (event: string, handler: function) => void                                  |     |
+| removeEventListener | 移除事件监听函数          | (event: string, handler: function) => void                                  |     |

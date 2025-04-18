@@ -76,7 +76,7 @@ declare namespace T {
      */
     getDistance: (start: LngLat, end: LngLat) => number
     /** 根据提供的地理区域或坐标获得最佳的地图视野，返回的对象中包含center和zoom属性，分别表示地图的中心点和级别 */
-    getViewport: (view: Array<LngLat>) => { center: LngLat; zoom: number }
+    getViewport: (view: LngLat[]) => { center: LngLat; zoom: number }
     /** -------------- ⬆ 获取地图状态方法 -------------- */
 
     /** -------------- ⬇ 修改地图状态方法 -------------- */
@@ -179,7 +179,7 @@ declare namespace T {
 
     /** -------------- ⬇ 地图图层方法 -------------- */
     /** 获取所有叠加层对象，可以自己判断需要移除哪些叠加层 */
-    getLayers: () => Array<TileLayer>
+    getLayers: () => TileLayer[]
     /**
      * 给地图添加一个叠加层对象
      * @param layer TileLayer对象
@@ -189,7 +189,7 @@ declare namespace T {
     removeLayer: (layer: TileLayer) => void
     /** 移除所有叠加层对象 */
     clearLayers: () => void
-    addContextMenu: (cContextMenu: ContextMenu) => void
+    addContextMenu: (contextMenu: ContextMenu) => void
     /** 添加事件监听函数 */
     addEventListener: <U extends keyof T.MapProtoEvents>(event: U, handler: E[U]) => void
     /** 移除事件监听函数 */
@@ -201,30 +201,53 @@ declare namespace T {
 
   interface MapOptions {
     /**
-     * 指定地图的投影方式（不可控），目前支持的地图投影方式有：EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)
-     * @description 墨卡托投影 EPSG:900913 和 大地平面投影 EPSG:4326（1万次/天）每次瓦片加载都消耗访问次数，极易达到访问上限
+     * 指定地图的投影方式，目前支持的地图投影方式有：EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影)
+     *  - EPSG:900913 墨卡托投影
+     *  - EPSG:4326 大地平面投影 （1万次/天，每次瓦片加载都消耗访问次数，极易达到访问上限）
+     * @description 不可控
      * @default EPSG:900913
      */
-    projection?: string | null
-    /** 地图允许展示的最小级别（可控） */
-    minZoom?: number | null
-    /** 地图允许展示的最大级别（可控） */
-    maxZoom?: number | null
+    projection?: string
     /**
-     * 设置地图视野（可控）
-     * @description 当这个选项被设置后，地图被限制在给定的地理边界内，当用户平移将地图拖动到视图以外的范围时会出现弹回的效果，并且也不允许缩小视图到给定范围以外的区域（这取决于地图的尺寸）。使用setMaxBounds方法可以动态地设置这种约束
+     * 地图允许展示的最小级别
+     * @description 可控
      */
-    maxBounds?: LngLatBounds | null
-    /** 地图的初始化中心点（可控） */
-    center?: LngLat | null
-    /** 地图的初始化级别（可控） */
+    minZoom?: number
+    /**
+     * 地图允许展示的最大级别
+     * @description 可控
+     */
+    maxZoom?: number
+    /**
+     * 地图最大视野边界
+     * @description 当这个选项被设置后，地图被限制在给定的地理边界内，当用户平移将地图拖动到视图以外的范围时会出现弹回的效果，并且也不允许缩小视图到给定范围以外的区域（这取决于地图的尺寸）。使用setMaxBounds方法可以动态地设置这种约束
+     * @description 可控
+     */
+    maxBounds?: LngLatBounds
+    /**
+     * 地图的初始化中心点
+     * @description 可控
+     */
+    center?: LngLat
+    /**
+     * 地图的初始化级别
+     * @description 可控
+     */
     zoom?: number
 
     /** ------------------ ⬇ 补充类型 ------------------ */
 
-    /** 地图视野（可控） */
+    /**
+     * 根据提供的坐标点数组，调整最佳视野
+     * @description 可控
+     */
     viewport?: LngLat[]
-    /** 地图的样式，分别为black，indigo（可控） */
+    /**
+     * 地图的样式
+     * - black
+     * - indigo
+     * @description 可控
+     */
     style?: MapStyle
 
     /** ------------------ ⬆ 补充类型 ------------------ */
@@ -249,120 +272,120 @@ declare namespace T {
   }
   interface MapProtoEvents {
     /** 左键单击地图时触发此事件 */
-    click: (e: MapEvent) => void
+    click: (e: MapEvent<Map>) => void
     /** 鼠标双击地图时会触发此事件 */
-    dblclick: (e: MapEvent) => void
+    dblclick: (e: MapEvent<Map>) => void
     /** 右键单击地图时触发此事件 */
-    contextmenu: (e: MapEvent) => void
+    contextmenu: (e: MapEvent<Map>) => void
     /** 鼠标在地图区域移动过程中触发此事件 */
-    mousemove: (e: MapEvent) => void
+    mousemove: (e: MapEvent<Map>) => void
     /** 鼠标移入地图区域时触发此事件 */
-    mouseover: (e: MapEvent) => void
+    mouseover: (e: MapEvent<Map>) => void
     /** 鼠标移出地图区域时触发此事件 */
-    mouseout: (e: MapEvent) => void
+    mouseout: (e: MapEvent<Map>) => void
     /** 地图移动开始时触发此事件 */
-    movestart: (e: MapEventBase) => void
+    movestart: (e: MapEventBase<Map>) => void
     /** 地图移动过程中触发此事件 */
-    move: (e: MapEventBase) => void
+    move: (e: MapEventBase<Map>) => void
     /** 地图移动结束时触发此事件 */
-    moveend: (e: MapEventBase) => void
+    moveend: (e: MapEventBase<Map>) => void
     /** 地图更改缩放级别开始时触发触发此事件 */
-    zoomstart: (e: MapEventBase) => void
+    zoomstart: (e: MapEventBase<Map>) => void
     /** 地图更改缩放级别结束时触发触发此事件 */
-    zoomend: (e: MapEventBase) => void
+    zoomend: (e: MapEventBase<Map>) => void
     /** 当使用Map.addOverLay()方法向地图中添加单个覆盖物时会触发此事件 */
-    addoverlay: (e: MapEventBase & { addoverlay: Partial<Overlay> }) => void
+    addoverlay: (e: MapEventBase<Map> & { addoverlay: Partial<Overlay> }) => void
     /** 当使用Map.removeOverLay()方法移除单个覆盖物时会触发此事件 */
-    removeoverlay: (e: MapEventBase & { removeoverlay: Partial<Overlay> }) => void
+    removeoverlay: (e: MapEventBase<Map> & { removeoverlay: Partial<Overlay> }) => void
     /** 当使用Map.addControl()方法向地图中添加单个控件时会触发此事件 */
-    addcontrol: (e: MapEventBase & { addcontrol: Control }) => void
+    addcontrol: (e: MapEventBase<Map> & { addcontrol: Control }) => void
     /** 当使用Map.removeControl()方法移除单个控件时会触发此事件 */
-    removecontrol: (e: MapEventBase & { removecontrol: Control }) => void
+    removecontrol: (e: MapEventBase<Map> & { removecontrol: Control }) => void
     /** 当使用Map.clearOverlays()方法一次性移除全部覆盖物时会触发此事件 */
-    clearoverlays: (e: MapEventBase) => void
+    clearoverlays: (e: MapEventBase<Map>) => void
     /** 开始拖拽地图时触发 */
-    dragstart: (e: MapEventBase) => void
+    dragstart: (e: MapEventBase<Map>) => void
     /** 拖拽地图过程中触发 */
-    drag: (e: MapEventBase) => void
+    drag: (e: MapEventBase<Map>) => void
     /** 停止拖拽地图时触发 */
-    dragend: (e: MapEventBase) => void
+    dragend: (e: MapEventBase<Map>) => void
     /** 添加一个自定义地图图层时触发此事件 */
-    layeradd: (e: MapEventBase & { layer: TileLayer }) => void
+    layeradd: (e: MapEventBase<Map> & { layer: TileLayer }) => void
     /** 移除一个自定义地图图层时触发此事件 */
-    layerremove: (e: MapEventBase & { layer: TileLayer }) => void
+    layerremove: (e: MapEventBase<Map> & { layer: TileLayer }) => void
     /** 调用Map.centerAndZoom()方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图瓦片 */
-    load: (e: MapEventBase) => void
+    load: (e: MapEventBase<Map>) => void
     /** 地图可视区域大小发生变化时会触发此事件 */
-    resize: (e: MapEventBase & { newSize: Point; oldSize: Point }) => void
+    resize: (e: MapEventBase<Map> & { newSize: Point; oldSize: Point }) => void
     /** 调用setMinZoom和setMaxZoom时会触发此事件 */
-    levels: (e: MapEventBase & { minZoom: number; maxZoom: number }) => void
+    levels: (e: MapEventBase<Map> & { minZoom: number; maxZoom: number }) => void
     /** 触摸开始时触发此事件，仅适用移动设备 */
-    touchstart: (e: MapEvent) => void
+    touchstart: (e: MapEvent<Map>) => void
     /** 触摸移动时触发此事件，仅适用移动设备 */
-    touchmove: (e: MapEvent) => void
+    touchmove: (e: MapEvent<Map>) => void
     /** 触摸结束时触发此事件，仅适用移动设备 */
-    touchend: (e: MapEvent) => void
+    touchend: (e: MapEvent<Map>) => void
     /** 长按事件，仅适用移动设备 */
-    longpress: (e: MapEvent) => void
+    longpress: (e: MapEvent<Map>) => void
   }
 
   interface MapEvents {
     /** 左键单击地图时触发此事件 */
-    onClick: (e: MapEvent) => void
+    onClick: (e: MapEvent<Map>) => void
     /** 鼠标双击地图时会触发此事件 */
-    onDblClick: (e: MapEvent) => void
+    onDblClick: (e: MapEvent<Map>) => void
     /** 右键单击地图时触发此事件 */
-    onContextMenu: (e: MapEvent) => void
+    onContextMenu: (e: MapEvent<Map>) => void
     /** 鼠标在地图区域移动过程中触发此事件 */
-    onMouseMove: (e: MapEvent) => void
+    onMouseMove: (e: MapEvent<Map>) => void
     /** 鼠标移入地图区域时触发此事件 */
-    onMouseOver: (e: MapEvent) => void
+    onMouseOver: (e: MapEvent<Map>) => void
     /** 鼠标移出地图区域时触发此事件 */
-    onMouseOut: (e: MapEvent) => void
+    onMouseOut: (e: MapEvent<Map>) => void
     /** 地图移动开始时触发此事件 */
-    onMoveStart: (e: MapEventBase) => void
+    onMoveStart: (e: MapEventBase<Map>) => void
     /** 地图移动过程中触发此事件 */
-    onMove: (e: MapEventBase) => void
+    onMove: (e: MapEventBase<Map>) => void
     /** 地图移动结束时触发此事件 */
-    onMoveEnd: (e: MapEventBase) => void
+    onMoveEnd: (e: MapEventBase<Map>) => void
     /** 地图更改缩放级别开始时触发触发此事件 */
-    onZoomStart: (e: MapEventBase) => void
+    onZoomStart: (e: MapEventBase<Map>) => void
     /** 地图更改缩放级别结束时触发触发此事件 */
-    onZoomEnd: (e: MapEventBase) => void
+    onZoomEnd: (e: MapEventBase<Map>) => void
     /** 当使用Map.addOverLay()方法向地图中添加单个覆盖物时会触发此事件 */
-    onAddOverlay: (e: MapEventBase & { addoverlay: Partial<Overlay> }) => void
+    onAddOverlay: (e: MapEventBase<Map> & { addoverlay: Partial<Overlay> }) => void
     /** 当使用Map.removeOverLay()方法移除单个覆盖物时会触发此事件 */
-    onRemoveOverlay: (e: MapEventBase & { removeoverlay: Partial<Overlay> }) => void
+    onRemoveOverlay: (e: MapEventBase<Map> & { removeoverlay: Partial<Overlay> }) => void
     /** 当使用Map.addControl()方法向地图中添加单个控件时会触发此事件 */
-    onAddControl: (e: MapEventBase & { addcontrol: Control }) => void
+    onAddControl: (e: MapEventBase<Map> & { addcontrol: Control }) => void
     /** 当使用Map.removeControl()方法移除单个控件时会触发此事件 */
-    onRemoveControl: (e: MapEventBase & { removecontrol: Control }) => void
+    onRemoveControl: (e: MapEventBase<Map> & { removecontrol: Control }) => void
     /** 当使用Map.clearOverlays()方法一次性移除全部覆盖物时会触发此事件 */
-    onClearOverlays: (e: MapEventBase) => void
+    onClearOverlays: (e: MapEventBase<Map>) => void
     /** 开始拖拽地图时触发 */
-    onDragstart: (e: MapEventBase) => void
+    onDragstart: (e: MapEventBase<Map>) => void
     /** 拖拽地图过程中触发 */
-    onDrag: (e: MapEventBase) => void
+    onDrag: (e: MapEventBase<Map>) => void
     /** 停止拖拽地图时触发 */
-    onDragend: (e: MapEventBase) => void
+    onDragend: (e: MapEventBase<Map>) => void
     /** 添加一个自定义地图图层时触发此事件 */
-    onLayerAdd: (e: MapEventBase & { layer: TileLayer }) => void
+    onLayerAdd: (e: MapEventBase<Map> & { layer: TileLayer }) => void
     /** 移除一个自定义地图图层时触发此事件 */
-    onLayerRemove: (e: MapEventBase & { layer: TileLayer }) => void
+    onLayerRemove: (e: MapEventBase<Map> & { layer: TileLayer }) => void
     /** 调用Map.centerAndZoom()方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图瓦片 */
-    onLoad: (e: MapEventBase) => void
+    onLoad: (e: MapEventBase<Map>) => void
     /** 地图可视区域大小发生变化时会触发此事件 */
-    onResize: (e: MapEventBase & { newSize: Point; oldSize: Point }) => void
+    onResize: (e: MapEventBase<Map> & { newSize: Point; oldSize: Point }) => void
     /** 调用setMinZoom和setMaxZoom时会触发此事件 */
-    onLevels: (e: MapEventBase & { minZoom: number; maxZoom: number }) => void
+    onLevels: (e: MapEventBase<Map> & { minZoom: number; maxZoom: number }) => void
     /** 触摸开始时触发此事件，仅适用移动设备 */
-    onTouchStart: (e: MapEvent) => void
+    onTouchStart: (e: MapEvent<Map>) => void
     /** 触摸移动时触发此事件，仅适用移动设备 */
-    onTouchMove: (e: MapEvent) => void
+    onTouchMove: (e: MapEvent<Map>) => void
     /** 触摸结束时触发此事件，仅适用移动设备 */
-    onTouchEnd: (e: MapEvent) => void
+    onTouchEnd: (e: MapEvent<Map>) => void
     /** 长按事件，仅适用移动设备 */
-    onLongPress: (e: MapEvent) => void
+    onLongPress: (e: MapEvent<Map>) => void
   }
 
   interface MapEventListener<E> {

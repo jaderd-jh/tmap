@@ -6,7 +6,7 @@ import { toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 切换地图类型控件 */
-const ControlMapType = forwardRef<UnDef<T.ControlMapType>, ControlMapTypeProps>(
+const MapType = forwardRef<UnDef<T.ControlMapType>, ControlMapTypeProps>(
   ({ visible, offset, position, mapTypes }, ref) => {
     const { map } = useContext(MapContext)
 
@@ -33,4 +33,4 @@ const ControlMapType = forwardRef<UnDef<T.ControlMapType>, ControlMapTypeProps>(
     return <></>
   }
 )
-export default ControlMapType
+export default MapType

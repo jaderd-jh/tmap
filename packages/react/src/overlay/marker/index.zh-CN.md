@@ -1,12 +1,17 @@
 ## 覆盖物 - 图像标注
 
 ### 🔨 示例
-```jsx
-import { APILoader, Map, Marker } from '@jhqn/react-tmap'
-import { useState } from 'react'
+```tsx
+import { APILoader, InfoWindow, Map, MapContext, Marker } from '@jhqn/react-tmap'
+import { useContext, useRef, useState } from 'react'
 
 const Example = () => {
+  const { map } = useContext(MapContext)
+
   const [draggable, setDraggable] = useState(false)
+
+  const markerRef = useRef<T.Marker>()
+  const infoWindowRef = useRef<T.InfoWindow>()
 
   return (
     <>
@@ -14,8 +19,12 @@ const Example = () => {
         <div onClick={() => setDraggable(!draggable)}>
           {draggable ? '关闭拖拽' : '启用拖拽'}
         </div>
+        <div onClick={() => markerRef.current?.openInfoWindow(infoWindowRef.current!)}> 打开信息窗 </div>
+        <div onClick={() => markerRef.current?.closeInfoWindow()}>关闭信息窗</div>
+        <div>……</div>
       </div>
       <Marker
+        ref={markerRef}
         draggable={draggable}
         icon={{
           iconUrl: 'http://api.tianditu.gov.cn/img/map/markerA.png',
@@ -27,15 +36,16 @@ const Example = () => {
         onClick={e => window.console.log('onClick', e)}
         onDragEnd={e => window.console.log('onDragEnd', e)}
       />
+      <InfoWindow
+        ref={infoWindowRef}
+        content="<p>标题</p><p>内容内容</p>"
+      />
     </>
   )
 }
 
 const Demo = () => (
-  <APILoader
-    style={{ width: '100%', height: '100%' }}
-    tkey="a7a90e05a37d3f6bf76d4a9032fc9129"
-  >
+  <APILoader style={{ width: '100%', height: '100%' }} tkey="a7a90e05a37d3f6bf76d4a9032fc9129">
     <Map center={[120.255393, 29.274522]} mapStyle="black" zoom={14}>
       <Example />
     </Map>
@@ -68,18 +78,18 @@ export default Demo
 
 ### 事件
 
-| 事件        | 说明                                              | 类型                                          |
-| ----------- | ------------------------------------------------- | --------------------------------------------- |
-| onClick     | 鼠标左键单击触发                                  | ({type,target,lnglat,containerPoint}) => void |
-| onDblClick  | 鼠标左键双击触发                                  | ({type,target,lnglat,containerPoint}) => void |
-| onMouseDown | 鼠标按下触发                                      | ({type,target,lnglat,containerPoint}) => void |
-| onMouseUp   | 鼠标抬起触发                                      | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOut  | 鼠标移出触发                                      | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOver | 鼠标经过触发                                      | ({type,target,lnglat,containerPoint}) => void |
-| onDragStart | 拖动时触发                                        | ({type,target }) => void                      |
-| onDrag      | 拖动过程不断触发                                  | ({type,target,lnglat }) => void               |
-| onDragEnd   | 停止拖动时触发                                    | ({type,target,lnglat }) => void               |
-| onRemove    | 移除时触发（调用map.removeOverLay(marker)时触发） | ({type,target }) => void                      |
+| 事件        | 说明                                              | 类型                                             |
+| ----------- | ------------------------------------------------- | ------------------------------------------------ |
+| onClick     | 鼠标左键单击触发                                  | ({type, target, lnglat, containerPoint}) => void |
+| onDblClick  | 鼠标左键双击触发                                  | ({type, target, lnglat, containerPoint}) => void |
+| onMouseDown | 鼠标按下触发                                      | ({type, target, lnglat, containerPoint}) => void |
+| onMouseUp   | 鼠标抬起触发                                      | ({type, target, lnglat, containerPoint}) => void |
+| onMouseOut  | 鼠标移出触发                                      | ({type, target, lnglat, containerPoint}) => void |
+| onMouseOver | 鼠标经过触发                                      | ({type, target, lnglat, containerPoint}) => void |
+| onDragStart | 拖动时触发                                        | ({type, target}) => void                         |
+| onDrag      | 拖动过程不断触发                                  | ({type, target, lnglat}) => void                 |
+| onDragEnd   | 停止拖动时触发                                    | ({type, target, lnglat}) => void                 |
+| onRemove    | 移除时触发（调用map.removeOverLay(marker)时触发） | ({type, target}) => void                         |
 
 ### 实例方法
 
@@ -99,5 +109,5 @@ export default Demo
 | setOpacity          | 设置标注透明度                 | (opacity: number) => void                                                   |     |
 | openInfoWindow      | 打开信息窗                     | (infoWindow: InfoWindow) => void                                            |     |
 | closeInfoWindow     | 关闭信息窗                     | () => void                                                                  |     |
-| addEventListener    | 添加事件监听函数               | (event:String, handler:Function) => void                                    |     |
-| removeEventListener | 移除事件监听函数               | (event:String, handler:Function) => void                                    |     |
+| addEventListener    | 添加事件监听函数               | (event: string, handler: function) => void                                  |     |
+| removeEventListener | 移除事件监听函数               | (event: string, handler: function) => void                                  |     |

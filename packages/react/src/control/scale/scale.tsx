@@ -6,7 +6,7 @@ import { toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 地图比例尺控件 */
-const ControlScale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
+const Scale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
   ({ visible, offset, position, color, ...props }, ref) => {
     const { map } = useContext(MapContext)
 
@@ -33,4 +33,4 @@ const ControlScale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
     return <></>
   }
 )
-export default ControlScale
+export default Scale

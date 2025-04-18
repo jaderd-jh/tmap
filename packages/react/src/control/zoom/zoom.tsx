@@ -6,31 +6,29 @@ import { toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 地图缩放控件 */
-const ControlZoom = forwardRef<UnDef<T.ControlZoom>, ControlZoomProps>(
-  ({ visible, offset, position, ...props }, ref) => {
-    const { map } = useContext(MapContext)
+const Zoom = forwardRef<UnDef<T.ControlZoom>, ControlZoomProps>(({ visible, offset, position, ...props }, ref) => {
+  const { map } = useContext(MapContext)
 
-    const [controlZoom, setControlZoom] = useState<T.ControlZoom>()
-    const readyRef = useRef<boolean>(false)
+  const [controlZoom, setControlZoom] = useState<T.ControlZoom>()
+  const readyRef = useRef<boolean>(false)
 
-    useImperativeHandle(ref, () => controlZoom)
+  useImperativeHandle(ref, () => controlZoom)
 
-    useInstanceVisible(controlZoom, visible)
-    useInstanceAddRemove(map, controlZoom, 'control')
+  useInstanceVisible(controlZoom, visible)
+  useInstanceAddRemove(map, controlZoom, 'control')
 
-    useEffect(() => {
-      if (!readyRef.current) {
-        const instance = new T.Control.Zoom(props)
-        readyRef.current = true
-        setControlZoom(instance)
-      }
-    }, [])
+  useEffect(() => {
+    if (!readyRef.current) {
+      const instance = new T.Control.Zoom(props)
+      readyRef.current = true
+      setControlZoom(instance)
+    }
+  }, [])
 
-    const useOffset = useMemo(() => toPoint(offset), [offset])
+  const useOffset = useMemo(() => toPoint(offset), [offset])
 
-    useSetProperties<T.ControlZoom, T.ControlZoomOptions>(controlZoom, { position, offset: useOffset }, true)
+  useSetProperties<T.ControlZoom, T.ControlZoomOptions>(controlZoom, { position, offset: useOffset }, true)
 
-    return <></>
-  }
-)
-export default ControlZoom
+  return <></>
+})
+export default Zoom

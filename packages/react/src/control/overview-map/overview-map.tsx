@@ -6,7 +6,7 @@ import { isArray, toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 缩略地图控件 */
-const ControlOverviewMap = forwardRef<UnDef<T.ControlOverviewMap>, ControlOverviewMapProps>(
+const OverviewMap = forwardRef<UnDef<T.ControlOverviewMap>, ControlOverviewMapProps>(
   ({ visible, size = [150, 150], offset, position, buttonImage, ...props }, ref) => {
     const { map } = useContext(MapContext)
 
@@ -49,4 +49,4 @@ const ControlOverviewMap = forwardRef<UnDef<T.ControlOverviewMap>, ControlOvervi
     return <></>
   }
 )
-export default ControlOverviewMap
+export default OverviewMap

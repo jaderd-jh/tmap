@@ -2,7 +2,7 @@
 
 ### 🔨 示例
 ```tsx
-import { APILoader, InfoWindow, Map, MarkerCluster, requireScript, toIcon, toLngLat, toPoint } from '@jhqn/react-tmap'
+import { APILoader, InfoWindow, Map, MapContext, MarkerCluster, requireScript, toIcon, toLngLat, toPoint } from '@jhqn/react-tmap'
 import { useEffect, useMemo, useState } from 'react'
 
 const markerClusterStyles: T.MarkerClusterStyle[] = [
@@ -33,6 +33,8 @@ const markerClusterStyles: T.MarkerClusterStyle[] = [
 ]
 
 const Example = () => {
+  const { map } = useContext(MapContext)
+
   const [lnglats, setLnglats] = useState<T.Vector2[]>()
 
   const [curLnglat, setCurLnglat] = useState<T.Vector2>()
@@ -139,19 +141,19 @@ export default Demo
 
 ### 事件
 
-| 事件               | 说明                   | 类型                                          |
-| ------------------ | ---------------------- | --------------------------------------------- |
-| onClusterClick     | 聚合点鼠标左键单击触发 | ({type,target,lnglat,containerPoint}) => void |
-| onClusterMouseDown | 聚合点鼠标按下触发     | ({type,target,lnglat,containerPoint}) => void |
-| onClusterMouseUp   | 聚合点鼠标抬起触发     | ({type,target,lnglat,containerPoint}) => void |
-| onClusterMouseOut  | 聚合点鼠标移出触发     | ({type,target,lnglat,containerPoint}) => void |
-| onClusterMouseOver | 聚合点鼠标经过触发     | ({type,target,lnglat,containerPoint}) => void |
-| onClick            | 标注点鼠标左键单击触发 | ({type,target,lnglat,containerPoint}) => void |
-| onDblClick         | 标注点鼠标左键双击触发 | ({type,target,lnglat,containerPoint}) => void |
-| onMouseDown        | 标注点鼠标按下触发     | ({type,target,lnglat,containerPoint}) => void |
-| onMouseUp          | 标注点鼠标抬起触发     | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOut         | 标注点鼠标移出触发     | ({type,target,lnglat,containerPoint}) => void |
-| onMouseOver        | 标注点鼠标经过触发     | ({type,target,lnglat,containerPoint}) => void |
+| 事件               | 说明                   | 类型                                             |
+| ------------------ | ---------------------- | ------------------------------------------------ |
+| onClusterClick     | 聚合点鼠标左键单击触发 | ({type, target, lnglat, containerPoint}) => void |
+| onClusterMouseDown | 聚合点鼠标按下触发     | ({type, target, lnglat, containerPoint}) => void |
+| onClusterMouseUp   | 聚合点鼠标抬起触发     | ({type, target, lnglat, containerPoint}) => void |
+| onClusterMouseOut  | 聚合点鼠标移出触发     | ({type, target, lnglat, containerPoint}) => void |
+| onClusterMouseOver | 聚合点鼠标经过触发     | ({type, target, lnglat, containerPoint}) => void |
+| onClick            | 标注点鼠标左键单击触发 | ({type, target, lnglat, containerPoint}) => void |
+| onDblClick         | 标注点鼠标左键双击触发 | ({type, target, lnglat, containerPoint}) => void |
+| onMouseDown        | 标注点鼠标按下触发     | ({type, target, lnglat, containerPoint}) => void |
+| onMouseUp          | 标注点鼠标抬起触发     | ({type, target, lnglat, containerPoint}) => void |
+| onMouseOut         | 标注点鼠标移出触发     | ({type, target, lnglat, containerPoint}) => void |
+| onMouseOver        | 标注点鼠标经过触发     | ({type, target, lnglat, containerPoint}) => void |
 
 ### 实例方法
 
@@ -174,5 +176,5 @@ export default Demo
 | setGridSize         | 设置网格大小               | (size: number) => void                                                      |     |
 | setMaxZoom          | 设置聚合的最大缩放级别     | (maxZoom: number) => void                                                   |     |
 | setStylesL          | 设置聚合的样式风格集合     | (styles: [MarkerClusterStyle[]](#markerclusterstyle)) => void               |     |
-| addEventListener    | 添加事件监听函数           | (event:String, handler:Function) => void                                    |     |
-| removeEventListener | 移除事件监听函数           | (event:String, handler:Function) => void                                    |     |
+| addEventListener    | 添加事件监听函数           | (event: string, handler: function) => void                                  |     |
+| removeEventListener | 移除事件监听函数           | (event: string, handler: function) => void                                  |     |

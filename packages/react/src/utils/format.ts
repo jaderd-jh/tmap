@@ -7,7 +7,7 @@ import { isArray, isObject, isString } from '@/utils'
  */
 export const toLngLat = (lnglat: UnDef<T.LngLatLike>) => {
   if (isArray(lnglat)) {
-    const [lng = 0, lat = 0] = lnglat
+    const [lng, lat] = lnglat
     return new T.LngLat(lng, lat)
   }
   if (lnglat) return lnglat as T.LngLat
@@ -22,11 +22,11 @@ export const toLngLats = (lnglats: UnDef<T.LngLatLike[]>) => {
     return lnglats
       .map(lnglat => {
         if (isArray(lnglat)) {
-          const [lng = 0, lat = 0] = lnglat
+          const [lng, lat] = lnglat
           return new T.LngLat(lng, lat)
         }
         if (lnglat) return lnglat
-        return null
+        return undefined
       })
       .filter(Boolean) as T.LngLat[]
   }
@@ -37,21 +37,18 @@ export const toLngLats = (lnglats: UnDef<T.LngLatLike[]>) => {
  * @param lnglats 经纬度数组
  */
 export const toNestedLngLats = (lnglats: UnDef<T.LngLatLike[] | T.LngLatLike[][]>) => {
-  if (isArray(lnglats) && !!lnglats.length) {
+  if (isArray(lnglats)) {
     return lnglats.map(lnglat => {
       if (isArray(lnglat)) {
-        const [lng = 0, lat = 0] = lnglat
+        const [lng, lat] = lnglat
         if (typeof lng === 'number' && typeof lat === 'number') return new T.LngLat(lng, lat)
-        return lnglat
-          .map(ll => {
-            if (isArray(ll)) {
-              const [ln, la] = ll
-              return new T.LngLat(ln, la)
-            }
-            if (ll) return ll
-            return null
-          })
-          .filter(Boolean) as T.LngLat[]
+        return lnglat.map(ll => {
+          if (isArray(ll)) {
+            const [ln, la] = ll
+            return new T.LngLat(ln, la)
+          }
+          return ll as T.LngLat
+        })
       }
       return lnglat
     })
