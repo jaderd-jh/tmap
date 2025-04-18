@@ -99,17 +99,18 @@ declare namespace T {
      * @default solid
      */
     lineStyle?: 'solid' | 'dashed'
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
-
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface PolygonOptionsExtend extends PolygonOptions {
     /**
      * 多边形的点数组
      * @description 可控
      */
     lngLats?: (T.LngLat | T.LngLat[])[]
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
+
   /** 事件 */
   interface PolygonProtoEvents extends Partial<OverlayProtoEventsCommonProps<Polygon>> {
     /** 移除多边形时触发（调用map.removeOverLay(polygon)时触发） */

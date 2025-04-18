@@ -91,9 +91,10 @@ declare namespace T {
      * @description 可控
      */
     lineStyle?: LineStyle
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
-
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface CircleOptionsExtend extends CircleOptions {
     /**
      * 圆心经纬度坐标
      * @description 可控
@@ -104,9 +105,9 @@ declare namespace T {
      * @description 可控
      */
     radius?: number
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
+
   /** 事件 */
   interface CircleProtoEvents extends Partial<OverlayProtoEventsCommonProps<Circle>> {
     /** 移除圆时触发（调用map.removeOverLay(circle)时触发） */

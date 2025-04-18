@@ -1,4 +1,4 @@
-export interface CircleProps extends T.CircleEvents, Omit<T.CircleOptions, 'center'> {
+export interface CircleProps extends T.CircleEvents, Omit<T.CircleOptionsExtend, 'center'> {
   /**
    * 是否可见
    * @default true

@@ -72,17 +72,18 @@ declare namespace T {
      * @default solid
      */
     lineStyle?: LineStyle
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
-
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface PolylineOptionsExtend extends PolylineOptions {
     /**
      *  折线的点数组
      * @description 可控
      */
     lngLats?: LngLat[]
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
+
   /** 事件 */
   interface PolylineProtoEvents extends Partial<OverlayProtoEventsCommonProps<Polyline>> {
     /** 移除折线时触发（调用map.removeOverLay(polyline)时触发） */

@@ -1,4 +1,4 @@
-export interface PolygonProps extends T.PolygonEvents, Omit<T.PolygonOptions, 'lngLats'> {
+export interface PolygonProps extends T.PolygonEvents, Omit<T.PolygonOptionsExtend, 'lngLats'> {
   /**
    * 是否可见
    * @description 可控

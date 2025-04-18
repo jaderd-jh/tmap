@@ -54,17 +54,18 @@ declare namespace T {
      * @default 1.0
      */
     opacity?: number
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
-
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface MarkerOptionsExtend extends MarkerOptions {
     /**
      * 标注所在的地理位置坐标
      * @description 可控
      */
     lngLat?: LngLat
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
+
   /** 事件 */
   interface MarkerProtoEvents extends Partial<OverlayProtoEventsCommonProps<Marker>> {
     /** 当用户拖动标注图标时触发 */

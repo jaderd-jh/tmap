@@ -46,7 +46,7 @@ const Rectangle = forwardRef<UnDef<T.Rectangle>, RectangleProps>(
 
     useEventProperties<T.Rectangle, RectangleProps>(rectangle, props)
 
-    useSetProperties<T.Rectangle, T.RectangleOptions>(rectangle, { ...props, bounds: lngLatBounds })
+    useSetProperties<T.Rectangle, T.RectangleOptionsExtend>(rectangle, { ...props, bounds: lngLatBounds })
 
     return <></>
   }

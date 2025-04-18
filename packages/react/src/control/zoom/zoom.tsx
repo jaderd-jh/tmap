@@ -27,7 +27,7 @@ const Zoom = forwardRef<UnDef<T.ControlZoom>, ControlZoomProps>(({ visible, offs
 
   const useOffset = useMemo(() => toPoint(offset), [offset])
 
-  useSetProperties<T.ControlZoom, T.ControlZoomOptions>(controlZoom, { position, offset: useOffset }, true)
+  useSetProperties<T.ControlZoom, T.ControlZoomOptionsExtend>(controlZoom, { position, offset: useOffset }, true)
 
   return <></>
 })

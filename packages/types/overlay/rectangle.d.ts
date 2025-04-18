@@ -84,17 +84,18 @@ declare namespace T {
      * @default solid
      */
     lineStyle?: LineStyle
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
-
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface RectangleOptionsExtend extends RectangleOptions {
     /**
      * 矩形的显示范围
      * @description 可控
      */
     bounds?: LngLatBounds
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
+
   /** 事件 */
   interface RectangleProtoEvents extends Partial<OverlayProtoEventsCommonProps<Rectangle>> {
     /** 移除矩形时触发（调用map.removeOverLay(rectangle)时触发） */

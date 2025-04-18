@@ -1,4 +1,4 @@
-export interface PolylineProps extends T.PolylineEvents, Omit<T.PolylineOptions, 'lngLats'> {
+export interface PolylineProps extends T.PolylineEvents, Omit<T.PolylineOptionsExtend, 'lngLats'> {
   /**
    * 是否可见
    * @description 可控

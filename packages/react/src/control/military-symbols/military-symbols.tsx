@@ -29,7 +29,7 @@ const MilitarySymbols = forwardRef<UnDef<T.MilitarySymbols>, MilitarySymbolsProp
 
     const useOffset = useMemo(() => toPoint(offset), [offset])
 
-    useSetProperties<T.MilitarySymbols, T.MilitarySymbolsOptions>(
+    useSetProperties<T.MilitarySymbols, T.MilitarySymbolsOptionsExtend>(
       militarySymbols,
       { position, offset: useOffset },
       true

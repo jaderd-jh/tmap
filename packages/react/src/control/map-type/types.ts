@@ -1,4 +1,4 @@
-export interface ControlMapTypeProps extends Omit<T.ControlMapTypeOptions, 'offset'> {
+export interface ControlMapTypeProps extends Omit<T.ControlMapTypeOptionsExtend, 'offset'> {
   /** 是否可见 */
   visible?: boolean
   /**

@@ -37,7 +37,7 @@ const Circle = forwardRef<UnDef<T.Circle>, CircleProps>(
 
     useEventProperties<T.Circle, CircleProps>(circle, props)
 
-    useSetProperties<T.Circle, T.CircleOptions>(circle, { ...props, center: lngLatCenter, radius })
+    useSetProperties<T.Circle, T.CircleOptionsExtend>(circle, { ...props, center: lngLatCenter, radius })
 
     return <></>
   }

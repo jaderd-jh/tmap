@@ -1,6 +1,6 @@
 declare namespace T {
   /** 鹰眼地图控件，用来显示一个鹰眼地图, 继承自Control基类，拥有基类的所有方法 */
-  declare class ControlOverviewMap extends T.Control {
+  declare class ControlOverviewMap extends Control {
     /** 创建一个鹰眼地图控件 */
     constructor(opts?: ControlOverviewMapOptions)
 
@@ -35,7 +35,7 @@ declare namespace T {
     ) => void
   }
 
-  interface ControlOverviewMapOptions extends T.ControlOptions {
+  interface ControlOverviewMapOptions extends ControlOptions {
     /**
      * 控件的停靠位置
      * @deprecated 使用 position 代替（anchor已无效，但官网api文档未修改）
@@ -45,9 +45,10 @@ declare namespace T {
     size?: Point
     /** 缩略地图添加到地图后的开合状态，默认为关闭。true表示显示，false表示隐藏（不可控，如需要可调用changeView） */
     isOpen?: boolean
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
-
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface ControlOverviewMapOptionsExtend extends ControlOverviewMapOptions, ControlOptionsExtend {
     /**
      * 鹰眼地图在打开和关闭状态下的按钮图片
      * @description [打开状态下的按钮图片, 关闭状态下的按钮图片]
@@ -69,9 +70,8 @@ declare namespace T {
      * @description 可控
      */
     rectBackColor?: string
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
 
   interface ControlOverviewProtoEvents {
     /** 鹰眼视图控件的开合状态变化时触发事件 */

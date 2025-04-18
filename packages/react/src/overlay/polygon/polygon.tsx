@@ -36,7 +36,7 @@ const Polygon = forwardRef<UnDef<T.Polygon>, PolygonProps>(({ visible, lngLats, 
 
   useEventProperties<T.Polygon, PolygonProps>(polygon, props)
 
-  useSetProperties<T.Polygon, T.PolygonOptions>(polygon, { ...props, lngLats: useLngLats })
+  useSetProperties<T.Polygon, T.PolygonOptionsExtend>(polygon, { ...props, lngLats: useLngLats })
 
   return <></>
 })

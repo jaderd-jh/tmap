@@ -1,4 +1,4 @@
-export interface MilitarySymbolsProps extends Omit<T.MilitarySymbolsOptions, 'offset'> {
+export interface MilitarySymbolsProps extends Omit<T.MilitarySymbolsOptionsExtend, 'offset'> {
   /** 是否可见 */
   visible?: boolean
   /**

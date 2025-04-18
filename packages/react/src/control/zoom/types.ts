@@ -1,4 +1,4 @@
-export interface ControlZoomProps extends Omit<T.ControlZoomOptions, 'offset'> {
+export interface ControlZoomProps extends Omit<T.ControlZoomOptionsExtend, 'offset'> {
   /** 是否可见 */
   visible?: boolean
   /**

@@ -79,7 +79,7 @@ const InfoWindow = forwardRef<UnDef<T.InfoWindow>, InfoWindowProps>(
 
     useEventProperties<T.InfoWindow, InfoWindowProps>(infoWindow, props)
 
-    useSetProperties<T.InfoWindow, T.InfoWindowOptions>(infoWindow, {
+    useSetProperties<T.InfoWindow, T.InfoWindowOptionsExtend>(infoWindow, {
       content: useContent,
       offset: useOffset,
       lngLat: useLngLat,

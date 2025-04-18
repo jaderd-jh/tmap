@@ -28,7 +28,11 @@ const MapType = forwardRef<UnDef<T.ControlMapType>, ControlMapTypeProps>(
       }
     }, [])
 
-    useSetProperties<T.ControlMapType, T.ControlMapTypeOptions>(controlMapType, { position, offset: useOffset }, true)
+    useSetProperties<T.ControlMapType, T.ControlMapTypeOptionsExtend>(
+      controlMapType,
+      { position, offset: useOffset },
+      true
+    )
 
     return <></>
   }

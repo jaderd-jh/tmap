@@ -46,7 +46,7 @@ const Copyright = forwardRef<UnDef<T.ControlCopyright>, ControlCopyrightProps>(
       }
     }, [controlCopyright])
 
-    useSetProperties<T.ControlCopyright, T.ControlCopyrightOptions>(controlCopyright, {
+    useSetProperties<T.ControlCopyright, T.ControlCopyrightOptionsExtend>(controlCopyright, {
       position,
       offset: useOffset,
     })

@@ -8,15 +8,15 @@ declare namespace T {
     setColor: (color: string) => void
   }
 
-  interface ControlScaleOptions extends T.ControlOptions {
-    /** ------------------ ⬇ 补充类型 ------------------ */
+  interface ControlScaleOptions extends ControlOptions {}
 
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface ControlScaleOptionsExtend extends ControlScaleOptions, ControlOptionsExtend {
     /**
-     * 设置设置比例尺控件的颜色
+     * 设置比例尺控件的颜色
      * @description 可控
      */
     color?: string
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
 }

@@ -1,4 +1,4 @@
-export interface RectangleProps extends T.RectangleEvents, Omit<T.RectangleOptions, 'bounds'> {
+export interface RectangleProps extends T.RectangleEvents, Omit<T.RectangleOptionsExtend, 'bounds'> {
   /**
    * 是否可见
    * @description 可控

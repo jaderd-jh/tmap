@@ -40,7 +40,7 @@ const Marker = forwardRef<UnDef<T.Marker>, MarkerProps>(
 
     useEventProperties<T.Marker, MarkerProps>(marker, props)
 
-    useSetProperties<T.Marker, T.MarkerOptions>(marker, { ...props, icon: iconInstance, lngLat: useLngLat })
+    useSetProperties<T.Marker, T.MarkerOptionsExtend>(marker, { ...props, icon: iconInstance, lngLat: useLngLat })
 
     return <></>
   }

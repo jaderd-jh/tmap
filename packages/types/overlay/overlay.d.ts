@@ -18,7 +18,7 @@ declare namespace T {
     /** 判断叠加层是否隐藏，返回 true 表示当前叠加层是隐藏的，否则是处于显示状态 */
     isHidden: () => boolean
     /** 对OverlayOptions属性值赋值 */
-    setOptions: (opt: T) => void
+    setOptions: (opt: OverlayOptions) => void
     /** 返回叠加物所在的容器的标签 */
     getElement: () => HTMLElement
     /**

@@ -65,8 +65,10 @@ declare namespace T {
      * @default LngLat(0,0)
      */
     position?: LngLat
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface LabelOptionsExtend extends LabelOptions {
     /**
      * 文本标注的地理位置坐标
      * @description 可控
@@ -117,9 +119,8 @@ declare namespace T {
      * @description 可控
      */
     opacity?: number
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
 
   /** 事件 */
   interface LabelProtoEvents extends Omit<Partial<OverlayProtoEventsCommonProps<Label>>, 'mouseover'> {

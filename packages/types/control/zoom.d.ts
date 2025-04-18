@@ -31,4 +31,8 @@ declare namespace T {
      */
     zoomOutTitle?: string
   }
+
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface ControlZoomOptionsExtend extends ControlZoomOptions, ControlOptionsExtend {}
+  /** ------------------ ⬆ 补充类型 ------------------ */
 }

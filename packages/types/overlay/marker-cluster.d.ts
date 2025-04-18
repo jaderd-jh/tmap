@@ -71,6 +71,7 @@ declare namespace T {
      */
     maxZoom?: number
   }
+
   interface MarkerClusterStyle {
     /**
      * 图片地址

@@ -1,4 +1,4 @@
-export interface ControlOverviewMapProps extends Omit<T.ControlOverviewMapOptions, 'size' | 'offset'> {
+export interface ControlOverviewMapProps extends Omit<T.ControlOverviewMapOptionsExtend, 'size' | 'offset'> {
   /** 是否可见 */
   visible?: boolean
   /** 缩略地图控件的大小 */

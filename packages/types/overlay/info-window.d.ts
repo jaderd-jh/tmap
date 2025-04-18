@@ -78,9 +78,10 @@ declare namespace T {
      * @default false
      */
     closeOnClick?: boolean
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
-
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface InfoWindowOptionsExtend extends InfoWindowOptions {
     /**
      * 信息浮窗所指向的地理位置坐标
      * @description 可控
@@ -91,9 +92,8 @@ declare namespace T {
      * @description 可控
      */
     content?: string | HTMLElement
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
 
   interface InfoWindowProtoEvents {
     /** 信息窗口被关闭时触发此事件 */

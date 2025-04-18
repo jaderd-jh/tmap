@@ -37,7 +37,7 @@ const Polyline = forwardRef<UnDef<T.Polyline>, PolylineProps>(
 
     useEventProperties<T.Polyline, PolylineProps>(polyline, props)
 
-    useSetProperties<T.Polyline, T.PolylineOptions>(polyline, { ...props, lngLats: useLngLats })
+    useSetProperties<T.Polyline, T.PolylineOptionsExtend>(polyline, { ...props, lngLats: useLngLats })
 
     return <></>
   }

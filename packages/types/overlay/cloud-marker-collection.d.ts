@@ -56,8 +56,10 @@ declare namespace T {
      * @description 不可控
      */
     SizeType?: string
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface CloudMarkerCollectionOptionsExtend extends CloudMarkerCollectionOptions {
     /**
      * 点坐标集合
      * @description 可控
@@ -68,8 +70,9 @@ declare namespace T {
      * @description 不可控
      */
     styles?: CloudMarkerCollectionOptions
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 补充类型 ------------------ */
+
   /** 事件 */
   interface CloudMarkerCollectionProtoEvents {
     /** 海量点的点击事件 */

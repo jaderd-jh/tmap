@@ -36,7 +36,7 @@ declare namespace T {
     /** 返回控件停靠的偏移量 */
     getOffset: () => Point
     /** 对ControlOptions属性值赋值 */
-    setOptions: (opt: ControlOptions) => ControlOptions
+    setOptions: (opt: OverlayOptions) => void
   }
 
   interface ControlOptions {
@@ -50,13 +50,15 @@ declare namespace T {
      * @example window.T_ANCHOR_TOP_RIGHT
      */
     position?: string
+  }
 
-    /** ------------------ ⬇ 补充类型 ------------------ */
+  /** ------------------ ⬇ 扩展类型 ------------------ */
+  interface ControlOptionsExtend extends ControlOptions {
     /**
      * 控件停靠的偏移量
      * @description 可控
      */
     offset?: Point
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+  /** ------------------ ⬆ 扩展类型 ------------------ */
 }

@@ -1,4 +1,4 @@
-export interface ControlScaleProps extends Omit<T.ControlScaleOptions, 'offset'> {
+export interface ControlScaleProps extends Omit<T.ControlScaleOptionsExtend, 'offset'> {
   /**
    * 是否可见
    * @description 可控

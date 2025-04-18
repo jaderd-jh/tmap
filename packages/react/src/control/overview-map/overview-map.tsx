@@ -44,7 +44,11 @@ const OverviewMap = forwardRef<UnDef<T.ControlOverviewMap>, ControlOverviewMapPr
       ...props,
     })
 
-    useSetProperties<T.ControlOverviewMap, T.ControlOverviewMapOptions>(controlOverviewMap, { offset: useOffset }, true)
+    useSetProperties<T.ControlOverviewMap, T.ControlOverviewMapOptionsExtend>(
+      controlOverviewMap,
+      { offset: useOffset },
+      true
+    )
 
     return <></>
   }

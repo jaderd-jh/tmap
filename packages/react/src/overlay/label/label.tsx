@@ -32,9 +32,9 @@ const Label = forwardRef<UnDef<T.Label>, LabelProps>(
       }
     }, [])
 
-    useSetProperties<T.Label, T.LabelOptions>(label, { label: useContent, lngLat: useLngLat })
+    useSetProperties<T.Label, T.LabelOptionsExtend>(label, { label: useContent, lngLat: useLngLat })
 
-    useSetProperties<T.Label, T.LabelOptions>(label, { ...props, offset: useOffset }, true)
+    useSetProperties<T.Label, T.LabelOptionsExtend>(label, { ...props, offset: useOffset }, true)
 
     useEventProperties<T.Label, LabelProps>(label, props)
 

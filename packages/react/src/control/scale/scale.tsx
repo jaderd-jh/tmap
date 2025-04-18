@@ -28,7 +28,11 @@ const Scale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
 
     const useOffset = useMemo(() => toPoint(offset), [offset])
 
-    useSetProperties<T.ControlScale, T.ControlScaleOptions>(controlScale, { position, color, offset: useOffset }, true)
+    useSetProperties<T.ControlScale, T.ControlScaleOptionsExtend>(
+      controlScale,
+      { position, color, offset: useOffset },
+      true
+    )
 
     return <></>
   }

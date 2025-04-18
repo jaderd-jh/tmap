@@ -1,4 +1,6 @@
-export interface LabelProps extends T.LabelEvents, Omit<T.LabelOptions, 'lngLat' | 'offset' | 'text' | 'position'> {
+export interface LabelProps
+  extends T.LabelEvents,
+    Omit<T.LabelOptionsExtend, 'lngLat' | 'offset' | 'text' | 'position'> {
   /**
    * 是否可见
    * @description 可控

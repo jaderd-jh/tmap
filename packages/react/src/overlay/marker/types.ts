@@ -1,4 +1,4 @@
-export interface MarkerProps extends T.MarkerEvents, Omit<T.MarkerOptions, 'icon' | 'lngLat'> {
+export interface MarkerProps extends T.MarkerEvents, Omit<T.MarkerOptionsExtend, 'icon' | 'lngLat'> {
   /**
    * 是否可见
    * @description 可控

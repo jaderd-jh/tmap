@@ -37,7 +37,7 @@ const CloudMarkerCollection = forwardRef<UnDef<T.CloudMarkerCollection>, CloudMa
 
     useEventProperties<T.CloudMarkerCollection, CloudMarkerCollectionProps>(cloudMarkerCollection, props)
 
-    useSetProperties<T.CloudMarkerCollection, CloudMarkerCollectionProps>(cloudMarkerCollection, {
+    useSetProperties<T.CloudMarkerCollection, T.CloudMarkerCollectionOptionsExtend>(cloudMarkerCollection, {
       // ⬇ api 4.0 cloudMarkerCollection.setLnglats 不能设置为空（可以使用 [new T.LngLat(0, 0)] 代替），否则下次调用时失效
       lnglats: uselnglats,
       // ⬇ api 4.0 cloudMarkerCollection.setStyles不可用，报错：'this.setPoints is not a function'

@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react'
 
 export interface InfoWindowProps
   extends T.InfoWindowEvents,
-    Omit<PropsWithChildren<T.InfoWindowOptions>, 'lngLat' | 'offset'> {
+    Omit<PropsWithChildren<T.InfoWindowOptionsExtend>, 'lngLat' | 'offset'> {
   /**
    * 是否打开信息窗（地图仅可同时展示一个信息窗体）
    * @default false
