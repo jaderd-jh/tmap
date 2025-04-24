@@ -1,5 +1,8 @@
-export interface MilitarySymbolsProps extends Omit<T.MilitarySymbolsOptionsExtend, 'offset'> {
-  /** 是否可见 */
+export interface MilitarySymbolsProps extends Omit<T.Control.MilitarySymbolsOptionsExtend, 'offset'> {
+  /**
+   * 是否可见
+   * @description 可控
+   */
   visible?: boolean
   /**
    * 控件停靠的偏移量

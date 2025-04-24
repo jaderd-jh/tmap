@@ -6,11 +6,11 @@ import { toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 符号标绘控件 */
-const MilitarySymbols = forwardRef<UnDef<T.MilitarySymbols>, MilitarySymbolsProps>(
+const MilitarySymbols = forwardRef<UnDef<T.Control.MilitarySymbols>, MilitarySymbolsProps>(
   ({ visible, offset, position, ...props }, ref) => {
     const { map } = useContext(MapContext)
 
-    const [militarySymbols, setMilitarySymbols] = useState<T.MilitarySymbols>()
+    const [militarySymbols, setMilitarySymbols] = useState<T.Control.MilitarySymbols>()
     const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => militarySymbols)
@@ -29,7 +29,7 @@ const MilitarySymbols = forwardRef<UnDef<T.MilitarySymbols>, MilitarySymbolsProp
 
     const useOffset = useMemo(() => toPoint(offset), [offset])
 
-    useSetProperties<T.MilitarySymbols, T.MilitarySymbolsOptionsExtend>(
+    useSetProperties<T.Control.MilitarySymbols, T.Control.MilitarySymbolsOptionsExtend>(
       militarySymbols,
       { position, offset: useOffset },
       true

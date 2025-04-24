@@ -22,11 +22,11 @@ declare namespace T {
   interface CloudMarkerCollectionOptions {
     /**
      * 海量点的预设形状
-     *  - TDT_POINT_SHAPE_CIRCLE 圆形
-     *  - TDT_POINT_SHAPE_STAR 星形
-     *  - TDT_POINT_SHAPE_SQUARE 方形
-     *  - TDT_POINT_SHAPE_RHOMBUS 菱形
-     *  - TDT_POINT_SHAPE_WATERDROP 滴状
+     *  - TDT_POINT_SHAPE_CIRCLE：圆形（CIRCLE）
+     *  - TDT_POINT_SHAPE_STAR：星形（STAR）
+     *  - TDT_POINT_SHAPE_SQUARE：方形（SQUARE）
+     *  - TDT_POINT_SHAPE_RHOMBUS：菱形（RHOMBUS）
+     *  - TDT_POINT_SHAPE_WATERDROP：滴状（WATERDROP）
      * @description 不可控
      * @default window.TDT_POINT_SHAPE_CIRCLE
      */
@@ -45,13 +45,13 @@ declare namespace T {
     color?: string
     /**
      * 海量点的预设尺寸
-     *  - TDT_POINT_SIZE_TINY 超小，宽高为2px*2px
-     *  - TDT_POINT_SIZE_SMALLER 很小，宽高为4px*4px
-     *  - TDT_POINT_SIZE_SMALL 小，宽高为8px*8px
-     *  - TDT_POINT_SIZE_NORMAL 正常，宽高为10px*10px
-     *  - TDT_POINT_SIZE_BIG 大，宽高为16px*16px
-     *  - TDT_POINT_SIZE_BIGGER 很大，宽高为20px*20px
-     *  - TDT_POINT_SIZE_HUGE 超大，宽高为30px*30px
+     *  - TDT_POINT_SIZE_TINY：超小（TINY），宽高为2px*2px
+     *  - TDT_POINT_SIZE_SMALLER：很小（SMALLER），宽高为4px*4px
+     *  - TDT_POINT_SIZE_SMALL：小（SMALL），宽高为8px*8px
+     *  - TDT_POINT_SIZE_NORMAL：正常（NORMAL），宽高为10px*10px
+     *  - TDT_POINT_SIZE_BIG：大（BIG），宽高为16px*16px
+     *  - TDT_POINT_SIZE_BIGGER：很大（BIGGER），宽高为20px*20px
+     *  - TDT_POINT_SIZE_HUGE：超大（HUGE），宽高为30px*30px
      * @default window.TDT_POINT_SIZE_NORMAL
      * @description 不可控
      */

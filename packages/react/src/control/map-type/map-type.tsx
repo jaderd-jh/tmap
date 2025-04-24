@@ -6,11 +6,11 @@ import { toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 切换地图类型控件 */
-const MapType = forwardRef<UnDef<T.ControlMapType>, ControlMapTypeProps>(
+const MapType = forwardRef<UnDef<T.Control.MapType>, ControlMapTypeProps>(
   ({ visible, offset, position, mapTypes }, ref) => {
     const { map } = useContext(MapContext)
 
-    const [controlMapType, setControlMapType] = useState<T.ControlMapType>()
+    const [controlMapType, setControlMapType] = useState<T.Control.MapType>()
     const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => controlMapType)
@@ -22,13 +22,13 @@ const MapType = forwardRef<UnDef<T.ControlMapType>, ControlMapTypeProps>(
 
     useEffect(() => {
       if (!readyRef.current) {
-        const instance = new T.Control.MapType(mapTypes)
+        const instance = new T.Control.MapType({ mapTypes })
         readyRef.current = true
         setControlMapType(instance)
       }
     }, [])
 
-    useSetProperties<T.ControlMapType, T.ControlMapTypeOptionsExtend>(
+    useSetProperties<T.Control.MapType, T.Control.MapTypeOptionsExtend>(
       controlMapType,
       { position, offset: useOffset },
       true

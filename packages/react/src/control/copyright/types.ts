@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
 
 export interface ControlCopyrightProps
-  extends Omit<PropsWithChildren<T.ControlCopyrightOptionsExtend>, 'offset' | 'bounds'> {
+  extends Omit<PropsWithChildren<T.Control.CopyrightOptionsExtend>, 'offset' | 'bounds'> {
   /**
    * 是否可见
    * @description 可控

@@ -7,11 +7,11 @@ import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef
 import { renderToString } from 'react-dom/server'
 
 /** 版权控件 */
-const Copyright = forwardRef<UnDef<T.ControlCopyright>, ControlCopyrightProps>(
+const Copyright = forwardRef<UnDef<T.Control.Copyright>, ControlCopyrightProps>(
   ({ visible, offset, position, bounds, content, children, ...props }, ref) => {
     const { map } = useContext(MapContext)
 
-    const [controlCopyright, setControlCopyright] = useState<T.ControlCopyright>()
+    const [controlCopyright, setControlCopyright] = useState<T.Control.Copyright>()
     const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => controlCopyright)
@@ -46,7 +46,7 @@ const Copyright = forwardRef<UnDef<T.ControlCopyright>, ControlCopyrightProps>(
       }
     }, [controlCopyright])
 
-    useSetProperties<T.ControlCopyright, T.ControlCopyrightOptionsExtend>(controlCopyright, {
+    useSetProperties<T.Control.Copyright, T.Control.CopyrightOptionsExtend>(controlCopyright, {
       position,
       offset: useOffset,
     })

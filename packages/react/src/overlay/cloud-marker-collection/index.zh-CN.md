@@ -59,24 +59,24 @@ export default Demo
 | styles    | 点的样式         | 否       | CircleOptions                   |                               |
 
 #### EnumShapeType
-| 值                          | 说明             |
-| --------------------------- | ---------------- |
-| `TDT_POINT_SHAPE_CIRCLE`    | 圆形，为默认形状 |
-| `TDT_POINT_SHAPE_STAR`      | 星形             |
-| `TDT_POINT_SHAPE_SQUARE`    | 方形             |
-| `TDT_POINT_SHAPE_RHOMBUS`   | 菱形             |
-| `TDT_POINT_SHAPE_WATERDROP` | 滴状             |
+| 值                        | 说明             | 值          |
+| ------------------------- | ---------------- | ----------- |
+| TDT_POINT_SHAPE_CIRCLE    | 圆形，为默认形状 | `CIRCLE`    |
+| TDT_POINT_SHAPE_STAR      | 星形             | `STAR`      |
+| TDT_POINT_SHAPE_SQUARE    | 方形             | `SQUARE`    |
+| TDT_POINT_SHAPE_RHOMBUS   | 菱形             | `RHOMBUS`   |
+| TDT_POINT_SHAPE_WATERDROP | 滴状             | `WATERDROP` |
 
 #### EnumSizeType
-| 值                       | 说明                            |
-| ------------------------ | ------------------------------- |
-| `TDT_POINT_SIZE_TINY`    | 超小，2px*2px                   |
-| `TDT_POINT_SIZE_SMALLER` | 很小，4px*4px                   |
-| `TDT_POINT_SIZE_SMALL`   | 小，8px*8px                     |
-| `TDT_POINT_SIZE_NORMAL`  | 正常，10px*10px，海量点默认尺寸 |
-| `TDT_POINT_SIZE_BIG`     | 大，16px*16px                   |
-| `TDT_POINT_SIZE_BIGGER`  | 很大，20px*20px                 |
-| `TDT_POINT_SIZE_HUGE`    | 超大，30px*30px                 |
+| 值                     | 说明                            | 值        |
+| ---------------------- | ------------------------------- | --------- |
+| TDT_POINT_SIZE_TINY    | 超小，2px*2px                   | `TINY`    |
+| TDT_POINT_SIZE_SMALLER | 很小，4px*4px                   | `SMALLER` |
+| TDT_POINT_SIZE_SMALL   | 小，8px*8px                     | `SMALL`   |
+| TDT_POINT_SIZE_NORMAL  | 正常，10px*10px，海量点默认尺寸 | `NORMAL`  |
+| TDT_POINT_SIZE_BIG     | 大，16px*16px                   | `BIG`     |
+| TDT_POINT_SIZE_BIGGER  | 很大，20px*20px                 | `BIGGER`  |
+| TDT_POINT_SIZE_HUGE    | 超大，30px*30px                 | `HUGE`    |
 
 ### 事件
 

@@ -6,10 +6,10 @@ import { toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 地图缩放控件 */
-const Zoom = forwardRef<UnDef<T.ControlZoom>, ControlZoomProps>(({ visible, offset, position, ...props }, ref) => {
+const Zoom = forwardRef<UnDef<T.Control.Zoom>, ControlZoomProps>(({ visible, offset, position, ...props }, ref) => {
   const { map } = useContext(MapContext)
 
-  const [controlZoom, setControlZoom] = useState<T.ControlZoom>()
+  const [controlZoom, setControlZoom] = useState<T.Control.Zoom>()
   const readyRef = useRef<boolean>(false)
 
   useImperativeHandle(ref, () => controlZoom)
@@ -27,7 +27,7 @@ const Zoom = forwardRef<UnDef<T.ControlZoom>, ControlZoomProps>(({ visible, offs
 
   const useOffset = useMemo(() => toPoint(offset), [offset])
 
-  useSetProperties<T.ControlZoom, T.ControlZoomOptionsExtend>(controlZoom, { position, offset: useOffset }, true)
+  useSetProperties<T.Control.Zoom, T.Control.ZoomOptionsExtend>(controlZoom, { position, offset: useOffset }, true)
 
   return <></>
 })

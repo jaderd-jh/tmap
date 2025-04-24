@@ -6,11 +6,11 @@ import { toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 地图比例尺控件 */
-const Scale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
+const Scale = forwardRef<UnDef<T.Control.Scale>, ControlScaleProps>(
   ({ visible, offset, position, color, ...props }, ref) => {
     const { map } = useContext(MapContext)
 
-    const [controlScale, setControlScale] = useState<T.ControlScale>()
+    const [controlScale, setControlScale] = useState<T.Control.Scale>()
     const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => controlScale)
@@ -28,7 +28,7 @@ const Scale = forwardRef<UnDef<T.ControlScale>, ControlScaleProps>(
 
     const useOffset = useMemo(() => toPoint(offset), [offset])
 
-    useSetProperties<T.ControlScale, T.ControlScaleOptionsExtend>(
+    useSetProperties<T.Control.Scale, T.Control.ScaleOptionsExtend>(
       controlScale,
       { position, color, offset: useOffset },
       true

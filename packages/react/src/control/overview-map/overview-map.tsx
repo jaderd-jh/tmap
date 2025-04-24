@@ -6,11 +6,11 @@ import { isArray, toPoint } from '@/utils'
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 缩略地图控件 */
-const OverviewMap = forwardRef<UnDef<T.ControlOverviewMap>, ControlOverviewMapProps>(
+const OverviewMap = forwardRef<UnDef<T.Control.OverviewMap>, ControlOverviewMapProps>(
   ({ visible, size = [150, 150], offset, position, buttonImage, ...props }, ref) => {
     const { map } = useContext(MapContext)
 
-    const [controlOverviewMap, setControlOverviewMap] = useState<T.ControlOverviewMap>()
+    const [controlOverviewMap, setControlOverviewMap] = useState<T.Control.OverviewMap>()
     const readyRef = useRef<boolean>(false)
 
     useImperativeHandle(ref, () => controlOverviewMap)
@@ -39,12 +39,12 @@ const OverviewMap = forwardRef<UnDef<T.ControlOverviewMap>, ControlOverviewMapPr
       if (isArray(buttonImage) && controlOverviewMap) controlOverviewMap.setButtonImage(buttonImage[0], buttonImage[1])
     }, [buttonImage, controlOverviewMap])
 
-    useSetProperties<T.ControlOverviewMap, T.ControlOverviewMapOptions>(controlOverviewMap, {
+    useSetProperties<T.Control.OverviewMap, T.Control.OverviewMapOptions>(controlOverviewMap, {
       position,
       ...props,
     })
 
-    useSetProperties<T.ControlOverviewMap, T.ControlOverviewMapOptionsExtend>(
+    useSetProperties<T.Control.OverviewMap, T.Control.OverviewMapOptionsExtend>(
       controlOverviewMap,
       { offset: useOffset },
       true

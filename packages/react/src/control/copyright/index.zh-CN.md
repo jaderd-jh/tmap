@@ -6,7 +6,7 @@ import { APILoader, Control, Map } from '@jhqn/react-tmap'
 import { useRef } from 'react'
 
 const Example = () => {
-  const copyrightRef = useRef<T.ControlCopyright>()
+  const copyrightRef = useRef<T.Control.Copyright>()
   return (
     <Control.Copyright
       ref={copyrightRef}
@@ -34,7 +34,7 @@ export default Demo
 
 ## API
 
-### Copyright
+### Control.Copyright
 
 [通用参数](/packages/react/src/control/index.zh-CN.md#control)
 
@@ -43,3 +43,14 @@ export default Demo
 | bounds  | 版权信息所适用的地理区域 | 否       | LngLatBounds \| [Vector2, Vector2] |        |
 | content | 版权文本信息             | 否       | string \| HTMLDivElement           |        |
 | id      | 版权信息的唯一标识符     | 否       | string                             |        |
+
+### 实例方法
+
+继承实例方法：[通用实例方法](/packages/react/src/control/index.zh-CN.md#实例方法)
+
+| 方法                   | 说明             | 类型                                          |
+| ---------------------- | ---------------- | --------------------------------------------- |
+| addCopyright           | 添加一个版权信息 | (copyright: Control.CopyrightOptions) => void |
+| removeCopyright        | 移除版权信息     | (copyright: Control.CopyrightOptions) => void |
+| getCopyright           | 获得单个版权信息 | (id: string) => Control.CopyrightOptions      |
+| getCopyrightCollection | 获得版权信息列表 | () =>  Control.Copyright[]                    |
