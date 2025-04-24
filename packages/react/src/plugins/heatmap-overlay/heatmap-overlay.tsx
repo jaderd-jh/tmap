@@ -2,7 +2,7 @@ import type { UnDef } from '@/utils'
 import type { HeatmapOverlayProps } from './types'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  开源插件 - 热力图 */
 const HeatmapOverlay = forwardRef<UnDef<T.HeatmapOverlay>, HeatmapOverlayProps>(
@@ -35,7 +35,16 @@ const HeatmapOverlay = forwardRef<UnDef<T.HeatmapOverlay>, HeatmapOverlayProps>(
       }
     }, [])
 
-    useSetProperties<T.HeatmapOverlay, T.HeatmapOverlayOptions>(heatmapOverlay, { dataSet, options }, true)
+    const useDataSet = useMemo(() => {
+      const { max, data } = dataSet
+      return { max, data: data || [] }
+    }, [dataSet])
+
+    useSetProperties<T.HeatmapOverlay, T.HeatmapOverlayOptionsExtend>(
+      heatmapOverlay,
+      { dataSet: useDataSet, options },
+      true
+    )
 
     return <></>
   }

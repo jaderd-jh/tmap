@@ -54,7 +54,7 @@ declare namespace T {
     /** 判断是否启用圆编辑功能，true表示启用，false表示禁止 */
     isEditable: () => boolean
   }
-  interface CircleOptions extends OverlayOptions {
+  interface CircleOptions {
     /**
      * 圆边线颜色
      * @default #0000FF

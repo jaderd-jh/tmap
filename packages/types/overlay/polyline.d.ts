@@ -47,7 +47,7 @@ declare namespace T {
     /** 是否启用线编辑功能，true表示启用，false表示禁止 */
     isEditable: () => boolean
   }
-  interface PolylineOptions extends OverlayOptions {
+  interface PolylineOptions {
     /**
      * 折线颜色
      * @description 可控

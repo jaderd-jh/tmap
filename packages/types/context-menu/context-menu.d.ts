@@ -16,7 +16,7 @@ declare namespace T {
     addSeparator: () => void
     /** 移除指定索引位置的分隔符，第一个分隔符的索引为0 */
     removeSeparator: (index: number) => void
-    /** 返回所有的TMenuItem，是一个数组 */
+    /** 返回所有的MenuItem，是一个数组 */
     getItems: () => MenuItem[]
     /** 返回所有分割线，是一个数组 */
     getAllSeparator: () => any[]
@@ -27,13 +27,14 @@ declare namespace T {
   }
   interface ContextMenuOptions {
     /**
-     * 指定此菜单项的宽度，菜单以最长的菜单项宽度为准（不可控）
+     * 指定此菜单项的宽度，菜单以最长的菜单项宽度为准
+     * @description 不可控
      * @default 120
      */
     width?: number
   }
 
-  interface ContextMenuEven extends MapEventBase<ContextMenu> {
+  interface ContextMenuEvent extends MapEventBase<ContextMenu> {
     /** 菜单开启时的像素坐标点 */
     point: LngLat
   }

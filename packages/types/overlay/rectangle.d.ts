@@ -47,7 +47,7 @@ declare namespace T {
     /** 是否启用矩形编辑功能，true表示启用，false表示禁止 */
     isEditable: () => boolean
   }
-  interface RectangleOptions extends OverlayOptions {
+  interface RectangleOptions {
     /**
      * 矩形边线颜色
      * @description 可控

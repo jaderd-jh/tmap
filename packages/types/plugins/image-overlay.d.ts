@@ -24,18 +24,30 @@ declare namespace T {
   }
 
   interface ImageOverlayOptions {
-    /** 图片的透明度（可控） */
+    /**
+     * 图片的透明度
+     * @description 可控
+     */
     opacity?: number
-    /** 如果无法显示图像，浏览器将显示替代文本（不可控） */
+    /**
+     * 如果无法显示图像，浏览器将显示替代文本
+     * @description 不可控
+     */
     alt?: string
-
-    /** ------------------ ⬇ 补充类型 ------------------ */
-
-    /** 图片覆盖地理范围（可控） */
-    bounds?: LngLatBounds
-    /** 图片url（可控） */
-    imageUrl?: string
-
-    /** ------------------ ⬆ 补充类型 ------------------ */
   }
+
+  /** ------------------ ⬇ 补充类型 ------------------ */
+  interface ImageOverlayOptionsExtend extends ImageOverlayOptions {
+    /**
+     * 图片覆盖地理范围
+     * @description 可控
+     */
+    bounds?: LngLatBounds
+    /**
+     * 图片url
+     * @description 可控
+     */
+    imageUrl?: string
+  }
+  /** ------------------ ⬆ 补充类型 ------------------ */
 }

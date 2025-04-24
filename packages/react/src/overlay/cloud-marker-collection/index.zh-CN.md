@@ -59,6 +59,7 @@ export default Demo
 | styles    | 点的样式         | 否       | CircleOptions                   |                               |
 
 #### EnumShapeType
+
 | 值                        | 说明             | 值          |
 | ------------------------- | ---------------- | ----------- |
 | TDT_POINT_SHAPE_CIRCLE    | 圆形，为默认形状 | `CIRCLE`    |
@@ -68,6 +69,7 @@ export default Demo
 | TDT_POINT_SHAPE_WATERDROP | 滴状             | `WATERDROP` |
 
 #### EnumSizeType
+
 | 值                     | 说明                            | 值        |
 | ---------------------- | ------------------------------- | --------- |
 | TDT_POINT_SIZE_TINY    | 超小，2px*2px                   | `TINY`    |

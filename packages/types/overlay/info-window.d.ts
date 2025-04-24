@@ -30,7 +30,7 @@ declare namespace T {
     /** 关闭信息浮窗 */
     closeInfoWindow: () => void
   }
-  interface InfoWindowOptions extends OverlayOptions {
+  interface InfoWindowOptions {
     /**
      * 弹出框的最小宽度
      * @description 不可控

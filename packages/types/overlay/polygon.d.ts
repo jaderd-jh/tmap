@@ -62,7 +62,7 @@ declare namespace T {
      */
     isEditable: () => boolean
   }
-  interface PolygonOptions extends OverlayOptions {
+  interface PolygonOptions {
     /**
      * 多边形边线颜色
      * @description 可控

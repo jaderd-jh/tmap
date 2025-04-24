@@ -3,6 +3,7 @@
 ### 🔨 示例
 
 #### 基础用法
+
 ```tsx
 import { APILoader, InfoWindow, Map, MapContext, toPoint } from '@jhqn/react-tmap'
 import { useContext, useRef, useState } from 'react'
@@ -50,6 +51,7 @@ export default Demo
 ```
 
 #### 支持 ReactNode
+
 ```jsx
 import { APILoader, InfoWindow, Map, MapContext } from '@jhqn/react-tmap'
 import { useContext, useState } from 'react'
@@ -105,6 +107,7 @@ export default Demo
 ## API
 
 ### InfoWindow
+
 | 参数           | 说明                                                   | 是否可控 | 类型                   | 默认值     |
 | -------------- | ------------------------------------------------------ | -------- | ---------------------- | ---------- |
 | autoPan        | 信息窗口打开时地图自动移动                             | 否       | boolean                | false      |
@@ -122,6 +125,7 @@ export default Demo
 | offset         | 弹出窗口位置的补偿值                                   | 是       | Point \| Vector2       | Point(0,7) |
 
 ### 事件
+
 | 事件         | 说明                                                        | 类型                             |
 | ------------ | ----------------------------------------------------------- | -------------------------------- |
 | onClickClose | 点击信息窗的关闭按钮时触发                                  | ({type, target}) => void         |

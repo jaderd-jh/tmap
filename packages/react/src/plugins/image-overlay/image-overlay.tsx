@@ -39,7 +39,7 @@ const ImageOverlay = forwardRef<UnDef<T.ImageOverlay>, ImageOverlayProps>(
 
     useEventProperties<T.ImageOverlay, ImageOverlayProps>(imageOverlay, props)
 
-    useSetProperties<T.ImageOverlay, T.ImageOverlayOptions>(imageOverlay, {
+    useSetProperties<T.ImageOverlay, T.ImageOverlayOptionsExtend>(imageOverlay, {
       opacity: props.opacity,
       bounds: lngLatBounds,
       imageUrl,

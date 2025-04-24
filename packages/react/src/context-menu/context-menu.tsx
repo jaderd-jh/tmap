@@ -71,7 +71,7 @@ const ContextMenuCompound = forwardRef<UnDef<T.ContextMenu>, ContextMenuProps>(
 
 export type CompoundedComponent = typeof ContextMenuCompound & {
   Item: typeof MenuItem
-  Divider: typeof Separator
+  Separator: typeof Separator
 }
 
 export const ContextMenu = ContextMenuCompound as CompoundedComponent
@@ -79,4 +79,4 @@ export const ContextMenu = ContextMenuCompound as CompoundedComponent
 /** 菜单项 */
 ContextMenu.Item = MenuItem
 /** 分割线 */
-ContextMenu.Divider = Separator
+ContextMenu.Separator = Separator

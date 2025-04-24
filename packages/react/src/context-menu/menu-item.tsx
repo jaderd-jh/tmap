@@ -22,7 +22,7 @@ const MenuItem = forwardRef<UnDef<T.MenuItem>, ContextMenuItem>(
       }
     }, [])
 
-    useSetProperties<T.MenuItem, T.MenuItemOptions>(menuItem, {
+    useSetProperties<T.MenuItem, T.MenuItemOptionsExtend>(menuItem, {
       // ⬇ api 4.0 MenuItem.setText 失效，菜单项文本不可控
       text: useText,
     })

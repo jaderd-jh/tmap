@@ -47,7 +47,7 @@ declare namespace T {
     getOpacity: () => number
   }
 
-  interface LabelOptions extends OverlayOptions {
+  interface LabelOptions {
     /**
      * 文本标注的内容
      * @deprecated 使用label代替

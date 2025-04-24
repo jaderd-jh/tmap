@@ -1,6 +1,7 @@
-## 版权 - 符号标绘控件
+## 控件 - 符号标绘
 
 ### 🔨 示例
+
 ```tsx
 import { APILoader, Control, Map } from '@jhqn/react-tmap'
 import { useRef } from 'react'

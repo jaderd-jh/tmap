@@ -1,6 +1,7 @@
 ## 覆盖物 - 聚合标注
 
 ### 🔨 示例
+
 ```tsx
 import { APILoader, InfoWindow, Map, MapContext, MarkerCluster, requireScript, toIcon, toLngLat, toPoint } from '@jhqn/react-tmap'
 import { useEffect, useMemo, useState } from 'react'
@@ -130,6 +131,7 @@ export default Demo
 | styles   | 自定义聚合后的图标风格                 | 是       | [MarkerClusterStyle](#markerclusterstyle) |        |
 
 #### MarkerClusterStyle
+
 | 参数      | 说明             | 是否可控 | 类型             | 默认值 |
 | --------- | ---------------- | -------- | ---------------- | ------ |
 | offset    | 显示图片的偏移量 | 否       | Point            |        |

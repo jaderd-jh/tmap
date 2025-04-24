@@ -1,6 +1,7 @@
-## 版权 - 地图比例尺控件
+## 控件 - 地图比例尺
 
 ### 🔨 示例
+
 ```tsx
 import { APILoader, Control, Map } from '@jhqn/react-tmap'
 import { useRef } from 'react'

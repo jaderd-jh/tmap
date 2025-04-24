@@ -29,7 +29,7 @@ declare namespace T {
     /** 关闭信息窗 */
     closeInfoWindow: () => void
   }
-  interface MarkerOptions extends OverlayOptions {
+  interface MarkerOptions {
     /**
      * 图标类用来表达注记
      * @description 可控

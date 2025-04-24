@@ -1,6 +1,7 @@
-## 版权 - 版权控件
+## 控件 - 版权
 
 ### 🔨 示例
+
 ```tsx
 import { APILoader, Control, Map } from '@jhqn/react-tmap'
 import { useRef } from 'react'
