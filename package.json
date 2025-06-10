@@ -37,7 +37,7 @@
     "bumpp": "^10.1.0",
     "eslint": "^9.23.0",
     "eslint-plugin-format": "^1.0.1",
-    "eslint-plugin-oxlint": "^0.18.0",
+    "eslint-plugin-oxlint": "^1.0.0",
     "lint-staged": "^16.0.0",
     "npm-run-all2": "^8.0.0",
     "oxlint": "^0.18.0",
