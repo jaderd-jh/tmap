@@ -9,9 +9,16 @@
     "url": "https://github.com/jaderd-jh/tmap.git",
     "directory": "packages/types"
   },
-  "keywords": ["tmap", "typescript", "types"],
+  "keywords": [
+    "tmap",
+    "typescript",
+    "types"
+  ],
   "types": "index.d.ts",
-  "files": ["**/*.d.ts", "index.d.ts"],
+  "files": [
+    "**/*.d.ts",
+    "index.d.ts"
+  ],
   "devDependencies": {
     "tsd": "^0.32.0"
   }

@@ -9,7 +9,10 @@
     "url": "https://github.com/jaderd-jh/tmap.git",
     "directory": "packages/react"
   },
-  "keywords": ["react", "tmap"],
+  "keywords": [
+    "react",
+    "tmap"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
@@ -26,7 +29,9 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "watch": "tsup --watch",
