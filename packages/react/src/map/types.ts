@@ -17,7 +17,7 @@ export interface MapProps
   container?: HTMLDivElement | string
   /**
    * 地图的初始化中心点
-   * @description 可控
+   * @description 不可控
    */
   center?: T.LngLatLike
   /**

@@ -30,13 +30,12 @@ const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
     useImperativeHandle(ref, () => map)
 
     const useMaxBounds = useMemo(() => toBounds(maxBounds), [maxBounds])
-    const useCenter = useMemo(() => toLngLat(center), [center])
     const useViewport = useMemo(() => toLngLats(viewport), [viewport])
 
     useEffect(() => {
       if (!readyRef.current) {
         const tmap = new T.Map(container || containerRef.current!, props)
-        tmap.centerAndZoom(useCenter!, zoom)
+        tmap.centerAndZoom(toLngLat(center)!, zoom)
         if (mapStyle) tmap.setStyle(mapStyle)
         readyRef.current = true
         setMap(tmap)
@@ -44,10 +43,6 @@ const Map = forwardRef<UnDef<T.Map>, PropsWithChildren<MapProps>>(
         globalThis.map = tmap
       }
     }, [map])
-
-    useEffect(() => {
-      if (readyRef.current && useCenter) map?.panTo(useCenter)
-    }, [useCenter])
 
     useEventProperties<T.Map, MapProps>(map, props)
 
