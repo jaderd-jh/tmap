@@ -18,8 +18,5 @@
   "files": [
     "**/*.d.ts",
     "index.d.ts"
-  ],
-  "devDependencies": {
-    "tsd": "^0.32.0"
-  }
+  ]
 }
