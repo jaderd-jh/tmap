@@ -15,14 +15,15 @@ export const load = async (options: APILoaderConfig) => {
   const loadScript = (id: string, url: string) => {
     return new Promise<void>((resolve, reject) => {
       const existingScript = document.getElementById(id)
-      if (existingScript) existingScript.parentNode?.removeChild(existingScript)
-      const script = document.createElement('script')
-      script.src = url
-      script.id = id
-      script.type = 'text/javascript'
-      script.onload = () => resolve()
-      script.onerror = e => reject(e)
-      document.body.appendChild(script)
+      if (!existingScript) {
+        const script = document.createElement('script')
+        script.src = url
+        script.id = id
+        script.type = 'text/javascript'
+        script.onload = () => resolve()
+        script.onerror = e => reject(e)
+        document.body.appendChild(script)
+      }
     })
   }
 

@@ -25,7 +25,7 @@ const Label = forwardRef<UnDef<T.Label>, LabelProps>(
     const useOffset = useMemo(() => toPoint(offset), [offset])
 
     useEffect(() => {
-      if (!readyRef.current) {
+      if (!readyRef.current && !!T.Label) {
         const instance = new T.Label({ text: useContent, position: useLngLat })
         readyRef.current = true
         setLabel(instance)
