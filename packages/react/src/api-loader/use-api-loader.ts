@@ -1,5 +1,5 @@
 import type { APILoaderConfig } from './types'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { load } from './load-script'
 
 const useAPILoader = (config: APILoaderConfig) => {
@@ -7,8 +7,11 @@ const useAPILoader = (config: APILoaderConfig) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [error, setError] = useState<Error>()
 
-  useEffect(() => {
-    load(config)
+  const lint = useRef(false)
+
+  const loadFn = async () => {
+    if (lint.current) return
+    await load(config)
       .then(() => {
         setIsLoaded(true)
       })
@@ -18,7 +21,13 @@ const useAPILoader = (config: APILoaderConfig) => {
       .finally(() => {
         setIsLoading(false)
       })
-  }, []) // config
+  }
+
+  useEffect(() => {
+    loadFn()
+    lint.current = true
+  }, [config])
+
   return { isLoading, isLoaded, error }
 }
 
