@@ -99,7 +99,7 @@ export const toIcon = (icon: UnDef<T.IconLike>) => {
     return new T.Icon(iconOption)
   }
   return new T.Icon({
-    iconUrl: 'http://api.tianditu.gov.cn/v4.0/image/marker-icon.png',
+    iconUrl: 'https://api.tianditu.gov.cn/v4.0/image/marker-icon.png',
     iconSize: toPoint([25, 41]),
     iconAnchor: toPoint([12, 41]),
   })

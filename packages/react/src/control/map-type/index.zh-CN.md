@@ -9,27 +9,27 @@ import { useRef } from 'react'
 const mapTypes = [
   {
     title: '地图',
-    icon: 'http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png',
+    icon: 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png',
     layer: window.TMAP_NORMAL_MAP,
   },
   {
     title: '卫星',
-    icon: 'http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png',
+    icon: 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png',
     layer: window.TMAP_SATELLITE_MAP,
   },
   {
     title: '卫星混合',
-    icon: 'http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png',
+    icon: 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png',
     layer: window.TMAP_HYBRID_MAP,
   },
   {
     title: '地形',
-    icon: 'http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png',
+    icon: 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png',
     layer: window.TMAP_TERRAIN_MAP,
   },
   {
     title: '地形混合',
-    icon: 'http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png',
+    icon: 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png',
     layer: window.TMAP_TERRAIN_HYBRID_MAP,
   },
 ]

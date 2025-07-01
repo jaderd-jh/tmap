@@ -8,7 +8,7 @@ import { useEffect, useMemo, useState } from 'react'
 
 const markerClusterStyles: T.MarkerClusterStyle[] = [
   {
-    url: 'http://api.tianditu.gov.cn/img/map/cluster/heart30.png',
+    url: 'https://api.tianditu.gov.cn/img/map/cluster/heart30.png',
     size: [30, 26],
     offset: toPoint([-15, -13]),
     textColor: '#fff',
@@ -16,7 +16,7 @@ const markerClusterStyles: T.MarkerClusterStyle[] = [
     range: [0, 50],
   },
   {
-    url: 'http://api.tianditu.gov.cn/img/map/cluster/heart40.png',
+    url: 'https://api.tianditu.gov.cn/img/map/cluster/heart40.png',
     size: [42, 36],
     offset: new T.Point(-20, -17),
     textColor: '#fff',
@@ -24,7 +24,7 @@ const markerClusterStyles: T.MarkerClusterStyle[] = [
     range: [50, 100],
   },
   {
-    url: 'http://api.tianditu.gov.cn/img/map/cluster/heart50.png',
+    url: 'https://api.tianditu.gov.cn/img/map/cluster/heart50.png',
     size: [52, 46],
     offset: new T.Point(-10, -22),
     textColor: '#fff',
@@ -41,7 +41,7 @@ const Example = () => {
   const [curLnglat, setCurLnglat] = useState<T.Vector2>()
 
   useEffect(() => {
-    requireScript('http://lbs.tianditu.gov.cn/api/js4.0/opensource/data/points-sample-data.js', 'cloud-marker-data').then(() => {
+    requireScript('https://lbs.tianditu.gov.cn/api/js4.0/opensource/data/points-sample-data.js', 'cloud-marker-data').then(() => {
       setLnglats(window.data?.data.slice(800, 1300))
     })
   }, [])
@@ -53,7 +53,7 @@ const Example = () => {
       if (lngLat) {
         const marker = new T.Marker(lngLat, {
           icon: toIcon({
-            iconUrl: 'http://api.tianditu.gov.cn/img/map/markerA.png',
+            iconUrl: 'https://api.tianditu.gov.cn/img/map/markerA.png',
             iconSize: [19, 27],
             iconAnchor: [10, 27],
           }),

@@ -14,7 +14,7 @@ const Example = () => {
   const cloudMarkerRef = useRef<T.CloudMarkerCollection>()
 
   useEffect(() => {
-    requireScript('http://lbs.tianditu.gov.cn/api/js4.0/opensource/data/points-sample-data.js', 'cloud-marker-data').then(() => {
+    requireScript('https://lbs.tianditu.gov.cn/api/js4.0/opensource/data/points-sample-data.js', 'cloud-marker-data').then(() => {
       setLnglats(window.data.data)
     })
   }, [])

@@ -32,27 +32,27 @@ declare namespace T {
      * [
      *   {
      *     title: "地图",  // 地图控件上所要显示的图层名称
-     *     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png", // 地图控件上所要显示的图层图标（默认图标大小80x80）
+     *     icon: "https://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png", // 地图控件上所要显示的图层图标（默认图标大小80x80）
      *     layer: TMAP_NORMAL_MAP // 地图类型对象，即MapType
      *   },
      *   {
      *     title: "卫星",
-     *     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png",
+     *     icon: "https://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png",
      *     layer: TMAP_SATELLITE_MAP
      *   },
      *   {
      *     title: "卫星混合",
-     *     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png",
+     *     icon: "https://api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png",
      *     layer: TMAP_HYBRID_MAP
      *   },
      *   {
      *     title: "地形",
-     *     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png",
+     *     icon: "https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png",
      *     layer: TMAP_TERRAIN_MAP
      *   },
      *   {
      *     title: "地形混合",
-     *     icon: "http://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png",
+     *     icon: "https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png",
      *     layer: TMAP_TERRAIN_HYBRID_MAP
      *   }
      * ]

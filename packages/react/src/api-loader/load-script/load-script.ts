@@ -22,7 +22,7 @@ export const load = async (options: APILoaderConfig) => {
         script.type = 'text/javascript'
         script.onload = () => resolve()
         script.onerror = e => reject(e)
-        document.body.appendChild(script)
+        document.head.appendChild(script)
       }
     })
   }
@@ -43,7 +43,7 @@ export const load = async (options: APILoaderConfig) => {
         reject(new Error('缺少天地图密钥，申请地址：https://console.tianditu.gov.cn/api/key'))
       })
     }
-    await loadScript('tianditu-tk', `http://api.tianditu.gov.cn/api?v=${version}&tk=${tkey}`)
+    await loadScript('tianditu-tk', `https://api.tianditu.gov.cn/api?v=${version}&tk=${tkey}`)
 
     await Promise.all(
       plugins
