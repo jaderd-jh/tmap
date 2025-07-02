@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { load } from './load-script'
 
 const useAPILoader = (config: APILoaderConfig) => {
-  const [isLoading, setIsLoading] = useState(true)
   const [isLoaded, setIsLoaded] = useState(false)
   const [error, setError] = useState<Error>()
 
@@ -15,11 +14,9 @@ const useAPILoader = (config: APILoaderConfig) => {
       .catch(e => {
         setError(e)
       })
-      .finally(() => {
-        setIsLoading(false)
-      })
-  }, []) // config
-  return { isLoading, isLoaded, error }
+  }, [config])
+
+  return { isLoaded, error }
 }
 
 export default useAPILoader
