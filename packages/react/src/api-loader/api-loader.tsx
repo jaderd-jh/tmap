@@ -5,10 +5,10 @@ import useAPILoader from './use-api-loader'
 export const APILoader = (props: PropsWithChildren<APILoaderProps>) => {
   const { className, style, children, ...config } = props
 
-  const { isLoading, isLoaded, error } = useAPILoader(config)
+  const { isLoaded, error } = useAPILoader(config)
 
   const getView = () => {
-    if (isLoading) {
+    if (!isLoaded) {
       return <>加载中…</>
     }
 
