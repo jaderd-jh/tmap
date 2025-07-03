@@ -42,6 +42,8 @@ declare namespace T {
      * @default false
      */
     draggable?: boolean
+    /** 元素默认提示信息 */
+    title?: string
     /**
      * 设置z-index
      * @description 可控

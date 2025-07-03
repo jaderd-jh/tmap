@@ -191,9 +191,9 @@ declare namespace T {
     clearLayers: () => void
     addContextMenu: (contextMenu: ContextMenu) => void
     /** 添加事件监听函数 */
-    addEventListener: <U extends keyof T.MapProtoEvents>(event: U, handler: E[U]) => void
+    addEventListener: <E extends keyof MapProtoEvents>(event: E, handler: MapProtoEvents[E]) => void
     /** 移除事件监听函数 */
-    removeEventListener: <U extends keyof T.MapProtoEvents>(event: U, handler: E[U]) => void
+    removeEventListener: <E extends keyof MapProtoEvents>(event: E, handler: MapProtoEvents[E]) => void
     /** -------------- ⬆ 地图图层方法 -------------- */
   }
 
@@ -388,10 +388,10 @@ declare namespace T {
     onLongPress: (e: MapEvent<Map>) => void
   }
 
-  interface MapEventListener<E> {
+  interface MapEventListener<T> {
     /** 添加事件监听函数 */
-    addEventListener: <U extends keyof E>(event: U, handler: E[U]) => void
+    addEventListener: <E extends keyof T>(event: E, handler: E[T]) => void
     /** 移除事件监听函数 */
-    removeEventListener: <U extends keyof E>(event: U, handler: E[U]) => void
+    removeEventListener: <E extends keyof T>(event: E, handler: E[T]) => void
   }
 }

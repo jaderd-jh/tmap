@@ -40,11 +40,11 @@ declare namespace T {
      */
     setStylesL: (styles: MarkerClusterStyle[]) => void
     /** 添加事件监听函数 */
-    addEventListener: <U extends keyof MarkerClusterProtoEvents>(event: U, handler: MarkerClusterProtoEvents[U]) => void
+    addEventListener: <E extends keyof MarkerClusterProtoEvents>(event: E, handler: MarkerClusterProtoEvents[E]) => void
     /** 移除事件监听函数 */
-    removeEventListener: <U extends keyof MarkerClusterProtoEvents>(
-      event: U,
-      handler: MarkerClusterProtoEvents[U]
+    removeEventListener: <E extends keyof MarkerClusterProtoEvents>(
+      event: E,
+      handler: MarkerClusterProtoEvents[E]
     ) => void
   }
   interface MarkerClusterOptions {

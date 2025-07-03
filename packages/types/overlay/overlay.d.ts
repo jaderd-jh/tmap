@@ -2,11 +2,11 @@ declare namespace T {
   type OverlayType = 1 | 2 | 3 | 4 | 5 | 6 | 8
   /** 叠加层类都直接或间接继承于此基类。如果希望在地图上显示自定义的叠加层对象类型，可以继承这一基类 */
 
-  class OverlayEventListener<E = OverlayProtoEventsCommonProps> {
+  class OverlayEventListener<T = OverlayProtoEventsCommonProps> {
     /** 添加事件监听函数 */
-    addEventListener: <U extends keyof E>(event: U, handler: E[U]) => void
+    addEventListener: <E extends keyof T>(event: E, handler: T[E]) => void
     /** 移除事件监听函数 */
-    removeEventListener: <U extends keyof E>(event: U, handler: E[U]) => void
+    removeEventListener: <E extends keyof T>(event: E, handler: T[E]) => void
   }
   class OverlayCommon<E = OverlayProtoEventsCommonProps> extends OverlayEventListener<E> {
     /** 当地图状态发生变化时，由系统调用对覆盖物进行绘制。自定义覆盖物需要实现此方法 */

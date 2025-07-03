@@ -21,9 +21,9 @@ declare namespace T {
     /** 返回所有分割线，是一个数组 */
     getAllSeparator: () => any[]
     /** 添加事件监听函数 */
-    addEventListener: <U extends keyof ContextMenuProtoEvents>(event: U, handler: E[U]) => void
+    addEventListener: <E extends keyof ContextMenuProtoEvents>(event: E, handler: ContextMenuProtoEvents[E]) => void
     /** 移除事件监听函数 */
-    removeEventListener: <U extends keyof ContextMenuProtoEvents>(event: U, handler: E[U]) => void
+    removeEventListener: <E extends keyof ContextMenuProtoEvents>(event: E, handler: ContextMenuProtoEvents[E]) => void
   }
   interface ContextMenuOptions {
     /**

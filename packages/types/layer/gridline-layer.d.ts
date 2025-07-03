@@ -20,11 +20,11 @@ declare namespace T {
     /** 网格标签的容器 */
     getContainer: () => HTMLElement
     /** 添加事件监听函数 */
-    addEventListener: <U extends keyof GridlineLayerProtoEvents>(event: U, handler: GridlineLayerProtoEvents[U]) => void
+    addEventListener: <E extends keyof GridlineLayerProtoEvents>(event: E, handler: GridlineLayerProtoEvents[E]) => void
     /** 移除事件监听函数 */
-    removeEventListener: <U extends keyof GridlineLayerProtoEvents>(
-      event: U,
-      handler: GridlineLayerProtoEvents[U]
+    removeEventListener: <E extends keyof GridlineLayerProtoEvents>(
+      event: E,
+      handler: GridlineLayerProtoEvents[E]
     ) => void
   }
   interface GridlineLayerOptions {
