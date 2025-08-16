@@ -1,4 +1,4 @@
-export const pluginsUrl = {
+export const pluginsUrl: Record<string, string[]> = {
   // D3.js绘制图形
   D3: [
     'https://lbs.tianditu.gov.cn/js/lib/d3/d3.min.js',
