@@ -1,22 +1,35 @@
 import type { APILoaderConfig } from './types'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { load } from './load-script'
 
+interface LoadStatusProps {
+  isLoaded: boolean | null
+  error?: Error | null
+}
+
+const defaultValue = { isLoaded: false }
+
 const useAPILoader = (config: APILoaderConfig) => {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [error, setError] = useState<Error>()
+  const [loadStatus, setLoadStatus] = useState<Partial<LoadStatusProps>>(defaultValue)
+
+  const loadStatusRef = useRef<Partial<LoadStatusProps>>({})
 
   useEffect(() => {
-    load(config)
-      .then(() => {
-        setIsLoaded(true)
-      })
-      .catch(e => {
-        setError(e)
-      })
+    if (!Object.keys(loadStatusRef.current).length) {
+      load(config)
+        .then(() => {
+          loadStatusRef.current.isLoaded = true
+        })
+        .catch(e => {
+          loadStatusRef.current.error = e
+        })
+        .finally(() => {
+          setLoadStatus(loadStatusRef.current)
+        })
+    }
   }, [config])
 
-  return { isLoaded, error }
+  return loadStatus
 }
 
 export default useAPILoader
