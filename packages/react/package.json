@@ -1,7 +1,7 @@
 {
   "name": "@jhqn/react-tmap",
   "type": "module",
-  "version": "0.0.2-beta.3",
+  "version": "0.0.2-beta.4",
   "description": "天地图 react 组件",
   "author": "zwtkito",
   "repository": {

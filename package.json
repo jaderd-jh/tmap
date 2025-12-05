@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "0.0.2-beta.3",
+  "version": "0.0.2-beta.4",
   "private": true,
   "packageManager": "pnpm@10.24.0",
   "description": "天地图 jsapi 4.0 的 monorepo",
