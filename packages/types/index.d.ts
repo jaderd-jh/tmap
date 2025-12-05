@@ -1,11 +1,11 @@
-/// <reference path="./context-menu/index.d.ts" />
-/// <reference path="./control/index.d.ts" />
-/// <reference path="./entity/index.d.ts" />
-/// <reference path="./layer/index.d.ts" />
-/// <reference path="./map/index.d.ts" />
-/// <reference path="./overlay/index.d.ts" />
-/// <reference path="./plugins/index.d.ts" />
-/// <reference path="./service/index.d.ts" />
-/// <reference path="./tool/index.d.ts" />
-/// <reference path="./extend.d.ts" />
-/// <reference path="./window-shims.d.ts" />
+import './context-menu/index.d.ts'
+import './control/index.d.ts'
+import './entity/index.d.ts'
+import './layer/index.d.ts'
+import './map/index.d.ts'
+import './overlay/index.d.ts'
+import './plugins/index.d.ts'
+import './service/index.d.ts'
+import './tool/index.d.ts'
+import './extend.d.ts'
+import './window-shims.d.ts'

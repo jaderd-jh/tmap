@@ -1,7 +1,7 @@
-/// <reference path="./control.d.ts" />
-/// <reference path="./copyright.d.ts" />
-/// <reference path="./map-type.d.ts" />
-/// <reference path="./military-symbols.d.ts" />
-/// <reference path="./overview-map.d.ts" />
-/// <reference path="./scale.d.ts" />
-/// <reference path="./zoom.d.ts" />
+import './control.d.ts'
+import './copyright.d.ts'
+import './map-type.d.ts'
+import './military-symbols.d.ts'
+import './overview-map.d.ts'
+import './scale.d.ts'
+import './zoom.d.ts'

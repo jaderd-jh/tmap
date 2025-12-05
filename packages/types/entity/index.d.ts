@@ -1,4 +1,4 @@
-/// <reference path="./layer-group.d.ts" />
-/// <reference path="./lnglat-bounds.d.ts" />
-/// <reference path="./lnglat.d.ts" />
-/// <reference path="./point.d.ts" />
+import './layer-group.d.ts'
+import './lnglat-bounds.d.ts'
+import './lnglat.d.ts'
+import './point.d.ts'

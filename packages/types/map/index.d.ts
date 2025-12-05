@@ -1,1 +1,1 @@
-/// <reference path="./map.d.ts" />
+import './map.d.ts'
