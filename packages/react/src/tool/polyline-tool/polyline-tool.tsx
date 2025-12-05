@@ -1,8 +1,8 @@
-import type { UnDef } from '@/utils'
 import type { PolylineToolProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useEventProperties, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import './index.css'
 
 /** 地图工具 - 绘线工具 */

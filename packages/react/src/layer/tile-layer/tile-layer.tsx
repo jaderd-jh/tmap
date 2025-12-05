@@ -1,8 +1,8 @@
-import type { UnDef } from '@/utils'
 import type { TileLayerProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useEventProperties, useInstanceAddRemove, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 图层 - 自定义图层 */
 const TileLayer = forwardRef<UnDef<T.TileLayer>, TileLayerProps>(({ url, ...props }, ref) => {

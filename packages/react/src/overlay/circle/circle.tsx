@@ -1,9 +1,9 @@
-import type { UnDef } from '@/utils'
 import type { CircleProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toLngLat } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 圆 */
 const Circle = forwardRef<UnDef<T.Circle>, CircleProps>(

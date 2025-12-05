@@ -1,5 +1,5 @@
-import type { CommonProps } from '@/utils'
 import type { pluginsUrl } from './load-script/plugins'
+import type { CommonProps } from '@/utils'
 
 export type Plugin = keyof typeof pluginsUrl
 

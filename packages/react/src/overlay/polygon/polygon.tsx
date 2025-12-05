@@ -1,9 +1,9 @@
-import type { UnDef } from '@/utils'
 import type { PolygonProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toNestedLngLats } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 多边形 */
 const Polygon = forwardRef<UnDef<T.Polygon>, PolygonProps>(({ visible, lngLats, editable = false, ...props }, ref) => {

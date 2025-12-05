@@ -1,9 +1,9 @@
-import type { UnDef } from '@/utils'
 import type { ContextMenuProps } from './types'
+import type { UnDef } from '@/utils'
+import React, { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useEventProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { isDef } from '@/utils'
-import React, { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import MenuItem from './menu-item'
 import Separator from './separator'
 

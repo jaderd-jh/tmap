@@ -1,9 +1,9 @@
-import type { UnDef } from '@/utils'
 import type { ControlMapTypeProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 切换地图类型控件 */
 const MapType = forwardRef<UnDef<T.Control.MapType>, ControlMapTypeProps>(

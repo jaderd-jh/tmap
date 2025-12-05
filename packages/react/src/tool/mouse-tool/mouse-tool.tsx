@@ -1,9 +1,9 @@
-import type { Undefinable, VK } from '@/utils'
 import type { MouseToolProps, MouseToolRef } from './types'
+import type { Undefinable, VK } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { useEventProperties, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toIcon } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 地图工具集合 */
 const MouseTool = forwardRef<Undefinable<MouseToolRef>, MouseToolProps>(({ open, type, toolOptions }, ref) => {

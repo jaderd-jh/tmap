@@ -1,7 +1,7 @@
-import type { UnDef } from '@/utils'
 import type { ContextMenuItem } from './types'
-import { useSetProperties } from '@/hooks'
+import type { UnDef } from '@/utils'
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
+import { useSetProperties } from '@/hooks'
 
 /** 右键菜单 - 菜单项 */
 const MenuItem = forwardRef<UnDef<T.MenuItem>, ContextMenuItem>(

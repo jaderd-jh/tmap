@@ -1,6 +1,6 @@
 import type { UnDef, VK } from '@/utils'
-import { isArray, isFunction } from '@/utils'
 import { useEffect, useRef } from 'react'
+import { isArray, isFunction } from '@/utils'
 
 const filterFun = (props: VK<any>) => {
   const fns = Object.keys(props).filter(key => isFunction(props[key]))

@@ -1,10 +1,10 @@
-import type { UnDef } from '@/utils'
 import type { ControlCopyrightProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
+import { renderToString } from 'react-dom/server'
 import { useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toBounds, toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
-import { renderToString } from 'react-dom/server'
 
 /** 版权控件 */
 const Copyright = forwardRef<UnDef<T.Control.Copyright>, ControlCopyrightProps>(

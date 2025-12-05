@@ -1,9 +1,9 @@
-import type { UnDef } from '@/utils'
 import type { LabelProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toLngLat, toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 文本标注 */
 const Label = forwardRef<UnDef<T.Label>, LabelProps>(

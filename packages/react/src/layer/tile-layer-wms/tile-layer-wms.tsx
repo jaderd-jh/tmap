@@ -1,8 +1,8 @@
-import type { UnDef } from '@/utils'
 import type { TileLayerWMSProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useEventProperties, useInstanceAddRemove, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 图层 - 叠加WMS地图图块层 */
 const TileLayerWMS = forwardRef<UnDef<T.TileLayerWMS>, TileLayerWMSProps>(({ url = '', ...props }, ref) => {

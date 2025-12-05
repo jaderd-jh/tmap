@@ -1,8 +1,8 @@
-import type { UnDef } from '@/utils'
 import type { GridlineLayerProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { useEventProperties, useInstanceAddRemove, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 /** 图层 - 网格图层 */
 const GridlineLayer = forwardRef<UnDef<T.GridlineLayer>, GridlineLayerProps>((props, ref) => {

@@ -1,9 +1,9 @@
-import type { UnDef } from '@/utils'
 import type { ControlOverviewMapProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { isArray, toPoint } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /** 缩略地图控件 */
 const OverviewMap = forwardRef<UnDef<T.Control.OverviewMap>, ControlOverviewMapProps>(

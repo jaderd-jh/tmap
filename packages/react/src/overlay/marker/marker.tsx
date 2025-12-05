@@ -1,9 +1,9 @@
-import type { UnDef } from '@/utils'
 import type { MarkerProps } from './types'
+import type { UnDef } from '@/utils'
+import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { useEventProperties, useInstanceAddRemove, useInstanceVisible, useSetProperties } from '@/hooks'
 import { MapContext } from '@/map'
 import { toIcon, toLngLat } from '@/utils'
-import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 
 /**  覆盖物 - 图标标注 */
 const Marker = forwardRef<UnDef<T.Marker>, MarkerProps>(
