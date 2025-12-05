@@ -1,2 +1,2 @@
-/// <reference path="./local-search-result.d.ts" />
-/// <reference path="./local-search.d.ts" />
+import './local-search-result.d.ts'
+import './local-search.d.ts'

@@ -1,6 +1,6 @@
-/// <reference path="./administrative-division/index.d.ts" />
-/// <reference path="./bus/index.d.ts" />
-/// <reference path="./geocoder/index.d.ts" />
-/// <reference path="./local-search/index.d.ts" />
-/// <reference path="./geolocation.d.ts" />
-/// <reference path="./local-city.d.ts" />
+import './administrative-division/index.d.ts'
+import './bus/index.d.ts'
+import './geocoder/index.d.ts'
+import './local-search/index.d.ts'
+import './geolocation.d.ts'
+import './local-city.d.ts'

@@ -1,2 +1,2 @@
-/// <reference path="./heatmap-overlay.d.ts" />
-/// <reference path="./image-overlay.d.ts" />
+import './heatmap-overlay.d.ts'
+import './image-overlay.d.ts'

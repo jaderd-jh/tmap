@@ -1,12 +1,12 @@
-/// <reference path="./circle.d.ts" />
-/// <reference path="./cloud-marker-collection.d.ts" />
-/// <reference path="./icon.d.ts" />
-/// <reference path="./info-window.d.ts" />
-/// <reference path="./label.d.ts" />
-/// <reference path="./marker-cluster.d.ts" />
-/// <reference path="./marker.d.ts" />
-/// <reference path="./overlay.d.ts" />
-/// <reference path="./polygon.d.ts" />
-/// <reference path="./polyline.d.ts" />
-/// <reference path="./rectangle.d.ts" />
-/// <reference path="./svg.d.ts" />
+import './circle.d.ts'
+import './cloud-marker-collection.d.ts'
+import './icon.d.ts'
+import './info-window.d.ts'
+import './label.d.ts'
+import './marker-cluster.d.ts'
+import './marker.d.ts'
+import './overlay.d.ts'
+import './polygon.d.ts'
+import './polyline.d.ts'
+import './rectangle.d.ts'
+import './svg.d.ts'

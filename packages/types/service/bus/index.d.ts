@@ -1,7 +1,7 @@
-/// <reference path="./bus-line-search.d.ts" />
-/// <reference path="./bus-list-result.d.ts" />
-/// <reference path="./bus-list.d.ts" />
-/// <reference path="./transit-route-line.d" />
-/// <reference path="./transit-route-plan.d.ts" />
-/// <reference path="./transit-route-result.d.ts" />
-/// <reference path="./transit-route.d.ts" />
+import './bus-line-search.d.ts'
+import './bus-list-result.d.ts'
+import './bus-list.d.ts'
+import './transit-route-line.d'
+import './transit-route-plan.d.ts'
+import './transit-route-result.d.ts'
+import './transit-route.d.ts'
